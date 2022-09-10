@@ -1,39 +1,48 @@
-import React from "react";
-import Layout from "../components/Layout";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-import SliderTwo from "../components/SliderTwo";
-import GiveArea from "../components/GiveArea";
-import MakeWorldArea from "../components/MakeWorldArea";
-import ClientsLogo from "../components/ClientsLogo";
-import DonateArea from "../components/DonateArea";
-import MixerAreaThree from "../components/MixerAreaThree";
-import CausesArea from "../components/CausesArea";
-import CategoryArea from "../components/CategoryArea";
-import GalleryCarousel from "../components/GalleryCarousel";
-import EventsHome from "../components/EventsHome";
-import VolunteerArea from "../components/VolunteerArea";
-import CallToActionThree from "../components/CallToActionThree";
+import * as React from "react";
 
-const HomePage = () => {
-  return (
-    <Layout pageTitle="WGPBC | Home">
-      <Nav isHome={true} />
-      <SliderTwo />
-      <GiveArea />
-      <MakeWorldArea />
-      <ClientsLogo />
-      <DonateArea />
-      <MixerAreaThree />
-      <CausesArea />
-      <CategoryArea />
-      <GalleryCarousel />
-      <EventsHome />
-      <VolunteerArea />
-      <CallToActionThree />
-      <Footer />
-    </Layout>
-  );
+import Layout from "@layout";
+import SEO from "@components/seo";
+import Hero from "@containers/home/hero";
+import ServiceArea from "@containers/home/services";
+import AboutArea from "@containers/home/about";
+import CausesArea from "@containers/home/causes";
+import DonateArea from "../containers/home/donate";
+import FunfactArea from "../containers/home/funfact";
+import EventArea from "../containers/home/events";
+import TestimonialArea from "../containers/home/testimonial";
+import LatestBlog from "../containers/home/blog";
+import SponsorsArea from "../containers/home/sponsors";
+import { useStaticQuery, graphql } from "gatsby";
+
+const IndexPage = () => {
+    // const { allStrapiSermon } = useStaticQuery(graphql`
+    //     query {
+    //         allStrapiSermon {
+    //             nodes {
+    //                 Link
+    //                 Author
+    //                 Title
+    //             }
+    //         }
+    //     }
+    // `);
+    // console.log(allStrapiSermon);
+
+    return (
+        <Layout>
+            <SEO title="Home" pathname="/" />
+            <Hero />
+            <ServiceArea />
+            <AboutArea />
+            <CausesArea />
+            <DonateArea />
+            <FunfactArea />
+            <EventArea />
+            <TestimonialArea />
+            <LatestBlog />
+            <SponsorsArea />
+        </Layout>
+    );
 };
 
-export default HomePage;
+export default IndexPage;

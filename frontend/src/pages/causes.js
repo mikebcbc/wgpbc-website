@@ -1,19 +1,32 @@
-import React from "react";
-import Layout from "../components/Layout";
-import Nav from "../components/Nav";
-import PageHeader from "../components/PageHeader";
-import Causes from "../components/Causes";
-import Footer from "../components/Footer";
+import PropTypes from "prop-types";
+import Layout from "@layout";
+import SEO from "@components/seo";
+import SponsorsArea from "../containers/home/sponsors";
+import TestimonialArea from "../containers/home/testimonial";
+import FunfactArea from "../containers/home/funfact";
+import PageBreadcrumb from "../components/pagebreadcrumb";
+import CausesAll from "../containers/causes/causes";
 
-const CausesPage = () => {
-  return (
-    <Layout pageTitle="Oxpitan | Causes">
-      <Nav />
-      <PageHeader title="Causes" />
-      <Causes />
-      <Footer />
-    </Layout>
-  );
+const CausesPages = ({ location, pageContext }) => {
+    return (
+        <Layout>
+            <SEO title="Causes" pathname="/" />
+            <PageBreadcrumb
+                pageContext={pageContext}
+                location={location}
+                title="Causes"
+            />
+            <CausesAll />
+            <FunfactArea />
+            <TestimonialArea />
+            <SponsorsArea />
+        </Layout>
+    );
 };
 
-export default CausesPage;
+CausesPages.propTypes = {
+    location: PropTypes.object,
+    pageContext: PropTypes.object,
+};
+
+export default CausesPages;

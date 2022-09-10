@@ -1,19 +1,26 @@
-import React from "react";
-import Layout from "../components/Layout";
-import Nav from "../components/Nav";
-import PageHeader from "../components/PageHeader";
-import Footer from "../components/Footer";
-import Donate from "../components/Donate";
+import PropTypes from "prop-types";
+import Layout from "@layout";
+import SEO from "@components/seo";
+import PageBreadcrumb from "../components/pagebreadcrumb";
+import DonateArea from "../containers/donate";
 
-const DonatePage = () => {
-  return (
-    <Layout pageTitle="Oxpitan | Donate">
-      <Nav />
-      <PageHeader title="Donate" />
-      <Donate />
-      <Footer />
-    </Layout>
-  );
+const DonatePages = ({ location, pageContext }) => {
+    return (
+        <Layout>
+            <SEO title="Donate" pathname="/" />
+            <PageBreadcrumb
+                pageContext={pageContext}
+                location={location}
+                title="Donate"
+            />
+            <DonateArea/>
+        </Layout>
+    );
 };
 
-export default DonatePage;
+DonatePages.propTypes = {
+    location: PropTypes.object,
+    pageContext: PropTypes.object,
+};
+
+export default DonatePages;
