@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import { useEffect, useState, Fragment } from "react";
 import PropTypes from "prop-types";
-import "../../assets/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/flaticon.css";
 import "../../assets/css/elegantIcons.css";
 import "../../assets/css/modal-video.min.css";
@@ -65,15 +65,15 @@ const Header = () => {
     };
 
     // OfCanvas Menu
-    const [ofcanvasOpen, setOfcanvasOpen] = useState(false);
+    const [ofCanvasOpen, setOfCanvasOpen] = useState(false);
 
     // OfCanvas Menu Open & Remove
-    const ofcanvasHandaler = () => {
-        setOfcanvasOpen((prev) => !prev);
+    const ofCanvasHandler = () => {
+        setOfCanvasOpen((prev) => !prev);
     };
 
-    const SearchHandaler = () => {
-        setOfcanvasSearchOpen((prev) => !prev);
+    const searchHandler = () => {
+        setOfCanvasSearchOpen((prev) => !prev);
     };
 
     return (
@@ -85,17 +85,17 @@ const Header = () => {
             >
                 <Container>
                     <Row className="align-items-center">
-                        <Col lg={2} md={3} sm={3} xs={5}>
+                        <Col lg={3} md={3} sm={3} xs={5}>
                             <Logo />
                         </Col>
-                        <Col lg={10} md={9} sm={9} xs={7}>
+                        <Col lg={9} md={9} sm={9} xs={7}>
                             <HeaderMenuArea>
                                 <MainMenu allmenuData={menuData} />
 
                                 <HeaderActionArea>
                                     <MobileMenuBtn
-                                        onClick={ofcanvasHandaler}
-                                        onKeyDown={SearchHandaler}
+                                        onClick={ofCanvasHandler}
+                                        onKeyDown={searchHandler}
                                     >
                                         <span></span>
                                         <span></span>
@@ -119,13 +119,13 @@ const Header = () => {
                 </Container>
             </HeaderTop>
             <MobileMenuArea
-                className={`${ofcanvasOpen ? "mobile-menu-open" : ""}`}
+                className={`${ofCanvasOpen ? "mobile-menu-open" : ""}`}
             >
                 <OffCanvasInner>
                     <div
                         className="OffCanvasContent"
-                        onClick={ofcanvasHandaler}
-                        onKeyDown={SearchHandaler}
+                        onClick={ofCanvasHandler}
+                        onKeyDown={searchHandler}
                         role="button"
                         tabIndex={0}
                     ></div>
@@ -134,8 +134,8 @@ const Header = () => {
                             <Logo />
                             <CloseAction>
                                 <ButtonClose
-                                    onClick={ofcanvasHandaler}
-                                    onKeyDown={SearchHandaler}
+                                    onClick={ofCanvasHandler}
+                                    onKeyDown={searchHandler}
                                 >
                                     <i className="icofont-close"></i>
                                 </ButtonClose>

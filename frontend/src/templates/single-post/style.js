@@ -31,7 +31,7 @@ export const Content = styled.div``;
 export const MetaBox = styled.div`
     align-items: center;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 30px;
     .post-category {
         background-color: #fc6539;
@@ -131,8 +131,12 @@ export const PostSocialItems = styled.div`
         -o-transition: 0.1s;
         &:hover {
             color: #fff;
-            background: #fea444;
-            background: linear-gradient(to right, #fea444 0%, #fc6539 100%);
+            background: ${themeGet("colors.orange")};
+            background: linear-gradient(
+                to right,
+                ${themeGet("colors.orange")} 0%,
+                #fc6539 100%
+            );
         }
     }
 `;

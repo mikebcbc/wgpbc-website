@@ -66,7 +66,7 @@ export const DonnersInfo = styled.div`
     p {
         color: #fff;
         margin-bottom: 32px;
-        ${device.large}{
+        ${device.large} {
             margin-right: -100px;
         }
     }
@@ -99,7 +99,7 @@ export const DonnerNumber = styled.div`
     font-size: 14px;
     font-family: ${themeGet("fonts.heading")};
     text-align: center;
-    background: #fea444;
+    background: ${themeGet("colors.orange")};
     background: ${themeGet("colors.gradient")};
     ${device.xlarge} {
         height: 76px;

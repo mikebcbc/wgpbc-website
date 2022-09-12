@@ -4,7 +4,7 @@ const activeEnv =
     process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
 
 require("dotenv").config({
-    path: `.env.${activeEnv}`,
+    path: `.env`,
 });
 
 const strapiConfig = {
@@ -103,8 +103,6 @@ module.exports = {
                 },
             },
         },
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-sharp`,
         {
             resolve: "gatsby-plugin-manifest",
             options: {

@@ -39,7 +39,7 @@ export const DocumentItem = styled.a`
     padding: 15px 30px;
     width: 100%;
     &.bgcolor-theme2 {
-        background-color: #fea444 !important;
+        background-color: ${themeGet("colors.orange")} !important;
     }
 `;
 export const DocumentItemTitle = styled.h6`

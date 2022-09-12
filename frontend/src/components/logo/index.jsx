@@ -1,16 +1,16 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import LiteLogo from "@assets/images/logo/logo.png";
-import { HeaderLogoArea } from "./style";
+import WGPBCLogo from "@assets/images/logo/wgpbc.png";
+import { LogoContainer } from "./style";
 
 const Logo = ({ className }) => {
     return (
-        <HeaderLogoArea className={className}>
+        <LogoContainer className={className}>
             <Link to="/">
-                <img className="logo-main" src={LiteLogo} alt="Logo" />
+                <img className="logo-main" src={WGPBCLogo} alt="Logo" />
             </Link>
-        </HeaderLogoArea>
+        </LogoContainer>
     );
 };
 

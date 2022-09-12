@@ -48,7 +48,7 @@ export const InfoItemTitle = styled.span`
 export const Amount = styled.span`
     color: #fc6539;
     font-size: 16px;
-    background: #fea444;
+    background: ${themeGet("colors.orange")};
     background: ${themeGet("colors.gradient")};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -68,8 +68,12 @@ export const ProgressItem = styled.div`
             text-align: center;
             white-space: nowrap;
             border-radius: 0;
-            background: #fea444;
-            background: linear-gradient(to right, #fea444 0%, #fc6539 100%);
+            background: ${themeGet("colors.orange")};
+            background: linear-gradient(
+                to right,
+                ${themeGet("colors.orange")} 0%,
+                #fc6539 100%
+            );
             &::after {
                 background-color: #fc6539;
                 border-radius: 50%;

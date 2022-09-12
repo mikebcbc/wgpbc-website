@@ -69,7 +69,7 @@ export const InfoItemTitle = styled.span`
 export const Amount = styled.span`
     color: #fc6539;
     font-size: 16px;
-    background: #fea444;
+    background: ${themeGet("colors.orange")};
     background: ${themeGet("colors.gradient")};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -93,7 +93,7 @@ export const DocumentItem = styled.a`
     padding: 15px 30px;
     width: 100%;
     &.bgcolor-theme2 {
-        background-color: #fea444 !important;
+        background-color: ${themeGet("colors.orange")} !important;
     }
 `;
 export const DocumentItemTitle = styled.h6`

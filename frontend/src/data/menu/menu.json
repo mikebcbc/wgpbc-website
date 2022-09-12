@@ -40,21 +40,6 @@
         ]
     },
     {
-        "text": "Pages",
-        "link": "/volunteer",
-        "isSubmenu": true,
-        "submenu": [
-            {
-                "text": "Event Details",
-                "link": "/events/need-school-for-mozambique-children"
-            },
-            {
-                "text": "Volunteer",
-                "link": "/volunteer"
-            }
-        ]
-    },
-    {
         "text": "Contact Us",
         "link": "/contact-us",
         "isSubmenu": false

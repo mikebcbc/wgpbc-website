@@ -19,6 +19,7 @@ const Button = ({
     const buttonProps = {
         css: (theme) => createStyles(theme, color, size, shape, variant),
     };
+
     if (path) {
         const internal = /^\/(?!\/)/.test(path);
         const isHash = path.startsWith("#");

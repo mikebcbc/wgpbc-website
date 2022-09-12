@@ -65,7 +65,7 @@ export const InfoItemTitle = styled.span`
 export const Amount = styled.span`
     color: #fc6539;
     font-size: 16px;
-    background: #fea444;
+    background: ${themeGet("colors.orange")};
     background: ${themeGet("colors.gradient")};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

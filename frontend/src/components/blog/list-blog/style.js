@@ -87,7 +87,7 @@ export const ListBlogContentInner = styled.div`
 export const MetaBox = styled.div`
     align-items: center;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 31px;
     .post-category {
         background-color: #e6e6e6;

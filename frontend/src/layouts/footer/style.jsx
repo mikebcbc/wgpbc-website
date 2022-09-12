@@ -75,8 +75,12 @@ export const TaisedAmount = styled.div`
         font-size: 60px;
     }
     line-height: 1;
-    background: #fea444;
-    background: linear-gradient(to right, #fea444 0%, #fc6539 100%);
+    background: ${themeGet("colors.orange")};
+    background: linear-gradient(
+        to right,
+        ${themeGet("colors.orange")} 0%,
+        #fc6539 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 `;
@@ -125,8 +129,12 @@ export const GalleryItem = styled.div`
         left: 0;
         top: 0;
         width: 100%;
-        background: #fea444;
-        background: linear-gradient(to right, #fea444 0%, #fc6539 100%);
+        background: ${themeGet("colors.orange")};
+        background: linear-gradient(
+            to right,
+            ${themeGet("colors.orange")} 0%,
+            #fc6539 100%
+        );
         transition: 0.3s;
         -webkit-transition: 0.3s;
         -moz-transition: 0.3s;

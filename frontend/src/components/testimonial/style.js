@@ -25,8 +25,12 @@ export const QuoteIcon = styled.div`
     position: absolute;
     top: 24px;
     z-index: -1;
-    background: #fea444;
-    background: linear-gradient(to right, #fea444 0%, #fc6539 100%);
+    background: ${themeGet("colors.orange")};
+    background: linear-gradient(
+        to right,
+        ${themeGet("colors.orange")} 0%,
+        #fc6539 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 `;

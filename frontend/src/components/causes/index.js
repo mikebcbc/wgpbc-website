@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import { themeGet } from "@theme/utils";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import Button from "@components/ui/button";
@@ -70,7 +71,7 @@ const CausesItem = ({
                     size="small"
                     variant="outlined"
                     color="light"
-                    sx={{ color: "#FEA444", fontWeight: "400" }}
+                    sx={{ color: themeGet("colors.orange"), fontWeight: "400" }}
                 >
                     Donate Now{" "}
                     <i

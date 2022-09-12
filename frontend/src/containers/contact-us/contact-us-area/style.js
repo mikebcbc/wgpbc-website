@@ -62,9 +62,17 @@ export const ContactInfoContentArea = styled.div`
     transform: none;
     width: 100%;
     transform: translate(0, 0);
-    background: #fea444;
-    background-image: -ms-linear-gradient(-30deg, #fc6539 0%, #fea444 100%);
-    background: linear-gradient(-30deg, #fc6539 0%, #fea444 100%);
+    background: ${themeGet("colors.orange")};
+    background-image: -ms-linear-gradient(
+        -30deg,
+        #fc6539 0%,
+        ${themeGet("colors.orange")} 100%
+    );
+    background: linear-gradient(
+        -30deg,
+        #fc6539 0%,
+        ${themeGet("colors.orange")} 100%
+    );
     ${device.small} {
         left: 0;
         max-width: 500px;

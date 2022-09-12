@@ -1,7 +1,7 @@
 import styled from "@theme/utils";
 
-export const HeaderLogoArea = styled.div`
-    max-width: 213px;
+export const LogoContainer = styled.div`
+    max-width: 270px;
     position: relative;
     top: 1px;
 `;

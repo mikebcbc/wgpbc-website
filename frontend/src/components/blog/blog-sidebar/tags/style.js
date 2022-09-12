@@ -28,7 +28,7 @@ export const NavList = styled.li`
         -o-transition: 0.1s;
         &:hover {
             color: #fff;
-            background: #fea444;
+            background: ${themeGet("colors.orange")};
             background: ${themeGet("colors.gradient")};
         }
     }

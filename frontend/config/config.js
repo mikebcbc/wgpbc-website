@@ -1,14 +1,13 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
-    title: "Givest",
-    titleTemplate: "Givest – Non Profit Gatsby Template",
-    description:
-        "Non Profit Best Gatsby and react Templates are available on this website.",
-    author: "",
-    twitterUsername: "@Givest",
-    keywords: ["bootstrap", "html", "react", "vue"],
+    title: "Winter Garden Primitive Baptist Church",
+    titleTemplate: "Worship Simply",
+    description: "Work in progress",
+    author: "Mike Constantino",
+    twitterUsername: "@123",
+    keywords: ["church", "primitive baptist"],
     image: "",
-    siteUrl: "https://givest.com",
+    siteUrl: "https://wintergardenpbc.com",
     pathPrefix: "/",
     localUrl: "http://localhost:8000",
     canonical: "",
@@ -19,7 +18,7 @@ module.exports = {
     },
     siteLanguage: "en",
     favicon: "src/assets/images/favicon.png", // Used for manifest favicon generation
-    shortName: "Givest Gatsby", // shortname for manifest. *Must* be shorter than 12 characters
+    shortName: "WGPBC", // shortname for manifest. *Must* be shorter than 12 characters
     themeColor: "#5E60E7",
     backgroundColor: "#fff",
 };

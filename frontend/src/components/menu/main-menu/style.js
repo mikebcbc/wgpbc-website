@@ -30,7 +30,11 @@ export const Navitem = styled.li`
         padding: 7px 25px;
         position: relative;
         &:hover {
-            color: ${themeGet("colors.primary")};
+            color: ${themeGet("colors.orange")};
+        }
+        &.active {
+            color: ${themeGet("colors.orange")};
+            border-bottom: 2px solid ${themeGet("colors.orange")};
         }
     }
 
