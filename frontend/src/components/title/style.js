@@ -57,6 +57,7 @@ export const TitleBoxArea = styled.div`
 `;
 export const Title = styled.h2`
     font-size: ${themeGet("fontSize.h2.0")};
+
     ${device.small} {
         font-size: ${themeGet("fontSize.h2.1")};
     }
@@ -71,12 +72,11 @@ export const Title = styled.h2`
     margin-top: 0;
     position: relative;
     z-index: 1;
+
     span {
-        background: ${themeGet("colors.orange")};
-        background: ${themeGet("colors.gradient")};
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: ${themeGet("colors.white")};
     }
+
     &.title-style {
         margin-top: 39px;
         position: relative;

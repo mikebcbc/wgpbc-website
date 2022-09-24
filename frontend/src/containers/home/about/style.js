@@ -1,32 +1,18 @@
 import styled, { themeGet, device } from "@theme/utils";
 
 export const SectionArea = styled.section`
-    padding: 46px 0 45px;
-    ${device.small} {
-        padding: 48px 0 48px;
-    }
-    ${device.medium} {
-        padding: 88px 0 92px;
-    }
-    ${device.large} {
-        padding: 88px 0 92px;
-    }
-    ${device.xlarge} {
-        padding: 146px 0 15px;
-    }
-
     position: relative;
+    background-color: ${themeGet("colors.backgroundAlt")};
+    padding: ${themeGet("padding.rowPadding.lg")};
 
-    &:before {
-        background-color: #f7f7f7;
-        bottom: 0;
-        content: "";
-        height: calc(100% + 225px);
-        left: 0;
-        position: absolute;
-        width: calc(50% - 126px);
-        z-index: -1;
+    ${device.medium} {
+        padding: ${themeGet("padding.rowPadding.md")};
     }
+
+    ${device.large} {
+        padding: ${themeGet("padding.rowPadding.lg")};
+    }
+
     & .img-one {
         display: none !important;
         ${device.small} {
@@ -45,24 +31,22 @@ export const LayerStyle = styled.div`
     margin-top: 25px;
     position: relative;
     &:before {
-        background-color: #fff;
+        background-image: ${themeGet("colors.gradient")};
         border-radius: 50%;
         content: "";
-        height: 546px;
+        height: 380px;
         left: -201px;
         position: absolute;
-        top: -331px;
-        width: 546px;
-        z-index: -1;
+        top: -301px;
+        width: 380px;
+        z-index: 0;
     }
 
     .row > [class*="col-"] {
         padding-right: 0;
         padding-left: 0;
     }
-    .row.m-0 {
-        margin: 0 !important;
-    }
+
     .img-two {
         margin-left: 0px;
         ${device.small} {
@@ -79,7 +63,7 @@ export const LayerStyle = styled.div`
 export const Thumb = styled.div``;
 
 export const AboutTextStyle = styled.p`
-    color: #464444;
+    color: ${themeGet("colors.white")};
     font-family: "Yeseva One", cursive;
     font-size: 22px;
     line-height: 1.364;
@@ -87,9 +71,9 @@ export const AboutTextStyle = styled.p`
     margin-right: -10px;
     position: relative;
     &:before {
-        background-color: #fc6539;
+        background-color: ${themeGet("colors.orange")};
         content: "";
-        height: 75px;
+        height: 105px;
         left: -29px;
         position: absolute;
         top: 7px;
@@ -98,42 +82,4 @@ export const AboutTextStyle = styled.p`
 `;
 export const AboutContent = styled.div``;
 
-export const LlistIconStyle = styled.ul`
-    align-items: center;
-    display: block;
-    color: #001d23;
-    font-size: 15px;
-    font-weight: 700;
-    justify-content: space-between;
-    line-height: 25px;
-    margin-bottom: 42px;
-    margin-top: 29px;
-    position: relative;
-    ${device.small} {
-        display: flex;
-    }
-`;
-
-export const ListLi = styled.li`
-    align-items: flex-start;
-    display: flex;
-    margin-bottom: 10px;
-    .icon-img {
-        margin-right: 20px;
-        max-width: none;
-        position: relative;
-        top: 6px;
-    }
-    &.line-center {
-        background-color: #fc6539;
-        height: 43px;
-        position: relative;
-        top: -2px;
-        width: 4px;
-        display: none;
-        ${device.small} {
-            display: inline-block;
-        }
-    }
-`;
 export const ListText = styled.span``;

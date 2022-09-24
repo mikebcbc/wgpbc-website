@@ -77,7 +77,7 @@ const Hero = () => {
         <Section>
             <HomeSliderItem>
                 <Container>
-                    <Row>
+                    <Row className="align-items-center">
                         <Col md={6} lg={6} xl={7}>
                             <Content>
                                 <SubTitle>
@@ -126,7 +126,7 @@ const Hero = () => {
                                     >
                                         <GatsbyImage image={image} alt="" />
                                     </span>
-                                    <div className="shape-circle scene">
+                                    {/* <div className="shape-circle scene">
                                         <span
                                             className="scene-layer"
                                             data-depth="0.10"
@@ -147,7 +147,7 @@ const Hero = () => {
                                                 alt=""
                                             />
                                         </span>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div
                                     className="shape-style1 scene"
@@ -160,22 +160,6 @@ const Hero = () => {
                                         <GatsbyImage image={image2} alt="" />
                                     </span>
                                 </div>
-                                <DonateCircleWrap>
-                                    <div className="pie-chart-circle"></div>
-                                    <DonateContent>
-                                        <div className="raised-amount">
-                                            $865M
-                                        </div>
-                                        <StaticImage
-                                            className="line-shape-img"
-                                            src="../../../data/images/shape/line-s2.png"
-                                            alt="Image-Givest"
-                                        />
-                                        <h5 className="donate-title">
-                                            Total Raised
-                                        </h5>
-                                    </DonateContent>
-                                </DonateCircleWrap>
                             </LayerStyle>
                         </Col>
                     </Row>

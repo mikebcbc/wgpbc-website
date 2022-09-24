@@ -5,7 +5,7 @@ import DonnerImag from "@data/images/photos/bg-donate1.jpg";
 export const SectionArea = styled.section`
     overflow: hidden;
     padding: 80px 0;
-    background-color: #001d23 !important;
+    background-color: ${themeGet("colors.backgroundAlt")};
     ${device.large} {
         padding: 100px 0;
     }

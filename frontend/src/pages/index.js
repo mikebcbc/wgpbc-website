@@ -32,7 +32,7 @@ const IndexPage = () => {
         <Layout>
             <SEO title="Home" pathname="/" />
             <Hero />
-            <ServiceArea />
+            {/* <ServiceArea /> */}
             <AboutArea />
             <CausesArea />
             <DonateArea />

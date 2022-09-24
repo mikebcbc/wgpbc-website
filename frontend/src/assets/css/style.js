@@ -319,6 +319,9 @@ export const GlobalCSS = () => {
                     &:only-child {
                         margin-bottom: 0;
                     }
+                    &.secondary {
+                        color: ${theme.colors.secondaryText};
+                    }
                 }
                 input,
                 button,

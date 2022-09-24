@@ -2,10 +2,11 @@ const theme = {
     colors: {
         primary: "#fc6539",
         text: "#333",
+        secondaryText: "#fff",
         heading: "#414141",
         border: "#E0E0E0",
-        secondary: "#4054b2",
         background: "#fff",
+        backgroundAlt: "#001d23",
         hover: "#3f41e2",
         shark: "#929496",
         silver: "#ababab",
@@ -24,7 +25,14 @@ const theme = {
         alabaster: "#fafafa",
         mystic: "#e1e8ed",
         facebook: "#3b5998",
-        gradient: "linear-gradient(to right, #EB8F2E 0%, #FC6539 100%)",
+        gradient: "linear-gradient(to right, #ffbc76 0%, #EB8F2E 100%)",
+    },
+    padding: {
+        rowPadding: {
+            sm: "15px 0",
+            md: "30px 0",
+            lg: "60px 0",
+        },
     },
     fontSize: {
         body: "16px",

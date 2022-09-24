@@ -17,16 +17,13 @@ export const HomeSliderItem = styled.div`
         }
     }
     ${device.medium} {
-        height: 500px;
-        padding-top: 30px;
+        padding: ${themeGet("padding.rowPadding.md")};
     }
     ${device.large} {
-        height: 650px;
-        padding-top: 60px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
     ${device.xlarge} {
         height: 800px;
-        padding-top: 124px;
     }
     ${device.xxlarge} {
         height: 900px;
@@ -146,7 +143,7 @@ export const LayerStyle = styled.div`
         margin-left: auto;
         mrgin-right: auto;
         right: 60px;
-        margin-top: 94px;
+        margin-top: 0;
     }
     ${device.medium} {
         right: 0px;
@@ -177,9 +174,9 @@ export const LayerStyle = styled.div`
         right: -86px;
     }
     .thumb {
-        border-radius: 50%;
+        border-radius: 20%;
         img {
-            border-radius: 50%;
+            border-radius: 20%;
             max-width: none !important;
             ${device.xxlarge} {
                 width: auto;
@@ -334,57 +331,6 @@ export const SliderShape = styled.div`
     }
 `;
 
-export const DonateCircleWrap = styled.div`
-    bottom: -95px;
-    height: 230px;
-    width: 230px;
-    left: -127px;
-    padding: 25px;
-    position: absolute;
-    border-radius: 50%;
-    background: ${themeGet("colors.orange")};
-    background-image: -ms-linear-gradient(
-        -30deg,
-        #fc6539 0%,
-        ${themeGet("colors.orange")} 100%
-    );
-    background: linear-gradient(
-        -30deg,
-        #fc6539 0%,
-        ${themeGet("colors.orange")} 100%
-    );
-    display: none;
-    ${device.small} {
-        display: block;
-    }
-    ${device.medium} {
-        bottom: -95px;
-        height: 196px;
-        width: 196px;
-        left: -83px;
-        padding: 5px;
-    }
-    ${device.large} {
-        bottom: -74px;
-        height: 265px;
-        width: 265px;
-        left: -127px;
-        padding: 25px;
-    }
-    ${device.xxlarge} {
-        bottom: -39px;
-        height: 340px;
-        width: 340px;
-        left: -169px;
-        padding: 43px;
-    }
-
-    .pie-chart-circle {
-        border: 4px solid #fff;
-        border-radius: 100000px;
-        height: 100%;
-    }
-`;
 export const DonateContent = styled.div`
     border-radius: 50%;
     color: #fff;

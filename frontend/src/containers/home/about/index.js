@@ -1,25 +1,22 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import { Col, Container, Row } from "react-bootstrap";
 import SectionTitle from "@components/title";
 import Button from "@components/ui/button";
 import { graphql, useStaticQuery } from "gatsby";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { Col, Container, Row } from "react-bootstrap";
 import Tilt from "react-parallax-tilt";
+import { jsx } from "theme-ui";
 import {
-    SectionArea,
-    LayerStyle,
-    Thumb,
-    AboutTextStyle,
     AboutContent,
-    LlistIconStyle,
-    ListLi,
-    ListText,
+    AboutTextStyle,
+    LayerStyle,
+    SectionArea,
+    Thumb,
 } from "./style";
 
 const AboutArea = () => {
-    const aboutSectonQery = useStaticQuery(graphql`
-        query AboutSectonQuery {
+    const aboutSectionQuery = useStaticQuery(graphql`
+        query AboutSectionQuery {
             aboutJson {
                 section_title {
                     subTitle
@@ -44,8 +41,6 @@ const AboutArea = () => {
                 content1
                 content2
                 content3
-                listText1
-                listText2
             }
         }
     `);
@@ -56,9 +51,7 @@ const AboutArea = () => {
         content1,
         content2,
         content3,
-        listText1,
-        listText2,
-    } = aboutSectonQery.aboutJson;
+    } = aboutSectionQuery.aboutJson;
 
     const imageOne = getImage(image1);
     const imageTwo = getImage(image2);
@@ -129,37 +122,10 @@ const AboutArea = () => {
                     <Col lg={6} xl={5}>
                         <AboutContent>
                             <AboutTextStyle>{content1}</AboutTextStyle>
-                            <p>{content2}</p>
-                            <p className="mb-0">{content3}</p>
-                            <LlistIconStyle>
-                                <ListLi>
-                                    <StaticImage
-                                        className="icon-img"
-                                        src="../../../data/images/icons/check-double-line.png"
-                                        alt="Image-Givest"
-                                    />
-                                    <ListText
-                                        dangerouslySetInnerHTML={{
-                                            __html: listText1,
-                                        }}
-                                    />
-                                </ListLi>
-                                <ListLi className="line-center"></ListLi>
-                                <ListLi>
-                                    <StaticImage
-                                        className="icon-img"
-                                        src="../../../data/images/icons/check-double-line.png"
-                                        alt="Image-Givest"
-                                    />
-                                    <ListText
-                                        dangerouslySetInnerHTML={{
-                                            __html: listText2,
-                                        }}
-                                    />
-                                </ListLi>
-                            </LlistIconStyle>
+                            <p className="secondary">{content2}</p>
+                            <p className="secondary">{content3}</p>
                             <Button path="/donate" color="gradient">
-                                Donate Now
+                                Learn More
                             </Button>
                         </AboutContent>
                     </Col>
