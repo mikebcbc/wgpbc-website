@@ -18,10 +18,7 @@ const AboutArea = () => {
     const aboutSectionQuery = useStaticQuery(graphql`
         query AboutSectionQuery {
             aboutJson {
-                section_title {
-                    subTitle
-                    title
-                }
+                title
                 image1 {
                     childImageSharp {
                         gatsbyImageData(
@@ -44,14 +41,8 @@ const AboutArea = () => {
             }
         }
     `);
-    const {
-        section_title: { title, subTitle },
-        image1,
-        image2,
-        content1,
-        content2,
-        content3,
-    } = aboutSectionQuery.aboutJson;
+    const { title, image1, image2, content1, content2, content3 } =
+        aboutSectionQuery.aboutJson;
 
     const imageOne = getImage(image1);
     const imageTwo = getImage(image2);
@@ -65,7 +56,6 @@ const AboutArea = () => {
                             sx={{ mb: "30px" }}
                             showImage={false}
                             title={title}
-                            subTitle={subTitle}
                         />
                     </Col>
                 </Row>
