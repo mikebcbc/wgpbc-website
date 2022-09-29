@@ -53,7 +53,7 @@ const AboutArea = () => {
                 <Row>
                     <Col lg={9}>
                         <SectionTitle
-                            sx={{ mb: "30px" }}
+                            sx={{ mb: "50px" }}
                             showImage={false}
                             title={title}
                         />

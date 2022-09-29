@@ -27,58 +27,6 @@ export const CauseTitle = styled.h4`
     margin-bottom: 25px;
     margin-top: 25px;
 `;
-export const DonateInfoWrap = styled.div`
-    border-bottom: 1px solid #ededed;
-    border-top: 1px solid #ededed;
-    margin-bottom: 34px;
-    padding: 10px 0;
-`;
-
-export const DonateInfo = styled.ul`
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0;
-    padding-right: 3px;
-`;
-export const InfoItem = styled.li`
-    background-color: #f7f7f7;
-    font-family: ${themeGet("fonts.heading")};
-    min-width: 75px;
-    min-width: 90px;
-    padding: 7px 13px 6px;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
-    ${device.small} {
-        min-width: 80px;
-        padding: 7px 5px 6px;
-    }
-    ${device.medium} {
-        min-width: 100px;
-        padding: 7px 13px 6px;
-    }
-`;
-export const InfoItemTitle = styled.span`
-    color: #001d23;
-    font-size: 14px;
-    margin-bottom: 8px;
-    display: block;
-    line-height: 1;
-`;
-export const Amount = styled.span`
-    color: #fc6539;
-    font-size: 16px;
-    background: ${themeGet("colors.orange")};
-    background: ${themeGet("colors.gradient")};
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: block;
-    line-height: 1;
-    ${device.xlarge} {
-        font-size: 20px;
-    }
-`;
 export const ShortTitle = styled.h4``;
 export const SingleDetailsText = styled.p``;
 

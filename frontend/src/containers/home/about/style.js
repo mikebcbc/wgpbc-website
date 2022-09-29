@@ -28,7 +28,6 @@ export const SectionArea = styled.section`
 `;
 
 export const LayerStyle = styled.div`
-    margin-top: 25px;
     position: relative;
     &:before {
         background-image: ${themeGet("colors.gradient")};

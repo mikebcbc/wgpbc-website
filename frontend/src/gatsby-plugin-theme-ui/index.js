@@ -9,7 +9,7 @@ const theme = {
         backgroundAlt: "#001d23",
         hover: "#3f41e2",
         shark: "#929496",
-        silver: "#ababab",
+        grey: "#f7f7f7",
         nevada: "#63696a",
         white: "#ffffff",
         black: "#000000",

@@ -47,7 +47,7 @@ exports.onCreateNode = ({ node, actions }) => {
         });
     }
     // Causes Json File Create
-    if (node.internal.type === "CausesJson") {
+    if (node.internal.type === "SermonsJson") {
         createNodeField({
             node,
             name: "slug",
@@ -104,7 +104,7 @@ exports.createPages = ({ actions, graphql }) => {
                 }
             }
 
-            allCausesJson {
+            allSermonsJson {
                 edges {
                     node {
                         fields {
@@ -155,8 +155,8 @@ exports.createPages = ({ actions, graphql }) => {
             });
         });
         // Create Causes Details Page
-        const causesJson = res.data.allCausesJson.edges;
-        causesJson.forEach(({ node }) => {
+        const sermonsJson = res.data.allSermonsJson.edges;
+        sermonsJson.forEach(({ node }) => {
             createPage({
                 path: `/causes/${node.fields.slug}`,
                 component: templates.causesPost,

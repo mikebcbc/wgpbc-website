@@ -15,11 +15,6 @@ import {
     CausesDetails,
     Thumb,
     CauseTitle,
-    DonateInfoWrap,
-    DonateInfo,
-    InfoItem,
-    InfoItemTitle,
-    Amount,
     ShortTitle,
     DocumentItem,
     DocumentItemTitle,
@@ -27,7 +22,7 @@ import {
 } from "./style";
 
 const CausesPosts = ({ data, location, pageContext }) => {
-    const causespostData = data.causesJson;
+    const causespostData = data.sermonsJson;
 
     const image = getImage(causespostData.image.childImageSharp);
 
@@ -54,32 +49,6 @@ const CausesPosts = ({ data, location, pageContext }) => {
                                     <CauseTitle>
                                         {causespostData.title}
                                     </CauseTitle>
-                                    <DonateInfoWrap>
-                                        <Row>
-                                            <Col md={6}>
-                                                <DonateInfo>
-                                                    <InfoItem>
-                                                        <InfoItemTitle>
-                                                            Goal:
-                                                        </InfoItemTitle>
-                                                        <Amount>$ 5,000</Amount>
-                                                    </InfoItem>
-                                                    <InfoItem>
-                                                        <InfoItemTitle>
-                                                            Raised:
-                                                        </InfoItemTitle>
-                                                        <Amount>$ 2,000</Amount>
-                                                    </InfoItem>
-                                                    <InfoItem>
-                                                        <InfoItemTitle>
-                                                            To Go:
-                                                        </InfoItemTitle>
-                                                        <Amount>$ 1,000</Amount>
-                                                    </InfoItem>
-                                                </DonateInfo>
-                                            </Col>
-                                        </Row>
-                                    </DonateInfoWrap>
                                     <SingleDetailsText>
                                         {causespostData.detailstext1 &&
                                             causespostData.detailstext1}
@@ -153,37 +122,33 @@ CausesPosts.propTypes = {
     pageContext: PropTypes.object,
 };
 
-export const causespostQuery = graphql`
-    query CausesPostsBySlug($slug: String!) {
-        causesJson(fields: { slug: { eq: $slug } }) {
-            id
-            title
-            dec
-            donateInfo {
-                amount
-                donateTitle
-            }
-            adminName
-            image {
-                childImageSharp {
-                    gatsbyImageData(width: 780)
-                }
-            }
-            adminImage {
-                childImageSharp {
-                    gatsbyImageData
-                }
-            }
-            detailstext1
-            detailstext2
-            detailstext3
-            detailstext4
-            detailstext5
-            detailstext6
-            fields {
-                slug
-            }
-        }
-    }
-`;
+// export const causespostQuery = graphql`
+//     query CausesPostsBySlug($slug: String!) {
+//         sermonsJson(fields: { slug: { eq: $slug } }) {
+//             id
+//             title
+//             dec
+//             preacherName
+//             image {
+//                 childImageSharp {
+//                     gatsbyImageData(width: 780)
+//                 }
+//             }
+//             preacherImage {
+//                 childImageSharp {
+//                     gatsbyImageData
+//                 }
+//             }
+//             detailstext1
+//             detailstext2
+//             detailstext3
+//             detailstext4
+//             detailstext5
+//             detailstext6
+//             fields {
+//                 slug
+//             }
+//         }
+//     }
+// `;
 export default CausesPosts;

@@ -5,7 +5,7 @@ import SEO from "@components/seo";
 import Hero from "@containers/home/hero";
 import ServiceArea from "@containers/home/services";
 import AboutArea from "@containers/home/about";
-import CausesArea from "@containers/home/causes";
+import SermonArea from "@containers/home/sermons";
 import DonateArea from "../containers/home/donate";
 import FunfactArea from "../containers/home/funfact";
 import EventArea from "../containers/home/events";
@@ -34,7 +34,7 @@ const IndexPage = () => {
             <Hero />
             {/* <ServiceArea /> */}
             <AboutArea />
-            <CausesArea />
+            <SermonArea />
             <DonateArea />
             <FunfactArea />
             <EventArea />

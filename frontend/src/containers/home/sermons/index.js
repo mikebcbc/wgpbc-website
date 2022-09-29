@@ -2,12 +2,13 @@
 import { jsx } from "theme-ui";
 import SermonItem from "@components/sermon";
 import { SectionArea } from "./style";
+import SectionTitle from "@components/title";
 import { Container, Row, Col } from "react-bootstrap";
 import { graphql, useStaticQuery } from "gatsby";
 
-const CausesAll = () => {
+const SermonArea = () => {
     const sermonQuery = useStaticQuery(graphql`
-        query SermonPageQuery {
+        query SermonQuery {
             allSermonsJson {
                 edges {
                     node {
@@ -34,31 +35,35 @@ const CausesAll = () => {
         }
     `);
 
-    const causesAreaData = sermonQuery.allSermonsJson.edges;
+    const sermonData = sermonQuery.allSermonsJson.edges;
+
     return (
         <SectionArea>
             <Container>
                 <Row>
-                    {causesAreaData &&
-                        causesAreaData.map((causesData) => {
+                    <Col lg={8} className="m-auto">
+                        <SectionTitle
+                            sx={{ mb: "100px" }}
+                            textCenter
+                            showImage={false}
+                            title={"Recent Sermons"}
+                        />
+                    </Col>
+                </Row>
+                <Row>
+                    {sermonData &&
+                        sermonData.slice(0, 3).map((sermon) => {
                             return (
-                                <Col
-                                    lg={4}
-                                    md={6}
-                                    sm={6}
-                                    key={causesData.node.id}
-                                >
+                                <Col lg={4} md={6} sm={6} key={sermon.node.id}>
                                     <SermonItem
-                                        image={causesData.node.image}
-                                        title={causesData.node.title}
-                                        dec={causesData.node.dec}
-                                        preacherName={
-                                            causesData.node.preacherName
-                                        }
+                                        image={sermon.node.image}
+                                        title={sermon.node.title}
+                                        dec={sermon.node.dec}
+                                        preacherName={sermon.node.preacherName}
                                         preacherImage={
-                                            causesData.node.preacherImage
+                                            sermon.node.preacherImage
                                         }
-                                        slug={causesData.node.fields.slug}
+                                        slug={sermon.node.fields.slug}
                                     />
                                 </Col>
                             );
@@ -69,4 +74,4 @@ const CausesAll = () => {
     );
 };
 
-export default CausesAll;
+export default SermonArea;

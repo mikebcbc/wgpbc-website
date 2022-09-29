@@ -3,13 +3,9 @@ import { StaticImage } from "gatsby-plugin-image";
 import { ProgressBar } from "react-bootstrap";
 import Button from "../../../../components/ui/button";
 import {
-    WidgetCausesItem,
+    WidgetSermonItem,
     Thumb,
     CauseContentBox,
-    DonateInfo,
-    InfoItem,
-    InfoItemTitle,
-    Amount,
     Title,
     ProgressItem,
     AmountInfo,
@@ -18,7 +14,7 @@ import {
 
 const UrgentCauses = () => {
     return (
-        <WidgetCausesItem>
+        <WidgetSermonItem>
             <Thumb>
                 <StaticImage
                     src="../../../../data/images/causes/w1.jpg"
@@ -29,16 +25,6 @@ const UrgentCauses = () => {
                 <Title>
                     <Link to="#!">Need School For Uganda Poor Children.</Link>
                 </Title>
-                <DonateInfo>
-                    <InfoItem>
-                        <InfoItemTitle>Goal:</InfoItemTitle>
-                        <Amount>$ 5,000</Amount>
-                    </InfoItem>
-                    <InfoItem className="info-item">
-                        <InfoItemTitle>Raised:</InfoItemTitle>
-                        <Amount>$ 2,000</Amount>
-                    </InfoItem>
-                </DonateInfo>
                 <ProgressItem>
                     <ProgressBar
                         className="gradient"
@@ -68,7 +54,7 @@ const UrgentCauses = () => {
                     </Button>
                 </form>
             </CauseContentBox>
-        </WidgetCausesItem>
+        </WidgetSermonItem>
     );
 };
 
