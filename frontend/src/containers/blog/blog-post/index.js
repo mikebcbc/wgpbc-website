@@ -21,7 +21,7 @@ const BlogPostArea = () => {
                             date(formatString: "MMMM DD YYYY")
                             categories
                             author
-                            thume_image {
+                            thumbnail {
                                 childImageSharp {
                                     gatsbyImageData(width: 750, height: 400)
                                 }
@@ -48,7 +48,7 @@ const BlogPostArea = () => {
                         <BlogList
                             key={i}
                             title={blog.node.frontmatter.title}
-                            thume_image={blog.node.frontmatter.thume_image}
+                            thumbnail={blog.node.frontmatter.thumbnail}
                             categories={blog.node.frontmatter.categories}
                             body={blog.node.excerpt}
                             date={blog.node.frontmatter.date}

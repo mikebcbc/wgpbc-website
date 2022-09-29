@@ -29,7 +29,7 @@ import {
 
 const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.markdownRemark.frontmatter;
-    const image = getImage(post.thume_image.childImageSharp);
+    const image = getImage(post.thumbnail.childImageSharp);
 
     // Author Post page
     const author = authors.find((x) => x.name === post.author);
@@ -102,8 +102,8 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                         <Title>{post.title}</Title>
                                         <SingleBlogContent
                                             dangerouslySetInnerHTML={{
-                                                __html:
-                                                    data.markdownRemark.html,
+                                                __html: data.markdownRemark
+                                                    .html,
                                             }}
                                         />
 
@@ -191,7 +191,7 @@ export const postQuery = graphql`
                 tags
                 quote_text
                 title
-                thume_image {
+                thumbnail {
                     childImageSharp {
                         gatsbyImageData(width: 750, height: 400)
                     }

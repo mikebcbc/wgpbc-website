@@ -30,9 +30,8 @@ const TagPosts = ({ data, location, pageContext }) => {
                                         <BlogList
                                             key={i}
                                             title={blog.node.frontmatter.title}
-                                            thume_image={
-                                                blog.node.frontmatter
-                                                    .thume_image
+                                            thumbnail={
+                                                blog.node.frontmatter.thumbnail
                                             }
                                             categories={
                                                 blog.node.frontmatter.categories
@@ -65,7 +64,7 @@ TagPosts.propTypes = {
 };
 
 export const tagQuery = graphql`
-    query($tag: String!) {
+    query ($tag: String!) {
         allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             filter: { frontmatter: { tags: { in: [$tag] } } }
@@ -80,7 +79,7 @@ export const tagQuery = graphql`
                         tags
                         quote_text
                         title
-                        thume_image {
+                        thumbnail {
                             childImageSharp {
                                 gatsbyImageData(width: 750, height: 400)
                             }

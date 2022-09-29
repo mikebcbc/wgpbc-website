@@ -1,6 +1,6 @@
 ---
 title: "Donation is Hope for Poor Childrens"
-thume_image: "../../data/images/blog/g2.jpg"
+thumbnail: "../../data/images/blog/g2.jpg"
 date: "2021-04-10"
 author: "Marinda"
 quote_text: "The use of apps in investment ideas is a great way to enjoy the convenience."

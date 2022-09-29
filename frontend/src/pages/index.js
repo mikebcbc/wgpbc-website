@@ -35,12 +35,12 @@ const IndexPage = () => {
             {/* <ServiceArea /> */}
             <AboutArea />
             <SermonArea />
-            <DonateArea />
+            {/* <DonateArea />
             <FunfactArea />
-            <EventArea />
-            <TestimonialArea />
+            <EventArea /> */}
             <LatestBlog />
-            <SponsorsArea />
+            <TestimonialArea />
+            {/* <SponsorsArea /> */}
         </Layout>
     );
 };

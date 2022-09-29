@@ -12,13 +12,13 @@ import {
     LatestBlogContentInner,
     MetaBox,
     Title,
-    TextDetails,
+    Excerpt,
     PostShare,
     PostFooter,
 } from "./style";
 
 const LatestBlogItem = ({
-    thume_image,
+    thumbnail,
     title,
     date,
     categories,
@@ -29,12 +29,12 @@ const LatestBlogItem = ({
     const dateSplit = date.split(" ");
     const month = dateSplit[0];
     const day = dateSplit[1];
-    const image = getImage(thume_image);
+
     return (
         <PostItemWrap>
             <Thumb>
                 <Link to={`/${slug}`}>
-                    <GatsbyImage image={image} alt={title} />
+                    <GatsbyImage image={getImage(thumbnail)} alt={title} />
                 </Link>
                 <MetaDate>
                     <Link to={`/${slug}`}>
@@ -75,25 +75,15 @@ const LatestBlogItem = ({
                                         <i className="social_twitter"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a className="color-dribbble" href="#/">
-                                        <i className="social_dribbble"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="color-pinterest" href="#/">
-                                        <i className="social_pinterest"></i>
-                                    </a>
-                                </li>
                             </ul>
                         </PostShare>
                     </MetaBox>
                     <Title>
                         <Link to={`/${slug}`}>{title}</Link>
                     </Title>
-                    <TextDetails>{body}</TextDetails>
+                    <Excerpt>{body}</Excerpt>
                 </LatestBlogContentInner>
-                <PostFooter className="PostFooter">
+                <PostFooter className="post-footer">
                     <Button
                         path={`/${slug}`}
                         size="xsmall"
@@ -111,7 +101,7 @@ const LatestBlogItem = ({
 };
 
 LatestBlogItem.propTypes = {
-    thume_image: PropTypes.object,
+    thumbnail: PropTypes.object,
     title: PropTypes.string,
     date: PropTypes.string,
     categories: PropTypes.array,

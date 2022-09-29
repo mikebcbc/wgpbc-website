@@ -1,6 +1,6 @@
 ---
 title: "Old Education Needs For Change The World."
-thume_image: "../../data/images/blog/3.jpg"
+thumbnail: "../../data/images/blog/3.jpg"
 date: "2021-02-11"
 author: "Marinda"
 quote_text: "The use of apps in investment ideas is a great way to enjoy the convenience."

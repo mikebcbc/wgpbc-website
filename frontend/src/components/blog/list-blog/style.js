@@ -90,7 +90,7 @@ export const MetaBox = styled.div`
     justify-content: flex-start;
     margin-bottom: 31px;
     .post-category {
-        background-color: #e6e6e6;
+        background-color: ${themeGet("colors.darkgrey")};
         color: #fc6539;
         font-size: 13px;
         font-weight: 700;
@@ -123,7 +123,7 @@ export const MetaBox = styled.div`
         display: inline-block;
         font-weight: 500;
         .icon {
-            background-color: #e6e6e6;
+            background-color: ${themeGet("colors.darkgrey")};
             display: inline-block;
             height: 28px;
             line-height: 33px;
@@ -143,7 +143,7 @@ export const Title = styled.h4`
     margin-bottom: 0;
     line-height: 1.4;
 `;
-export const TextDetails = styled.p`
+export const Excerpt = styled.p`
     margin: 5px 0 0;
 `;
 

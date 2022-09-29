@@ -1,17 +1,14 @@
 import styled, { themeGet, device } from "@theme/utils";
 
 export const SectionArea = styled.section`
-    padding: 48px 0 2px;
-    ${device.small} {
-        padding: 48px 0 0px;
-    }
+    background-color: ${themeGet("colors.backgroundAlt")};
+    padding: ${themeGet("padding.rowPadding.lg")};
+
     ${device.medium} {
-        padding: 88px 0 92px;
+        padding: ${themeGet("padding.rowPadding.md")};
     }
+
     ${device.large} {
-        padding: 88px 0 92px;
-    }
-    ${device.xlarge} {
-        padding: 145px 0 120px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
 `;

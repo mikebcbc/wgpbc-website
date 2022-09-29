@@ -27,9 +27,8 @@ const CategorisPosts = ({ data, location, pageContext }) => {
                                         <BlogList
                                             key={i}
                                             title={blog.node.frontmatter.title}
-                                            thume_image={
-                                                blog.node.frontmatter
-                                                    .thume_image
+                                            thumbnail={
+                                                blog.node.frontmatter.thumbnail
                                             }
                                             categories={
                                                 blog.node.frontmatter.categories
@@ -62,7 +61,7 @@ CategorisPosts.propTypes = {
 };
 
 export const CategorieQuery = graphql`
-    query($categorie: String!) {
+    query ($categorie: String!) {
         allMarkdownRemark(
             sort: { fields: frontmatter___date, order: DESC }
             filter: { frontmatter: { tags: { in: [$categorie] } } }
@@ -77,7 +76,7 @@ export const CategorieQuery = graphql`
                         tags
                         quote_text
                         title
-                        thume_image {
+                        thumbnail {
                             childImageSharp {
                                 gatsbyImageData(width: 750, height: 400)
                             }

@@ -1,6 +1,6 @@
 ---
 title: "Save Children Life For Future."
-thume_image: "../../data/images/blog/1.jpg"
+thumbnail: "../../data/images/blog/1.jpg"
 date: "2021-01-21"
 author: "Roderick"
 quote_text: "The use of apps in investment ideas is a great way to enjoy the convenience."

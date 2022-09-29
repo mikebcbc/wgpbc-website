@@ -1,13 +1,14 @@
 import styled, { themeGet, device } from "@theme/utils";
 import testimonialTitleBg from "@data/images/testimonial/bg-testi1.jpg";
+
 export const SectionArea = styled.section`
-    padding: 100px 0 60px;
-    background-color: #001d23;
-    ${device.small} {
-        padding: 100px 0 20px;
+    padding: 48px 0 52px;
+    ${device.medium} {
+        padding: ${themeGet("padding.rowPadding.md")};
     }
+
     ${device.large} {
-        padding: 150px 0 48px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
 `;
 
@@ -32,18 +33,12 @@ export const TitleWrap = styled.div`
         min-height: 530px;
         padding-right: 7%;
         position: absolute;
-        width: calc(50% - 170px);
         padding-left: 44px;
     }
-
-    ${device.medium} {
-    }
     ${device.large} {
-        width: calc(50% - 125px);
         padding-left: 44px;
     }
     ${device.xlarge} {
-        width: calc(50% - 185px);
         padding-left: 70px;
     }
 
@@ -96,9 +91,7 @@ export const TestimonialContent = styled.div`
 `;
 
 export const NavigationWrap = styled.div`
-    background-color: #192a2d;
     left: calc(103% + 1px);
-    width: 4000px;
     position: relative;
     z-index: 999;
     top: -133px;

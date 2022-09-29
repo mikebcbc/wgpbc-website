@@ -15,11 +15,11 @@ import {
     ListBlogContentInner,
     MetaBox,
     Title,
-    TextDetails,
+    Excerpt,
 } from "./style";
 
 const BlogList = ({
-    thume_image,
+    thumbnail,
     title,
     date,
     categories,
@@ -30,7 +30,7 @@ const BlogList = ({
     const dateSplit = date.split(" ");
     const month = dateSplit[0];
     const day = dateSplit[1];
-    const image = getImage(thume_image);
+    const image = getImage(thumbnail);
 
     // Author Post page
     const author = authors.find((x) => x.name === postAuthor);
@@ -77,7 +77,7 @@ const BlogList = ({
                     <Title>
                         <Link to={`/${slug}`}>{title}</Link>
                     </Title>
-                    <TextDetails>{body}</TextDetails>
+                    <Excerpt>{body}</Excerpt>
                     <Button
                         sx={{ mt: "20px" }}
                         path={`/${slug}`}
@@ -97,7 +97,7 @@ const BlogList = ({
 };
 
 BlogList.propTypes = {
-    thume_image: PropTypes.object,
+    thumbnail: PropTypes.object,
     title: PropTypes.string,
     date: PropTypes.string,
     categories: PropTypes.array,

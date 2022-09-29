@@ -11,6 +11,7 @@ import TestimonialItem from "@components/testimonial";
 import Swiper, { SwiperSlide } from "@components/swiper";
 import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import ContactForm from "../../../components/contact-from";
 const TestimonialArea = () => {
     const testimonialQuery = useStaticQuery(graphql`
         query TestimonialQuery {
@@ -37,28 +38,8 @@ const TestimonialArea = () => {
         <SectionArea>
             <Container>
                 <Row>
-                    <Col md={12} lg={4} xl={5}>
-                        <TitleWrap>
-                            <SectionTitle
-                                titleStyle
-                                textWhate
-                                texttheme
-                                sx={{
-                                    mb: [
-                                        "30px",
-                                        "50px",
-                                        "80px",
-                                        "110",
-                                        "123px",
-                                    ],
-                                }}
-                                subTitle={"Recent Events"}
-                                title={"What People Say About Us."}
-                            />
-                        </TitleWrap>
-                    </Col>
-                    <Col md={12} lg={7} xl={6}>
-                        <TestimonialContent>
+                    <Col md={12} lg={6} xl={6}>
+                        {/* <TestimonialContent>
                             <div className="testimonial-slider-content">
                                 <Swiper
                                     layout={{
@@ -112,7 +93,28 @@ const TestimonialArea = () => {
                                     </div>
                                 </NavigationWrap>
                             </div>
-                        </TestimonialContent>
+                        </TestimonialContent> */}
+                        <ContactForm />
+                    </Col>
+                    <Col md={12} lg={6} xl={6}>
+                        <TitleWrap>
+                            <SectionTitle
+                                titleStyle
+                                textWhate
+                                texttheme
+                                sx={{
+                                    mb: [
+                                        "30px",
+                                        "50px",
+                                        "80px",
+                                        "110",
+                                        "123px",
+                                    ],
+                                }}
+                                subTitle={"Recent Events"}
+                                title={"What People Say About Us."}
+                            />
+                        </TitleWrap>
                     </Col>
                 </Row>
             </Container>

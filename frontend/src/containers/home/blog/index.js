@@ -18,7 +18,7 @@ const LatestBlog = () => {
                             date(formatString: "MMMM DD YYYY")
                             categories
                             author
-                            thume_image {
+                            thumbnail {
                                 childImageSharp {
                                     gatsbyImageData(width: 580, height: 570)
                                 }
@@ -33,20 +33,19 @@ const LatestBlog = () => {
             }
         }
     `);
+
     const latestBlogData = latestBlogQuery.allMarkdownRemark.edges;
+
     return (
         <SectionArea>
             <Container>
                 <Row>
-                    <Col md={8} lg={6} className="m-auto">
+                    <Col lg={8} className="m-auto">
                         <SectionTitle
+                            sx={{ mb: "100px" }}
                             textCenter
-                            titleStyle
-                            sx={{
-                                mb: ["30px", "50px", "80px", "110", "123px"],
-                            }}
-                            subTitle={"Blog Post"}
-                            title={"Latest News From Givest Blog"}
+                            showImage={true}
+                            title={"<span>Pastor's Thoughts</span>"}
                         />
                     </Col>
                 </Row>
@@ -57,8 +56,8 @@ const LatestBlog = () => {
                                 <Col lg={4} md={6} sm={6} key={blog.node.id}>
                                     <LatestBlogItem
                                         title={blog.node.frontmatter.title}
-                                        thume_image={
-                                            blog.node.frontmatter.thume_image
+                                        thumbnail={
+                                            blog.node.frontmatter.thumbnail
                                         }
                                         categories={
                                             blog.node.frontmatter.categories

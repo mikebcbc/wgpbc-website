@@ -51,7 +51,7 @@ export const MetaBox = styled.div`
         display: inline-block;
         font-weight: 500;
         .icon {
-            background-color: #e6e6e6;
+            background-color: ${themeGet("colors.darkgrey")};
             display: inline-block;
             height: 28px;
             line-height: 28px;

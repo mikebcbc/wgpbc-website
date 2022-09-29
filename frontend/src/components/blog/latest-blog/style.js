@@ -8,7 +8,7 @@ export const PostItemWrap = styled.div`
     }
 
     &:hover {
-        .PostFooter {
+        .post-footer {
             margin-bottom: 0;
             opacity: 1;
             padding-top: 0;
@@ -32,7 +32,7 @@ export const Thumb = styled.div`
 
 export const MetaDate = styled.div`
     align-items: center;
-    background-color: #fc6539;
+    background-color: ${themeGet("colors.orange")};
     display: flex;
     height: 92px;
     justify-content: center;
@@ -62,47 +62,32 @@ export const MetaDate = styled.div`
         text-transform: uppercase;
     }
 `;
+
 export const PostShare = styled.div`
-    font-size: 18px;
+    font-size: 10px;
     position: relative;
     .icon-share {
-        color: #aba5a5;
         img {
             filter: contrast(0.01);
             max-width: none;
             transition: 0.3s;
-            -webkit-transition: 0.3s;
-            -moz-transition: 0.3s;
-            -ms-transition: 0.3s;
-            -o-transition: 0.3s;
         }
     }
+
     ul {
-        background-color: #fff;
+        background-color: ${themeGet("colors.white")};
         border-radius: 5px;
         box-shadow: 0px 6px 25px 0px rgb(171 181 189 / 25%);
         display: flex;
-        margin: 0;
         opacity: 0;
-        padding: 8px 3px 8px 17px;
+        padding: 8px 20px;
+        gap: 15px;
         position: absolute;
         right: 0;
         top: 35px;
         visibility: hidden;
         transition: 0.3s;
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-        -ms-transition: 0.3s;
-        -o-transition: 0.3s;
-        &::before {
-            content: "";
-            height: 40px;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: -33px;
-            z-index: -1;
-        }
+
         &::after {
             border-color: transparent transparent transparent #fff;
             border-style: solid;
@@ -114,24 +99,19 @@ export const PostShare = styled.div`
             top: -8px;
             transform: rotate(45deg);
         }
+
         li {
-            margin-right: 13px;
             line-height: 1;
             a {
-                color: #000;
-                font-size: 12px;
-            }
-            .color-facebook {
-                color: #425a99;
-            }
-            .color-twitter {
-                color: #67acec;
-            }
-            .color-dribbble {
-                color: #e93b88;
-            }
-            .color-pinterest {
-                color: #b51122;
+                font-size: 14px;
+
+                &.color-facebook {
+                    color: #425a99;
+                }
+
+                &.color-twitter {
+                    color: #67acec;
+                }
             }
         }
     }
@@ -144,7 +124,7 @@ export const PostShare = styled.div`
 `;
 
 export const ShapeLine = styled.div`
-    border: 2px solid #fff;
+    border: 2px solid ${themeGet("colors.white")};
     height: 92px;
     left: 45px;
     position: absolute;
@@ -153,19 +133,14 @@ export const ShapeLine = styled.div`
 `;
 
 export const LatestBlogContent = styled.div`
-    background-color: #f7f7f7;
-    bottom: -125px;
+    background-color: ${themeGet("colors.grey")};
+    bottom: -95px;
     overflow: hidden;
-    padding-bottom: 1px;
     position: absolute;
     right: 5px;
     left: 5px;
     z-index: 1;
     transition: 0.3s;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
     ${device.medium} {
         right: 35px;
         left: 35px;
@@ -181,11 +156,7 @@ export const LatestBlogContent = styled.div`
 `;
 
 export const LatestBlogContentInner = styled.div`
-    background-color: #f7f7f7;
-    padding: 29px 20px 24px;
-    ${device.xlarge} {
-        padding: 29px 30px 24px;
-    }
+    padding: 32px;
 `;
 
 export const MetaBox = styled.div`
@@ -193,9 +164,10 @@ export const MetaBox = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+
     .post-category {
-        background-color: #e6e6e6;
-        color: #fc6539;
+        background-color: ${themeGet("colors.darkgrey")};
+        color: ${themeGet("colors.orange")};
         font-size: 13px;
         font-weight: 700;
         letter-spacing: 1.2px;
@@ -204,36 +176,28 @@ export const MetaBox = styled.div`
         text-align: center;
         text-transform: uppercase;
         transition: 0.3s;
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-        -ms-transition: 0.3s;
-        -o-transition: 0.3s;
     }
 `;
 export const Title = styled.h5`
     margin-bottom: 0;
     line-height: 1.4;
 `;
-export const TextDetails = styled.p`
-    margin: 5px 0 0;
+export const Excerpt = styled.p`
+    margin: 5px 0;
 `;
 
 export const PostFooter = styled.div`
     align-items: center;
-    background-color: #f7f7f7;
+    background-color: ${themeGet("colors.grey")};
     display: flex;
     justify-content: space-between;
-    margin-bottom: -71px;
+    margin-bottom: -75px;
     opacity: 1;
-    padding: 1px 34px 32px;
+    padding: 32px;
     visibility: hidden;
     transition: 0.3s;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
     .post-author {
-        color: #001d23;
+        color: ${themeGet("colors.heading")};
         font-weight: 700;
     }
 `;

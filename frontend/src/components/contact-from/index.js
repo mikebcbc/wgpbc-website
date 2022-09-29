@@ -21,11 +21,7 @@ const ContactForm = () => {
                     <SectionTitle>
                         <Subtitle>Contact Now</Subtitle>
                         <Title>Get In Touch.</Title>
-                        <SectionDec>
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting typesetting remaining essentially
-                            unchanged.
-                        </SectionDec>
+                        <SectionDec>We send out blah blah blah</SectionDec>
                     </SectionTitle>
                 </Col>
             </Row>
@@ -51,7 +47,7 @@ const ContactForm = () => {
                                     />
                                 </FormGroup>
                             </Col>
-                            <Col lg={12}>
+                            {/* <Col lg={12}>
                                 <FormGroup htmlFor="inputs_name">
                                     <Input
                                         type="text"
@@ -67,7 +63,7 @@ const ContactForm = () => {
                                         placeholder="Message"
                                     ></Textarea>
                                 </FormGroup>
-                            </Col>
+                            </Col> */}
                             <Col lg={12}>
                                 <FormGroup>
                                     <Button type="submit" color="gradient">

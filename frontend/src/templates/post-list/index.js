@@ -38,9 +38,9 @@ const PostList = ({ location, data, pageContext, ...props }) => {
                                                 title={
                                                     blog.node.frontmatter.title
                                                 }
-                                                thume_image={
+                                                thumbnail={
                                                     blog.node.frontmatter
-                                                        .thume_image
+                                                        .thumbnail
                                                 }
                                                 categories={
                                                     blog.node.frontmatter
@@ -97,7 +97,7 @@ export const PlstListQuery = graphql`
                         tags
                         quote_text
                         title
-                        thume_image {
+                        thumbnail {
                             childImageSharp {
                                 gatsbyImageData(width: 750, height: 400)
                             }
