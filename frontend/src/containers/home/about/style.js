@@ -3,10 +3,18 @@ import styled, { themeGet, device } from "@theme/utils";
 export const SectionArea = styled.section`
     position: relative;
     background-color: ${themeGet("colors.backgroundAlt")};
-    padding: ${themeGet("padding.rowPadding.lg")};
+    padding: ${themeGet("padding.rowPadding.md")};
+
+    .title {
+        text-align: center;
+    }
 
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.md")};
+
+        .title {
+            text-align: left;
+        }
     }
 
     ${device.large} {
@@ -75,26 +83,33 @@ export const LayerStyle = styled.div`
         }
     }
 `;
-export const Thumb = styled.div``;
 
 export const AboutTextStyle = styled.p`
     color: ${themeGet("colors.white")};
-    font-family: "Yeseva One", cursive;
-    font-size: 22px;
+    font-family: ${themeGet("fonts.heading")};
+    font-size: 20px;
     line-height: 1.364;
-    margin-bottom: 26px;
-    margin-right: -10px;
+    margin: 30px 0px 30px 15px;
     position: relative;
+
+    ${device.large} {
+        font-size: 22px;
+        line-height: 1.364;
+        margin-bottom: 26px;
+        margin-right: -10px;
+    }
+
     &:before {
         background-color: ${themeGet("colors.orange")};
         content: "";
-        height: 105px;
-        left: -29px;
+        height: 100%;
+        left: -15px;
         position: absolute;
         top: 7px;
         width: 4px;
+
+        ${device.large} {
+            left: -29px;
+        }
     }
 `;
-export const AboutContent = styled.div``;
-
-export const ListText = styled.span``;

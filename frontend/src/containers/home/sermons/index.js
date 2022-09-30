@@ -43,7 +43,9 @@ const SermonArea = () => {
                 <Row>
                     <Col lg={8} className="m-auto">
                         <SectionTitle
-                            sx={{ mb: "100px" }}
+                            sx={{
+                                mb: ["50px", "30px", "30px", "60px"],
+                            }}
                             textCenter
                             showImage={false}
                             title={"Recent Sermons"}

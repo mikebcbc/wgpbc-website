@@ -40,18 +40,11 @@ export const TitleBoxArea = styled.div`
         position: absolute !important;
         top: 50%;
         transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
         ${device.small} {
             width: 120px;
         }
-        ${device.medium} {
-            width: 140px;
-        }
         ${device.large} {
-            width: 185px;
+            width: 140px;
         }
     }
 `;

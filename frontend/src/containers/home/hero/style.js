@@ -11,14 +11,13 @@ export const HomeSliderItem = styled.div`
     display: flex;
     position: relative;
     padding: ${themeGet("padding.rowPadding.md")};
-    @media (min-width: 1400px) and (max-width: 1799px) {
-        .container {
-            max-width: 1397px;
-        }
-    }
 
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.lg")};
+    }
+
+    ${device.large} {
+        height: 640px;
     }
 
     ${device.xlarge} {
@@ -27,6 +26,9 @@ export const HomeSliderItem = styled.div`
 
     ${device.xxlarge} {
         height: 900px;
+        .container {
+            max-width: 1397px;
+        }
     }
 `;
 export const Content = styled.div`
@@ -211,106 +213,59 @@ export const LayerStyle = styled.div`
         }
 
         ${device.xxlarge} {
-            right: -53px;
-            top: -138px;
+            right: -123px;
+            top: -98px;
         }
 
-        @media (min-width: 1600px) and (max-width: 1799px) {
-            right: 0px;
+        ${device.xxxlarge} {
+            right: -143px;
+            top: -98px;
         }
     }
 `;
 
 export const SliderShape = styled.div`
-    .slider-shape .shape-floating-square {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: -1;
-    }
-    .slider-shape .shape-style2 {
-        left: 0;
-        position: absolute;
-        top: 0;
-        z-index: -1;
-    }
-    @media only screen and (max-width: 1199px) {
-        .slider-shape .shape-style2 {
-            left: -500px;
-        }
-    }
-    @media only screen and (max-width: 991px) {
-        .slider-shape .shape-style2 {
-            left: -800px;
-            top: -100px;
-        }
-    }
     .slider-shape .shape-banner-line1 {
         position: absolute;
         right: calc(72% + 14px);
         top: 0;
         z-index: 0;
     }
+
     @media only screen and (max-width: 767px) {
         .slider-shape .shape-banner-line1 {
             display: none;
         }
     }
+
     .slider-shape .shape-banner-line2 {
         left: 0;
         position: absolute;
         top: 0;
         z-index: 0;
     }
+
     @media (max-width: 1799px) {
         .slider-shape .shape-banner-line2 {
             top: -130px;
         }
     }
+
     @media only screen and (max-width: 1199px) {
         .slider-shape .shape-banner-line2 {
             top: -150px;
         }
     }
+
     @media only screen and (max-width: 991px) {
         .slider-shape .shape-banner-line2 {
             top: -200px;
         }
     }
+
     @media only screen and (max-width: 767px) {
         .slider-shape .shape-banner-line2 {
             display: none;
-        }
-    }
-`;
-
-export const DonateContent = styled.div`
-    border-radius: 50%;
-    color: #fff;
-    left: 50%;
-    text-align: center;
-    position: absolute;
-    top: calc(50% + 2px);
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    .raised-amount {
-        font-family: ${themeGet("fonts.heading")};
-        font-size: 28px;
-        line-height: 1;
-        margin-bottom: 12px;
-        ${device.large} {
-            font-size: 50px;
-        }
-    }
-    .donate-title {
-        color: #fff;
-        font-size: 16px;
-        margin: 0;
-        ${device.large} {
-            font-size: 20px;
         }
     }
 `;

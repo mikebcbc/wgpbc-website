@@ -6,13 +6,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Col, Container, Row } from "react-bootstrap";
 import Tilt from "react-parallax-tilt";
 import { jsx } from "theme-ui";
-import {
-    AboutContent,
-    AboutTextStyle,
-    LayerStyle,
-    SectionArea,
-    Thumb,
-} from "./style";
+import { AboutTextStyle, LayerStyle, SectionArea } from "./style";
 
 const AboutArea = () => {
     const aboutSectionQuery = useStaticQuery(graphql`
@@ -53,7 +47,7 @@ const AboutArea = () => {
                 <Row>
                     <Col lg={9}>
                         <SectionTitle
-                            sx={{ mb: "50px" }}
+                            sx={{ mb: ["50px", "30px", "30px", "60px"] }}
                             showImage={false}
                             title={title}
                         />
@@ -62,11 +56,11 @@ const AboutArea = () => {
                 <Row>
                     <Col lg={6} xl={7}>
                         <LayerStyle>
-                            <Thumb>
+                            <div>
                                 <Row className="m-0">
                                     <Col sm={4} md={4} xl={4} lg={4}>
                                         <Tilt
-                                            className=" js-tilt"
+                                            className="js-tilt"
                                             scale={1.04}
                                             tiltReverse={true}
                                             tiltMaxAngleX={15}
@@ -106,18 +100,18 @@ const AboutArea = () => {
                                         </Tilt>
                                     </Col>
                                 </Row>
-                            </Thumb>
+                            </div>
                         </LayerStyle>
                     </Col>
                     <Col lg={6} xl={5}>
-                        <AboutContent>
+                        <div>
                             <AboutTextStyle>{content1}</AboutTextStyle>
                             <p className="secondary">{content2}</p>
                             <p className="secondary">{content3}</p>
-                            <Button path="/donate" color="gradient">
+                            <Button path="/about" color="gradient">
                                 Learn More
                             </Button>
-                        </AboutContent>
+                        </div>
                     </Col>
                 </Row>
             </Container>

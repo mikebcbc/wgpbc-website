@@ -42,7 +42,10 @@ const LatestBlog = () => {
                 <Row>
                     <Col lg={8} className="m-auto">
                         <SectionTitle
-                            sx={{ mb: "100px" }}
+                            sx={{
+                                mb: ["50px", "90px", "60px", "90px"],
+                                mt: ["0", "30px", "30px", "0"],
+                            }}
                             textCenter
                             showImage={true}
                             title={"<span>Pastor's Thoughts</span>"}

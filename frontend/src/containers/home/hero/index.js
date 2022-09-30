@@ -76,16 +76,16 @@ const Hero = () => {
                                     className="btn-wrp"
                                     sx={{ display: "flex" }}
                                 >
-                                    <Button path="/causes" color="gradient">
-                                        All Causes{" "}
+                                    <Button path="/about" color="gradient">
+                                        Who We Are{" "}
                                         <i className="flaticon-right-arrow"></i>
                                     </Button>
                                     <Button
-                                        path="/donate"
+                                        path="/sermons"
                                         variant="outlined"
                                         sx={{ ml: "10px" }}
                                     >
-                                        Donate Now{" "}
+                                        Sermons{" "}
                                         <i className="flaticon-right-arrow"></i>
                                     </Button>
                                 </div>
