@@ -7,34 +7,23 @@ const SectionTitle = ({
     subTitle,
     title,
     textCenter,
-    textWhate,
-    titleStyle,
     showImage,
     className,
     sx,
-    texttheme,
 }) => {
     return (
         <SectionTitleArea
-            className={`${className} ${textCenter ? "text-center" : ""} ${
-                textWhate ? "text-white" : ""
-            }`}
+            className={`${className} ${textCenter ? "text-center" : ""}`}
             sx={sx}
         >
             {subTitle && (
-                <SubTitle
-                    className={`subtitle ${
-                        texttheme ? "line-white-color" : "line-theme-color"
-                    } `}
-                >
+                <SubTitle className={`subtitle line-theme-color`}>
                     {subTitle}
                 </SubTitle>
             )}
             <TitleBoxArea>
                 <Title
-                    className={`title ${titleStyle ? "title-style" : ""} ${
-                        textWhate ? "text-white" : ""
-                    }`}
+                    className={`title`}
                     dangerouslySetInnerHTML={{ __html: title }}
                 />
                 {showImage && (
@@ -56,12 +45,9 @@ SectionTitle.propTypes = {
     showImage: PropTypes.bool,
     sx: PropTypes.object,
     textCenter: PropTypes.bool,
-    titleStyle: PropTypes.bool,
-    texttheme: PropTypes.bool,
-    textWhate: PropTypes.bool,
 };
 SectionTitle.defaultProps = {
-    showImage: true,
+    showImage: false,
 };
 
 export default SectionTitle;

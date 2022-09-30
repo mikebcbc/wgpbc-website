@@ -5,12 +5,9 @@ import {
     ContactFormArea,
     Form,
     SectionTitle,
-    Subtitle,
     Title,
-    SectionDec,
     FormGroup,
     Input,
-    Textarea,
 } from "./style";
 
 const ContactForm = () => {
@@ -19,9 +16,12 @@ const ContactForm = () => {
             <Row>
                 <Col lg={12}>
                     <SectionTitle>
-                        <Subtitle>Contact Now</Subtitle>
                         <Title>Get In Touch.</Title>
-                        <SectionDec>We send out blah blah blah</SectionDec>
+                        <p>
+                            We send out devotions, Christian thoughts, and
+                            updates all the time! Feel free to drop your name
+                            and email and we&apos;ll put you in the loop.
+                        </p>
                     </SectionTitle>
                 </Col>
             </Row>
@@ -47,23 +47,6 @@ const ContactForm = () => {
                                     />
                                 </FormGroup>
                             </Col>
-                            {/* <Col lg={12}>
-                                <FormGroup htmlFor="inputs_name">
-                                    <Input
-                                        type="text"
-                                        name="con_phone"
-                                        placeholder="Phone"
-                                    />
-                                </FormGroup>
-                            </Col>
-                            <Col lg={12}>
-                                <FormGroup>
-                                    <Textarea
-                                        name="con_message"
-                                        placeholder="Message"
-                                    ></Textarea>
-                                </FormGroup>
-                            </Col> */}
                             <Col lg={12}>
                                 <FormGroup>
                                     <Button type="submit" color="gradient">

@@ -40,7 +40,6 @@ const TeamArea = () => {
                     <Col lg={8} className="m-auto">
                         <SectionTitle
                             sx={{ mb: "50px" }}
-                            titleStyle
                             textCenter
                             title={"Talented Volunteer Team of Givest."}
                             subTitle={subTitle}

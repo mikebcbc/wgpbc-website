@@ -46,7 +46,6 @@ const EventArea = () => {
                 <Row>
                     <Col lg={8}>
                         <SectionTitle
-                            titleStyle
                             sx={{
                                 mb: ["30px", "50px", "80px", "110", "123px"],
                             }}

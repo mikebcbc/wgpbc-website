@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
-import ContactForm from "@components/contact-from";
+import ContactForm from "@components/contact-form";
 import { StaticImage } from "gatsby-plugin-image";
 import {
     SectionArea,

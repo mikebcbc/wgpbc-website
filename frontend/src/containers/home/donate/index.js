@@ -50,8 +50,6 @@ const DonateArea = () => {
                     <Col lg={7} xxl={7}>
                         <div className="content">
                             <SectionTitle
-                                textWhate
-                                titleStyle
                                 sx={{
                                     mb: [
                                         "30px",

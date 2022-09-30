@@ -35,7 +35,6 @@ const SponsorsArea = () => {
                         xl={4}
                     >
                         <SectionTitle
-                            texttheme
                             sx={{
                                 mb: ["30px", "50px", "60px", "60px", "60px"],
                                 mt: ["0px", "0px", "0px", "0px", "60px"],

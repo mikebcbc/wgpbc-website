@@ -46,7 +46,6 @@ const VolunteerArea = () => {
                         <SectionLetArea sx={{ mb: "60px" }}>
                             <SectionTitle
                                 sx={{ mb: "50px" }}
-                                titleStyle
                                 title={title}
                                 subTitle={subTitle}
                             />

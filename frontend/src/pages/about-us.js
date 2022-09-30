@@ -2,7 +2,7 @@ import Layout from "@layout";
 import SEO from "@components/seo";
 import PropTypes from "prop-types";
 import SponsorsArea from "../containers/home/sponsors";
-import TestimonialArea from "../containers/home/testimonial";
+import ContactArea from "../containers/home/contact";
 import FunfactArea from "../containers/home/funfact";
 import AboutPageArea from "../containers/about-us/about";
 import PageBreadcrumb from "../components/pagebreadcrumb";
@@ -20,7 +20,7 @@ const AboutUsPage = ({ location, pageContext }) => {
             <AboutPageArea />
             <VolunteerArea />
             <FunfactArea />
-            <TestimonialArea />
+            <ContactArea />
             <SponsorsArea />
         </Layout>
     );

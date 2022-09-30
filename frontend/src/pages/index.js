@@ -3,15 +3,10 @@ import * as React from "react";
 import Layout from "@layout";
 import SEO from "@components/seo";
 import Hero from "@containers/home/hero";
-import ServiceArea from "@containers/home/services";
 import AboutArea from "@containers/home/about";
 import SermonArea from "@containers/home/sermons";
-import DonateArea from "../containers/home/donate";
-import FunfactArea from "../containers/home/funfact";
-import EventArea from "../containers/home/events";
-import TestimonialArea from "../containers/home/testimonial";
+import ContactArea from "../containers/home/contact";
 import LatestBlog from "../containers/home/blog";
-import SponsorsArea from "../containers/home/sponsors";
 import { useStaticQuery, graphql } from "gatsby";
 
 const IndexPage = () => {
@@ -32,15 +27,10 @@ const IndexPage = () => {
         <Layout>
             <SEO title="Home" pathname="/" />
             <Hero />
-            {/* <ServiceArea /> */}
             <AboutArea />
             <SermonArea />
-            {/* <DonateArea />
-            <FunfactArea />
-            <EventArea /> */}
             <LatestBlog />
-            <TestimonialArea />
-            {/* <SponsorsArea /> */}
+            <ContactArea />
         </Layout>
     );
 };
