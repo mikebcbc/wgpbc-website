@@ -354,7 +354,7 @@ export const GlobalCSS = () => {
                 .container {
                     max-width: 100%;
                     ${device.medium} {
-                        max-width: 720px;
+                        max-width: 820px;
                     }
                     ${device.large} {
                         max-width: 960px;

@@ -121,7 +121,7 @@ const EventArea = () => {
                                 setOpen={setOpen}
                             />
 
-                            <div className="shape-style1">
+                            <div className="shape-floating-square">
                                 <StaticImage
                                     src="../../../data/images/shape/line1.png"
                                     alt="Image-Givest"
@@ -133,13 +133,13 @@ const EventArea = () => {
                                     alt="Image-Givest"
                                 />
                             </div>
-                            <div className="shape-style3">
+                            <div className="shape-banner-line1">
                                 <StaticImage
                                     src="../../../data/images/shape/line3.png"
                                     alt="Image-Givest"
                                 />
                             </div>
-                            <div className="shape-style4">
+                            <div className="shape-banner-line2">
                                 <StaticImage
                                     src="../../../data/images/shape/line4.png"
                                     alt="Image-Givest"

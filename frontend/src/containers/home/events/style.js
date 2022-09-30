@@ -44,17 +44,17 @@ export const LayerStyle = styled.div`
         width: 460px;
     }
 
-    .shape-style1,
+    .shape-floating-square,
     .shape-style2,
-    .shape-style3,
-    .shape-style4 {
+    .shape-banner-line1,
+    .shape-banner-line2 {
         position: absolute;
         z-index: -1;
         img {
             max-width: none;
         }
     }
-    .shape-style1 {
+    .shape-floating-square {
         left: 40px;
         top: -122px;
     }
@@ -62,11 +62,11 @@ export const LayerStyle = styled.div`
         left: -59px;
         top: 0;
     }
-    .shape-style3 {
+    .shape-banner-line1 {
         left: 21px;
         top: -136px;
     }
-    .shape-style4 {
+    .shape-banner-line2 {
         left: -34px;
         top: 4px;
     }

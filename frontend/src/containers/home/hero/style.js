@@ -9,36 +9,42 @@ export const HomeSliderItem = styled.div`
     height: auto;
     align-items: center;
     display: flex;
-    padding-top: 40px;
     position: relative;
+    padding: ${themeGet("padding.rowPadding.md")};
     @media (min-width: 1400px) and (max-width: 1799px) {
         .container {
             max-width: 1397px;
         }
     }
+
     ${device.medium} {
-        padding: ${themeGet("padding.rowPadding.md")};
-    }
-    ${device.large} {
         padding: ${themeGet("padding.rowPadding.lg")};
     }
+
     ${device.xlarge} {
         height: 800px;
     }
+
     ${device.xxlarge} {
         height: 900px;
     }
 `;
 export const Content = styled.div`
-    margin-top: 27px;
-    @media (min-width: 1400px) and (max-width: 1799px) {
-        max-width: 734px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    ${device.large} {
+        display: block;
+        text-align: left;
     }
 `;
 
 export const SubTitle = styled.div`
     margin-bottom: 28px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
 
     img {
         margin-right: 14px;
@@ -50,7 +56,7 @@ export const SubTitle = styled.div`
         margin-left: 14px;
         display: inline-block;
         font-family: ${themeGet("fonts.body")};
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 700;
         margin: 0;
         margin-left: 20px;
@@ -168,13 +174,16 @@ export const LayerStyle = styled.div`
         top: 10px;
     }
 
-    @media (min-width: 1799px) {
-        margin-top: 54px;
-        position: relative;
-        right: -86px;
-    }
     .thumb {
+        display: none;
         border-radius: 20%;
+        position: relative;
+        z-index: 2;
+
+        ${device.large} {
+            display: block;
+        }
+
         img {
             border-radius: 20%;
             max-width: none !important;
@@ -182,84 +191,28 @@ export const LayerStyle = styled.div`
                 width: auto;
             }
         }
-        .shape-circle {
-            border-radius: 50%;
-            height: 100%;
-            left: 15px;
-            position: absolute;
-            top: -86px;
-            width: 100%;
-            pointer-events: none;
-            display: none;
-            ${device.small} {
-                display: block;
-            }
-            .scene-layer {
-                img {
-                    ${device.xxlarge} {
-                        width: auto;
-                    }
-                }
-            }
-            .circle-img {
-                position: absolute !important;
-                right: -30px;
-                top: 109px;
-                ${device.small} {
-                    right: -30px;
-                    width: 60px;
-                }
-                ${device.medium} {
-                    right: -30px;
-                    width: 60px;
-                }
-                ${device.large} {
-                    right: -30px;
-                    width: 60px;
-                }
-                ${device.xlarge} {
-                    right: -30px;
-                    width: auto;
-                }
-                ${device.xxlarge} {
-                    right: -70px;
-                }
-                @media (min-width: 1799px) {
-                    right: -170px;
-                }
-            }
-        }
     }
-    .shape-style1 {
+    .shape-floating-square {
         position: absolute;
-        right: 0;
-        top: -90px;
+        right: -41px;
+        top: -41px;
         display: none;
-        ${device.small} {
-            right: -11px;
+
+        ${device.large} {
+            display: block;
+            max-width: 180px;
+        }
+
+        ${device.xlarge} {
+            right: -41px;
             top: -91px;
-            max-width: 80px;
+            max-width: 240px;
             display: block;
         }
-        ${device.medium} {
-            right: -11px;
-            top: -91px;
-            max-width: 80px;
-        }
-        ${device.large} {
-            right: -11px;
-            top: -91px;
-            max-width: 100px;
-        }
-        ${device.xlarge} {
-            right: -11px;
-            top: -91px;
-            max-width: 100px;
-        }
+
         ${device.xxlarge} {
             right: -53px;
             top: -138px;
-            max-width: 100%;
         }
 
         @media (min-width: 1600px) and (max-width: 1799px) {
@@ -269,7 +222,7 @@ export const LayerStyle = styled.div`
 `;
 
 export const SliderShape = styled.div`
-    .slider-shape .shape-style1 {
+    .slider-shape .shape-floating-square {
         position: absolute;
         right: 0;
         top: 0;
@@ -292,40 +245,40 @@ export const SliderShape = styled.div`
             top: -100px;
         }
     }
-    .slider-shape .shape-style3 {
+    .slider-shape .shape-banner-line1 {
         position: absolute;
         right: calc(72% + 14px);
         top: 0;
         z-index: 0;
     }
     @media only screen and (max-width: 767px) {
-        .slider-shape .shape-style3 {
+        .slider-shape .shape-banner-line1 {
             display: none;
         }
     }
-    .slider-shape .shape-style4 {
+    .slider-shape .shape-banner-line2 {
         left: 0;
         position: absolute;
         top: 0;
         z-index: 0;
     }
     @media (max-width: 1799px) {
-        .slider-shape .shape-style4 {
+        .slider-shape .shape-banner-line2 {
             top: -130px;
         }
     }
     @media only screen and (max-width: 1199px) {
-        .slider-shape .shape-style4 {
+        .slider-shape .shape-banner-line2 {
             top: -150px;
         }
     }
     @media only screen and (max-width: 991px) {
-        .slider-shape .shape-style4 {
+        .slider-shape .shape-banner-line2 {
             top: -200px;
         }
     }
     @media only screen and (max-width: 767px) {
-        .slider-shape .shape-style4 {
+        .slider-shape .shape-banner-line2 {
             display: none;
         }
     }

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { graphql, useStaticQuery } from "gatsby";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "@components/ui/button";
 import Parallax from "parallax-js";
@@ -14,8 +14,6 @@ import {
     HeroTitleWrap,
     LayerStyle,
     SliderShape,
-    DonateCircleWrap,
-    DonateContent,
 } from "./style";
 
 const Hero = () => {
@@ -24,23 +22,14 @@ const Hero = () => {
             heroJson {
                 id
                 subTitle
-                title
-                circleImage {
-                    childImageSharp {
-                        gatsbyImageData
-                    }
-                }
+                title1
+                title2
                 sliderImage {
                     childImageSharp {
                         gatsbyImageData
                     }
                 }
-                shapeImage1 {
-                    childImageSharp {
-                        gatsbyImageData
-                    }
-                }
-                shapeImage2 {
+                shapeImage {
                     childImageSharp {
                         gatsbyImageData
                     }
@@ -49,19 +38,8 @@ const Hero = () => {
         }
     `);
 
-    const {
-        subTitle,
-        title,
-        circleImage,
-        sliderImage,
-        shapeImage1,
-        shapeImage2,
-    } = heroSlider.heroJson;
-
-    const image = getImage(sliderImage);
-    const image1 = getImage(circleImage);
-    const image2 = getImage(shapeImage1);
-    const image3 = getImage(shapeImage2);
+    const { subTitle, title1, title2, sliderImage, shapeImage } =
+        heroSlider.heroJson;
 
     // Parallax actives
     const sceneEl = useRef(null);
@@ -78,7 +56,7 @@ const Hero = () => {
             <HomeSliderItem>
                 <Container>
                     <Row className="align-items-center">
-                        <Col md={6} lg={6} xl={7}>
+                        <Col md={12} lg={6} xl={7}>
                             <Content>
                                 <SubTitle>
                                     <StaticImage
@@ -88,11 +66,11 @@ const Hero = () => {
                                     <h6>{subTitle}</h6>
                                 </SubTitle>
                                 <HeroTitleWrap>
-                                    <h1
-                                        dangerouslySetInnerHTML={{
-                                            __html: title,
-                                        }}
-                                    />
+                                    <h1>
+                                        {title1}
+                                        <br />
+                                        {title2}
+                                    </h1>
                                 </HeroTitleWrap>
                                 <div
                                     className="btn-wrp"
@@ -124,40 +102,23 @@ const Hero = () => {
                                         className="scene-layer"
                                         data-depth="0.20"
                                     >
-                                        <GatsbyImage image={image} alt="" />
+                                        <GatsbyImage
+                                            image={getImage(sliderImage)}
+                                            alt="picture of wgpbc"
+                                        />
                                     </span>
-                                    {/* <div className="shape-circle scene">
-                                        <span
-                                            className="scene-layer"
-                                            data-depth="0.10"
-                                        >
-                                            <GatsbyImage
-                                                image={image1}
-                                                alt=""
-                                            />
-                                        </span>
-                                        <span
-                                            className="scene-layer"
-                                            data-depth="0.40"
-                                            ref={sceneEl}
-                                        >
-                                            <GatsbyImage
-                                                className="circle-img"
-                                                image={image3}
-                                                alt=""
-                                            />
-                                        </span>
-                                    </div> */}
                                 </div>
                                 <div
-                                    className="shape-style1 scene"
+                                    className="shape-floating-square scene"
                                     ref={sceneEl}
                                 >
                                     <span
                                         className="scene-layer"
-                                        data-depth="0.30"
+                                        data-depth="0.10"
                                     >
-                                        <GatsbyImage image={image2} alt="" />
+                                        <GatsbyImage
+                                            image={getImage(shapeImage)}
+                                        />
                                     </span>
                                 </div>
                             </LayerStyle>
@@ -166,33 +127,11 @@ const Hero = () => {
                 </Container>
                 <SliderShape>
                     <div className="slider-shape">
-                        <div className="shape-style1">
-                            <StaticImage
-                                className="shape-img1"
-                                src="../../../data/images/shape/map1.png"
-                                alt=""
-                            />
+                        <div className="shape-banner-line1">
+                            <StaticImage src="../../../data/images/shape/banner-line1.png" />
                         </div>
-                        <div className="shape-style2">
-                            <StaticImage
-                                className="shape-img2"
-                                src="../../../data/images/shape/map2.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="shape-style3">
-                            <StaticImage
-                                className="shape-img3"
-                                src="../../../data/images/shape/banner-line1.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="shape-style4">
-                            <StaticImage
-                                className="shape-img3"
-                                src="../../../data/images/shape/banner-line2.png"
-                                alt=""
-                            />
+                        <div className="shape-banner-line2">
+                            <StaticImage src="../../../data/images/shape/banner-line2.png" />
                         </div>
                     </div>
                 </SliderShape>

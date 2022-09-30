@@ -33,12 +33,28 @@ export const LayerStyle = styled.div`
         background-image: ${themeGet("colors.gradient")};
         border-radius: 50%;
         content: "";
-        height: 380px;
+        height: 300px;
         left: -201px;
         position: absolute;
-        top: -301px;
-        width: 380px;
+        top: -221px;
+        width: 300px;
         z-index: 0;
+
+        ${device.medium} {
+            top: -200px;
+        }
+
+        ${device.large} {
+            top: -260px;
+            width: 380px;
+            height: 380px;
+        }
+
+        ${device.xlarge} {
+            top: -301px;
+            width: 380px;
+            height: 380px;
+        }
     }
 
     .row > [class*="col-"] {

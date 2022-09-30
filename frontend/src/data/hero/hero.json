@@ -1,10 +1,9 @@
 [
     {
         "subTitle": "Worship Simply.",
-        "title": "Simple Worship. <br /> No compromises.",
-        "circleImage": "../images/shape/circle1.png",
+        "title1": "Simple Worship.",
+        "title2": "No compromises.",
         "sliderImage": "../images/slider/church-front.jpg",
-        "shapeImage2": "../images/shape/2.png",
-        "shapeImage1": "../images/shape/1.png"
+        "shapeImage": "../images/shape/2.png"
     }
 ]
