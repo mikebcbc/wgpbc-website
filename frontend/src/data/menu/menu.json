@@ -6,42 +6,17 @@
     },
     {
         "text": "About",
-        "link": "/about-us",
+        "link": "/about-us/",
         "isSubmenu": false
     },
     {
-        "text": "Causes",
-        "link": "/causes",
-        "isSubmenu": true,
-        "submenu": [
-            {
-                "text": "Causes",
-                "link": "/causes"
-            },
-            {
-                "text": "Causes Details",
-                "link": "/causes/children-education-needs-for-change-the-world"
-            }
-        ]
+        "text": "Sermons",
+        "link": "/sermons/",
+        "isSubmenu": false
     },
     {
         "text": "Blog",
-        "link": "/blog",
-        "isSubmenu": true,
-        "submenu": [
-            {
-                "text": "Blog Grid",
-                "link": "/blog"
-            },
-            {
-                "text": "Blog Single",
-                "link": "/needs-for-change-the-world"
-            }
-        ]
-    },
-    {
-        "text": "Contact Us",
-        "link": "/contact-us",
+        "link": "/blog/",
         "isSubmenu": false
     }
 ]

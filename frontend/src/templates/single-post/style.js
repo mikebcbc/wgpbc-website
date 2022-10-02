@@ -1,15 +1,10 @@
 import styled, { themeGet, device } from "@theme/utils";
+import image from "../../data/images/photos/bg-page-title.jpg";
 
 export const BlogDetailsArea = styled.section`
-    padding: 70px 0 280px;
-    ${device.medium} {
-        padding: 100px 0 300px;
-    }
+    padding: ${themeGet("padding.rowPadding.md")};
     ${device.large} {
-        padding: 120px 0 300px;
-    }
-    ${device.xlarge} {
-        padding: 150px 0 390px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
 `;
 export const PostDetailsContentWrap = styled.div`
@@ -23,6 +18,31 @@ export const Thumb = styled.div`
     margin-bottom: 30px;
     ${device.large} {
         margin-bottom: 40px;
+    }
+`;
+
+export const PostHeader = styled.div`
+    background-image: url(${image});
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    padding: 35px 0;
+    position: relative;
+    z-index: 1;
+`;
+
+export const PostTitle = styled.div`
+    letter-spacing: 0;
+    padding: 77px 0;
+    text-align: center;
+    font-size: 38px;
+    line-height: 1.414;
+    margin-bottom: 6px;
+    font-family: ${themeGet("fonts.heading")};
+    color: #fff;
+    ${device.large} {
+        font-size: 58px;
     }
 `;
 
@@ -51,19 +71,17 @@ export const MetaBox = styled.div`
         display: inline-block;
         font-weight: 500;
         .icon {
-            background-color: ${themeGet("colors.darkgrey")};
+            > .author-img {
+                border-radius: 50%;
+            }
             display: inline-block;
-            height: 28px;
+            height: 34px;
             line-height: 28px;
             margin-right: 10px;
             min-width: 28px;
             text-align: center;
-            width: 28px;
+            width: 34px;
             transition: 0.3s;
-            -webkit-transition: 0.3s;
-            -moz-transition: 0.3s;
-            -ms-transition: 0.3s;
-            -o-transition: 0.3s;
         }
     }
 `;

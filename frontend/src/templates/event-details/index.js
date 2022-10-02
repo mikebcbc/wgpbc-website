@@ -3,10 +3,9 @@ import { jsx } from "theme-ui";
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
-import PageBreadcrumb from "@components/pagebreadcrumb";
 import { graphql, Link } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sideber";
+import BlogSidebar from "@containers/blog/blog-sidebar";
 import Button from "@components/ui/button";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
@@ -35,11 +34,6 @@ const EventPosts = ({ data, location, pageContext }) => {
     return (
         <Layout>
             <SEO title={"Event Posts"} pathname="/" />
-            <PageBreadcrumb
-                pageContext={pageContext}
-                location={location}
-                title="Event Posts"
-            />
             <EventDetailsArea>
                 <Container>
                     <Row>

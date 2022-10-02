@@ -3,10 +3,9 @@ import { jsx } from "theme-ui";
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
-import PageBreadcrumb from "@components/pagebreadcrumb";
 import { graphql, Link } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sideber";
+import BlogSidebar from "@containers/blog/blog-sidebar";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
     ServicesDetailsArea,
@@ -26,11 +25,6 @@ const ServicesPosts = ({ data, location, pageContext }) => {
     return (
         <Layout>
             <SEO title={"Sevices Details"} pathname="/" />
-            <PageBreadcrumb
-                pageContext={pageContext}
-                location={location}
-                title="Sevices Details"
-            />
             <ServicesDetailsArea>
                 <Container>
                     <Row>
@@ -48,7 +42,8 @@ const ServicesPosts = ({ data, location, pageContext }) => {
                                     </ServicesTitle>
                                     <p>{servicesPostData.parText}</p>
                                     <p>
-                                        {servicesPostData && servicesPostData.destails1}
+                                        {servicesPostData &&
+                                            servicesPostData.destails1}
                                     </p>
                                     <Row>
                                         <Col sm={6}>
@@ -63,7 +58,10 @@ const ServicesPosts = ({ data, location, pageContext }) => {
                                             </DocumentItem>
                                         </Col>
                                         <Col sm={6}>
-                                            <DocumentItem className="bgcolor-theme2"  href="#">
+                                            <DocumentItem
+                                                className="bgcolor-theme2"
+                                                href="#"
+                                            >
                                                 <DocumentItemTitle href="#">
                                                     Documents.pdf
                                                 </DocumentItemTitle>
@@ -74,12 +72,14 @@ const ServicesPosts = ({ data, location, pageContext }) => {
                                             </DocumentItem>
                                         </Col>
                                     </Row>
-                                    
+
                                     <p>
-                                        {servicesPostData && servicesPostData.destails2}
+                                        {servicesPostData &&
+                                            servicesPostData.destails2}
                                     </p>
                                     <p>
-                                        {servicesPostData && servicesPostData.destails3}
+                                        {servicesPostData &&
+                                            servicesPostData.destails3}
                                     </p>
                                 </ServicesDetails>
                             </ServicesDetailsContent>

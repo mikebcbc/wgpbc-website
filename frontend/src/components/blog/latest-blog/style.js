@@ -66,6 +66,8 @@ export const MetaDate = styled.div`
 export const PostShare = styled.div`
     font-size: 10px;
     position: relative;
+    margin-left: auto;
+
     .icon-share {
         img {
             filter: contrast(0.01);

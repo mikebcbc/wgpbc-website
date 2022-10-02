@@ -9,32 +9,42 @@ import { graphql, useStaticQuery } from "gatsby";
 const LatestBlog = () => {
     const latestBlogQuery = useStaticQuery(graphql`
         query LatestBlogQuery {
-            allMarkdownRemark {
-                edges {
-                    node {
-                        id
-                        frontmatter {
-                            title
-                            date(formatString: "MMMM DD YYYY")
-                            categories
-                            author
-                            thumbnail {
-                                childImageSharp {
-                                    gatsbyImageData(width: 580, height: 570)
-                                }
+            allStrapiPost(
+                sort: { fields: publishedAt, order: DESC }
+                limit: 3
+            ) {
+                totalCount
+                nodes {
+                    id
+                    publishedAt(formatString: "MMM DD")
+                    Image {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    layout: FULL_WIDTH
+                                    aspectRatio: 1
+                                )
                             }
                         }
-                        fields {
-                            slug
-                        }
-                        excerpt(pruneLength: 55)
                     }
+                    Title
+                    Content {
+                        data {
+                            childMarkdownRemark {
+                                excerpt(pruneLength: 60)
+                            }
+                        }
+                    }
+                    Tags {
+                        Name
+                    }
+                    Slug
                 }
             }
         }
     `);
 
-    const latestBlogData = latestBlogQuery.allMarkdownRemark.edges;
+    const latestBlogData = latestBlogQuery.allStrapiPost.nodes;
 
     return (
         <SectionArea>
@@ -56,21 +66,20 @@ const LatestBlog = () => {
                     {latestBlogData &&
                         latestBlogData.slice(0, 3).map((blog) => {
                             return (
-                                <Col lg={4} md={6} sm={6} key={blog.node.id}>
+                                <Col lg={4} md={6} sm={6} key={blog.Slug}>
                                     <LatestBlogItem
-                                        title={blog.node.frontmatter.title}
+                                        title={blog.Title}
                                         thumbnail={
-                                            blog.node.frontmatter.thumbnail
+                                            blog.Image[0].localFile
+                                                .childImageSharp.gatsbyImageData
                                         }
-                                        categories={
-                                            blog.node.frontmatter.categories
+                                        tags={blog.Tags}
+                                        body={
+                                            blog.Content.data
+                                                .childMarkdownRemark.excerpt
                                         }
-                                        body={blog.node.excerpt}
-                                        date={blog.node.frontmatter.date}
-                                        postAuthor={
-                                            blog.node.frontmatter.author
-                                        }
-                                        slug={blog.node.fields.slug}
+                                        date={blog.publishedAt}
+                                        slug={blog.Slug}
                                     />
                                 </Col>
                             );

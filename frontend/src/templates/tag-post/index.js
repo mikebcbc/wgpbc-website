@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
-import PageBreadcrumb from "@components/pagebreadcrumb";
 import { graphql } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sideber";
+import BlogSidebar from "@containers/blog/blog-sidebar";
 import BlogList from "../../components/blog/list-blog";
 import { BlogPostContentArea, BlogDetailsArea } from "./style";
 
@@ -14,12 +13,6 @@ const TagPosts = ({ data, location, pageContext }) => {
     return (
         <Layout>
             <SEO title={"Blog Tags Post"} pathname="/" />
-            <PageBreadcrumb
-                pageContext={pageContext}
-                location={location}
-                crumbLabel="Blog Tag Post"
-                title="Blog Tag Post"
-            />
             <BlogDetailsArea>
                 <Container>
                     <Row>

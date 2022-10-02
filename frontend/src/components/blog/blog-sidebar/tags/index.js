@@ -1,29 +1,27 @@
-import { Link } from "gatsby";
 import React from "react";
+import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import { flatDeep, slugify } from "@utils/functions";
-import { WidgetTags, TabNav, NavList } from "./style";
+import { slugify, containsObject } from "@utils/functions";
+import { TagSidebar } from "./style";
 
-const Tag = ({ tags }) => {
-    const allTags = [
-        ...new Set(flatDeep(tags.map((tag) => tag.node.frontmatter.tags))),
-    ];
+const Tags = ({ tags }) => {
+    if (!tags) {
+        return <div></div>;
+    }
 
     return (
-        <WidgetTags>
-            <TabNav>
-                {allTags.map((tag) => (
-                    <NavList key={slugify(tag)}>
-                        <Link to={`/tag/${slugify(tag)}`}>{tag}</Link>
-                    </NavList>
-                ))}
-            </TabNav>
-        </WidgetTags>
+        <TagSidebar>
+            {Object.keys(tags).map((tag) => (
+                <Link key={tag} to={`/tags/${slugify(tag)}`}>
+                    {tag} <span>({tags[tag]})</span>
+                </Link>
+            ))}
+        </TagSidebar>
     );
 };
 
-Tag.propTypes = {
-    tags: PropTypes.array,
+Tags.propTypes = {
+    tags: PropTypes.object,
 };
 
-export default Tag;
+export default Tags;

@@ -4,68 +4,45 @@ import BlogList from "@components/blog/list-blog";
 import { BlogPostContentArea, PaginationArea } from "./style";
 import { graphql, useStaticQuery } from "gatsby";
 import PaginationLinks from "../../../components/pagination";
+import PropTypes from "prop-types";
 
-const BlogPostArea = () => {
-    const listBlogQuery = useStaticQuery(graphql`
-        query ListBlogQuery {
-            allMarkdownRemark(
-                sort: { fields: frontmatter___date, order: DESC }
-                limit: 3
-            ) {
-                totalCount
-                edges {
-                    node {
-                        id
-                        frontmatter {
-                            title
-                            date(formatString: "MMMM DD YYYY")
-                            categories
-                            author
-                            thumbnail {
-                                childImageSharp {
-                                    gatsbyImageData(width: 750, height: 400)
-                                }
-                            }
-                        }
-                        fields {
-                            slug
-                        }
-                        excerpt(pruneLength: 225)
-                    }
-                }
-            }
-        }
-    `);
-    const { totalCount } = listBlogQuery.allMarkdownRemark;
-    const listBlogData = listBlogQuery.allMarkdownRemark.edges;
+const BlogPostArea = ({ blogs, totalCount, currentPage }) => {
     const postsPerPage = 3;
     let numberOfPages = Math.ceil(totalCount / postsPerPage);
     return (
         <BlogPostContentArea>
-            {listBlogData &&
-                listBlogData.map((blog, i) => {
-                    return (
-                        <BlogList
-                            key={i}
-                            title={blog.node.frontmatter.title}
-                            thumbnail={blog.node.frontmatter.thumbnail}
-                            categories={blog.node.frontmatter.categories}
-                            body={blog.node.excerpt}
-                            date={blog.node.frontmatter.date}
-                            slug={blog.node.fields.slug}
-                            postAuthor={blog.node.frontmatter.author}
-                        />
-                    );
-                })}
+            {blogs.map((blog, i) => {
+                return (
+                    <BlogList
+                        key={i}
+                        title={blog.Title}
+                        thumbnail={
+                            blog.Image[0].localFile.childImageSharp
+                                .gatsbyImageData
+                        }
+                        tags={blog.Tags}
+                        body={blog.Content.data.childMarkdownRemark.excerpt}
+                        date={blog.publishedAt}
+                        slug={blog.Slug}
+                        postAuthor={`${blog.Author.firstname} ${blog.Author.lastname}`}
+                    />
+                );
+            })}
 
             <PaginationArea>
                 <PaginationLinks
-                    currentPage={1}
+                    currentPage={currentPage}
                     numberOfPages={numberOfPages}
                 />
             </PaginationArea>
         </BlogPostContentArea>
     );
+};
+
+BlogPostArea.propTypes = {
+    blogs: PropTypes.array,
+    totalCount: PropTypes.number,
+    currentPage: PropTypes.number,
 };
 
 export default BlogPostArea;

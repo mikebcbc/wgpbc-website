@@ -18,15 +18,7 @@ import {
     Excerpt,
 } from "./style";
 
-const BlogList = ({
-    thumbnail,
-    title,
-    date,
-    categories,
-    body,
-    postAuthor,
-    slug,
-}) => {
+const BlogList = ({ thumbnail, title, date, tags, body, postAuthor, slug }) => {
     const dateSplit = date.split(" ");
     const month = dateSplit[0];
     const day = dateSplit[1];
@@ -38,9 +30,7 @@ const BlogList = ({
     return (
         <PostItemWrap>
             <PostThumb className="post-hover">
-                <Link to={`/${slug}`}>
-                    <GatsbyImage image={image} alt={title} />
-                </Link>
+                <GatsbyImage image={image} alt={title} />
                 <MetaDate>
                     <Link to="/">
                         <span>{day}</span>
@@ -52,15 +42,16 @@ const BlogList = ({
             <ListBlogContent>
                 <ListBlogContentInner>
                     <MetaBox>
-                        {categories.map((categorie, i) => (
-                            <Link
-                                className="post-category"
-                                key={`${slugify(categorie)}-${i}`}
-                                to={`/categories/${slugify(categorie)}`}
-                            >
-                                {categorie}
-                            </Link>
-                        ))}
+                        {tags &&
+                            tags.map((tag, i) => (
+                                <Link
+                                    className="post-category"
+                                    key={`${slugify(tag.Name)}-${i}`}
+                                    to={`/tag/${slugify(tag.Name)}`}
+                                >
+                                    {tag.Name}
+                                </Link>
+                            ))}
                         {author && (
                             <Link className="post-author" to="/">
                                 <span className="icon">
@@ -75,12 +66,12 @@ const BlogList = ({
                         )}
                     </MetaBox>
                     <Title>
-                        <Link to={`/${slug}`}>{title}</Link>
+                        <Link to={`/blog/${slug}`}>{title}</Link>
                     </Title>
                     <Excerpt>{body}</Excerpt>
                     <Button
                         sx={{ mt: "20px" }}
-                        path={`/${slug}`}
+                        path={`/blog/${slug}`}
                         size="small"
                         color="border-gradient"
                     >
@@ -100,7 +91,7 @@ BlogList.propTypes = {
     thumbnail: PropTypes.object,
     title: PropTypes.string,
     date: PropTypes.string,
-    categories: PropTypes.array,
+    tags: PropTypes.array,
     body: PropTypes.string,
     postAuthor: PropTypes.string,
     slug: PropTypes.string,

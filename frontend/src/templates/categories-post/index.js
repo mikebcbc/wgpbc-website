@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
-import PageBreadcrumb from "@components/pagebreadcrumb";
 import { graphql } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sideber";
+import BlogSidebar from "@containers/blog/blog-sidebar";
 import BlogList from "../../components/blog/list-blog";
 import { BlogPostContentArea, BlogDetailsArea } from "./style";
 
@@ -12,11 +11,6 @@ const CategorisPosts = ({ data, location, pageContext }) => {
     return (
         <Layout>
             <SEO title={"Blog Categories Post"} pathname="/" />
-            <PageBreadcrumb
-                pageContext={pageContext}
-                location={location}
-                title={"Blog Cag Post"}
-            />
             <BlogDetailsArea>
                 <Container>
                     <Row>

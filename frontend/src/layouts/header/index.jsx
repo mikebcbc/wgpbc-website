@@ -36,10 +36,6 @@ const Header = () => {
                         text
                         link
                         isSubmenu
-                        submenu {
-                            link
-                            text
-                        }
                     }
                 }
             }
@@ -108,7 +104,7 @@ const Header = () => {
                                             path="/contact-us"
                                             color="gradient"
                                         >
-                                            Give Support{" "}
+                                            Find Us{" "}
                                             <i className="flaticon-right-arrow"></i>
                                         </Button>
                                     </ButtonBoxArea>

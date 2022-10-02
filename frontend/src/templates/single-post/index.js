@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import React from "react";
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
-import PageBreadcrumb from "@components/pagebreadcrumb";
 import { graphql, Link } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
 import { slugify } from "@utils/functions";
-import BlogSidebar from "@containers/blog/blog-sideber";
+import BlogSidebar from "@containers/blog/blog-sidebar";
 import authors from "@utils/authors";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import { DiscussionEmbed } from "disqus-react";
@@ -25,34 +25,44 @@ import {
     PostCategoryItems,
     CommentArea,
     CommentTitle,
+    PostHeader,
+    PostTitle,
 } from "./style";
 
 const SinglePosts = ({ data, location, pageContext }) => {
-    const post = data.markdownRemark.frontmatter;
-    const image = getImage(post.thumbnail.childImageSharp);
+    console.log(pageContext);
+    const post = data.strapiPost;
+    console.log(post);
+    const image = post.Image[0].localFile.childImageSharp.gatsbyImageData;
+    const author = `${post.Author.firstname} ${post.Author.lastname}`;
+    // const image = getImage(post.thumbnail.childImageSharp);
 
     // Author Post page
-    const author = authors.find((x) => x.name === post.author);
+    // const author = authors.find((x) => x.name === post.author);
 
-    // Social Share
-    const baseUrl = "https://hasthems.com";
+    // // Social Share
+    // const baseUrl = "https://hasthems.com";
 
-    // Disqus Comments add
-    const disqusShorttname = "mitech-1";
-    const disquscConfig = {
-        identifier: data.markdownRemark.id,
-        title: post.title,
-        url: baseUrl + "/" + pageContext.slug,
-    };
+    // // Disqus Comments add
+    // const disqusShorttname = "mitech-1";
+    // const disquscConfig = {
+    //     identifier: data.markdownRemark.id,
+    //     title: post.title,
+    //     url: baseUrl + "/" + pageContext.slug,
+    // };
 
     return (
         <Layout>
-            <SEO title={post.title} pathname="/" />
-            <PageBreadcrumb
-                pageContext={pageContext}
-                location={location}
-                title="Blog Details"
-            />
+            {/* <SEO title={post.title} pathname="/" /> */}
+            <PostHeader>
+                <Container>
+                    <Row>
+                        <Col>
+                            <PostTitle>{post.Title}</PostTitle>
+                        </Col>
+                    </Row>
+                </Container>
+            </PostHeader>
             <BlogDetailsArea>
                 <Container>
                     <Row>
@@ -67,48 +77,43 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                     </Thumb>
                                     <Content>
                                         <MetaBox>
-                                            {post.categories &&
-                                                post.categories.map(
-                                                    (categorie, i) => (
-                                                        <Link
-                                                            className="post-category"
-                                                            key={`${slugify(
-                                                                categorie
-                                                            )}-${i}`}
-                                                            to={`/tag/${slugify(
-                                                                categorie
-                                                            )}`}
-                                                        >
-                                                            {categorie}
-                                                        </Link>
-                                                    )
-                                                )}
+                                            {post.Tags &&
+                                                post.Tags.map((tag, i) => (
+                                                    <Link
+                                                        className="post-category"
+                                                        key={`${slugify(
+                                                            tag.Name
+                                                        )}-${i}`}
+                                                        to={`/tag/${slugify(
+                                                            tag.Name
+                                                        )}`}
+                                                    >
+                                                        {tag.Name}
+                                                    </Link>
+                                                ))}
                                             {author && (
-                                                <Link
-                                                    className="post-author"
-                                                    to="/"
-                                                >
+                                                <div className="post-author">
                                                     <span className="icon">
                                                         <StaticImage
-                                                            className="icon-img"
-                                                            src="../../data/images/icons/admin1.png"
-                                                            alt="Icon-Image"
+                                                            className="author-img"
+                                                            src="../../data/images/team/mike.jpg"
+                                                            alt="Author"
                                                         />
                                                     </span>
-                                                    By: {author && author.name}
-                                                </Link>
+                                                    By: {author}
+                                                </div>
                                             )}
                                         </MetaBox>
-                                        <Title>{post.title}</Title>
+                                        <Title>{post.Title}</Title>
                                         <SingleBlogContent
                                             dangerouslySetInnerHTML={{
-                                                __html: data.markdownRemark
-                                                    .html,
+                                                __html: post.Content.data
+                                                    .childMarkdownRemark.html,
                                             }}
                                         />
 
                                         <CategorySocialContent>
-                                            <PostSocialItems>
+                                            {/* <PostSocialItems>
                                                 <a
                                                     href={
                                                         "https://www.facebook.com/sharer/sharer.php?u=" +
@@ -134,37 +139,21 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                 >
                                                     <i className="icofont-twitter"></i>
                                                 </a>
-                                            </PostSocialItems>
-                                            <PostCategoryItems>
-                                                <span>Tags:</span>
-                                                {post.tags.map((tag, i) => (
-                                                    <Link
-                                                        key={i}
-                                                        to={`/tag/${slugify(
-                                                            tag
-                                                        )}`}
-                                                    >
-                                                        {tag}
-                                                        {i !==
-                                                            post.tags.length -
-                                                                1 && ", "}
-                                                    </Link>
-                                                ))}
-                                            </PostCategoryItems>
+                                            </PostSocialItems> */}
                                         </CategorySocialContent>
                                     </Content>
-                                    <CommentArea>
+                                    {/* <CommentArea>
                                         <CommentTitle>Comments</CommentTitle>
                                         <DiscussionEmbed
                                             shortname={disqusShorttname}
                                             config={disquscConfig}
                                         />
-                                    </CommentArea>
+                                    </CommentArea> */}
                                 </PostDetailsBody>
                             </PostDetailsContentWrap>
                         </Col>
                         <Col lg={4}>
-                            <BlogSidebar />
+                            <BlogSidebar tags={pageContext.counts} />
                         </Col>
                     </Row>
                 </Container>
@@ -180,25 +169,32 @@ SinglePosts.propTypes = {
 };
 
 export const postQuery = graphql`
-    query blogPostBySlug($slug: String!) {
-        markdownRemark(fields: { slug: { eq: $slug } }) {
-            id
-            html
-            frontmatter {
-                author
-                categories
-                date
-                tags
-                quote_text
-                title
-                thumbnail {
+    query ($slug: String) {
+        strapiPost(Slug: { eq: $slug }) {
+            Image {
+                localFile {
                     childImageSharp {
-                        gatsbyImageData(width: 750, height: 400)
+                        gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.77)
                     }
                 }
             }
-            excerpt
+            Title
+            Content {
+                data {
+                    childMarkdownRemark {
+                        html
+                    }
+                }
+            }
+            Author {
+                firstname
+                lastname
+            }
+            Tags {
+                Name
+            }
         }
     }
 `;
+
 export default SinglePosts;

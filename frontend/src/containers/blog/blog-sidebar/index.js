@@ -1,12 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import SearchBox from "@components/blog/blog-sidebar/search";
 import UrgentCauses from "@components/blog/blog-sidebar/causes";
-import AllCategories from "./categories";
-import AllTags from "./tags";
+import Tags from "@components/blog/blog-sidebar/tags";
 import { StaticImage } from "gatsby-plugin-image";
 import { SidebarArea, Widget, WidgetTitle, SeparatorLine } from "./style";
 
-const BlogSidebar = () => {
+const BlogSidebar = ({ tags }) => {
     return (
         <SidebarArea>
             <Widget>
@@ -22,7 +22,7 @@ const BlogSidebar = () => {
             </Widget>
 
             <Widget>
-                <WidgetTitle>Causes Categories</WidgetTitle>
+                <WidgetTitle>Blog Categories</WidgetTitle>
                 <SeparatorLine>
                     <StaticImage
                         className="me-1"
@@ -30,34 +30,14 @@ const BlogSidebar = () => {
                         alt="Image-Givest"
                     />
                 </SeparatorLine>
-                <AllCategories />
-            </Widget>
-
-            <Widget>
-                <WidgetTitle>Urgent Causes</WidgetTitle>
-                <SeparatorLine>
-                    <StaticImage
-                        className="me-1"
-                        src="../../../data/images/shape/line-t2.png"
-                        alt="Image-Givest"
-                    />
-                </SeparatorLine>
-                <UrgentCauses />
-            </Widget>
-
-            <Widget className="mb-0 pb-3">
-                <WidgetTitle>Popular Tags</WidgetTitle>
-                <SeparatorLine>
-                    <StaticImage
-                        className="me-1"
-                        src="../../../data/images/shape/line-t2.png"
-                        alt="Image-Givest"
-                    />
-                </SeparatorLine>
-                <AllTags />
+                <Tags tags={tags} />
             </Widget>
         </SidebarArea>
     );
+};
+
+BlogSidebar.propTypes = {
+    tags: PropTypes.object,
 };
 
 export default BlogSidebar;

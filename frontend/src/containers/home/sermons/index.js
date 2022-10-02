@@ -14,6 +14,7 @@ const SermonArea = () => {
                     node {
                         id
                         title
+                        link
                         dec
                         preacherName
                         image {
@@ -58,8 +59,9 @@ const SermonArea = () => {
                             return (
                                 <Col lg={4} md={6} sm={6} key={sermon.node.id}>
                                     <SermonItem
-                                        image={sermon.node.image}
                                         title={sermon.node.title}
+                                        link={sermon.node.link}
+                                        image={sermon.node.image}
                                         dec={sermon.node.dec}
                                         preacherName={sermon.node.preacherName}
                                         preacherImage={

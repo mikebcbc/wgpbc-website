@@ -1,17 +1,44 @@
 import styled, { themeGet, device } from "@theme/utils";
+import image from "../../data/images/photos/bg-page-title.jpg";
 
 export const BlogDetailsArea = styled.section`
-    padding: 70px 0 280px;
+    padding: 48px 0 52px;
+    max-width: 768px;
+    margin: 0 auto;
     ${device.medium} {
-        padding: 100px 0 300px;
+        padding: ${themeGet("padding.rowPadding.md")};
     }
+
     ${device.large} {
-        padding: 120px 0 300px;
-    }
-    ${device.xlarge} {
-        padding: 150px 0 390px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
 `;
+
+export const SermonHeader = styled.div`
+    background-image: url(${image});
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    padding: 35px 0;
+    position: relative;
+    z-index: 1;
+`;
+
+export const SermonTitle = styled.div`
+    letter-spacing: 0;
+    padding: 77px 0;
+    text-align: center;
+    font-size: 38px;
+    line-height: 1.414;
+    margin-bottom: 6px;
+    font-family: ${themeGet("fonts.heading")};
+    color: #fff;
+    ${device.large} {
+        font-size: 58px;
+    }
+`;
+
 export const CausesDetailsContent = styled.div`
     ${device.large} {
         padding-right: 50px;
@@ -22,7 +49,9 @@ export const CausesDetailsContent = styled.div`
     }
 `;
 export const CausesDetails = styled.div``;
-export const Thumb = styled.div``;
+export const Thumb = styled.div`
+    text-align: center;
+`;
 export const CauseTitle = styled.h4`
     margin-bottom: 25px;
     margin-top: 25px;

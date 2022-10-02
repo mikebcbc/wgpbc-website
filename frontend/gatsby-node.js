@@ -71,8 +71,8 @@ exports.createPages = ({ actions, graphql }) => {
         singlePost: path.resolve("src/templates/single-post/index.js"),
         tagPosts: path.resolve("src/templates/tag-post/index.js"),
         categoriePosts: path.resolve("src/templates/categories-post/index.js"),
-        postList: path.resolve("src/templates/post-list/index.js"),
-        causesPost: path.resolve("src/templates/causes-details/index.js"),
+        postList: path.resolve("src/templates/blog/index.js"),
+        causesPost: path.resolve("src/templates/sermon-single/index.js"),
         eventPosts: path.resolve("src/templates/event-details/index.js"),
         servicesPosts: path.resolve("src/templates/services-details/index.js"),
     };
@@ -123,24 +123,114 @@ exports.createPages = ({ actions, graphql }) => {
                     }
                 }
             }
+
+            allStrapiTag {
+                nodes {
+                    Name
+                }
+            }
+
+            allStrapiPost {
+                nodes {
+                    Image {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData
+                            }
+                        }
+                    }
+                    Title
+                    Content {
+                        data {
+                            childMarkdownRemark {
+                                html
+                            }
+                        }
+                    }
+                    id
+                    strapi_id
+                    Author {
+                        firstname
+                        lastname
+                    }
+                    Slug
+                    Tags {
+                        Name
+                    }
+                }
+            }
         }
     `).then((res) => {
         if (res.errors) return Promise.reject(res.errors);
 
-        // Create Single Blog Post Page
-        const posts = res.data.allMarkdownRemark.edges;
+        // Create Tags Page
+        // const tags = res.data.allStrapiTag.nodes;
 
-        posts.forEach(({ node }) => {
+        // tags.forEach((tag) => {
+        //     createPage({
+        //         path: `/tags/${slugify(tag.Name)}`,
+        //         component: templates.tagPosts,
+        //         context: {
+        //             tag,
+        //         },
+        //     });
+        // });
+
+        // Create Single Blog Post Page
+        const posts = res.data.allStrapiPost.nodes;
+
+        // Tag Number Count
+        let tagPostCounts = {};
+        posts.forEach(({ Tags }) => {
+            Tags.forEach(({ Name }) => {
+                tagPostCounts[Name] = (tagPostCounts[Name] || 0) + 1;
+            });
+        });
+
+        posts.forEach((post) => {
             createPage({
-                path: node.fields.slug,
+                path: `/blog/${post.Slug}`,
                 component: templates.singlePost,
                 context: {
-                    // Pssing slug for Templates to use to get post
-                    slug: node.fields.slug,
-                    // Find author imageUrl from author and pass it to the single post templates
-                    //imageUrl: authors.find(x => x.name === node.frontmatter.author).imageUrl
+                    slug: post.Slug,
+                    counts: tagPostCounts,
                 },
             });
+        });
+
+        // Post List pagintion
+        const postsPerPage = 3;
+        const numberOfPages = Math.ceil(posts.length / postsPerPage);
+
+        Array.from({ length: numberOfPages }).forEach((_, index) => {
+            const inFirstPage = index === 0;
+            const currentPage = index + 1;
+
+            if (inFirstPage) {
+                createPage({
+                    path: `/blog`,
+                    component: templates.postList,
+                    context: {
+                        limit: postsPerPage,
+                        skip: 0,
+                        currentPage,
+                        numberOfPages,
+                        counts: tagPostCounts,
+                    },
+                });
+            } else {
+                createPage({
+                    path: `/blog/${currentPage}`,
+                    component: templates.postList,
+                    context: {
+                        limit: postsPerPage,
+                        skip: index * postsPerPage,
+                        currentPage,
+                        numberOfPages,
+                        counts: tagPostCounts,
+                    },
+                });
+            }
         });
 
         // Serives Causes Details Page
@@ -178,31 +268,6 @@ exports.createPages = ({ actions, graphql }) => {
             });
         });
 
-        // Get all Tag
-        let tags = [];
-        _.each(posts, (edge) => {
-            if (_.get(edge, "node.frontmatter.tags")) {
-                tags = tags.concat(edge.node.frontmatter.tags);
-            }
-        });
-        // Tag Number Count
-        let tagPostCounts = {};
-        tags.forEach((tag) => {
-            tagPostCounts[tag] = (tagPostCounts[tag] || 0) + 1;
-        });
-        tags = _.uniq(tags);
-
-        // Tag Post Page Create
-        tags.forEach((tag) => {
-            createPage({
-                path: `/tag/${slugify(tag)}`,
-                component: templates.tagPosts,
-                context: {
-                    tag,
-                },
-            });
-        });
-
         // Get all Categorie Post
         let categories = [];
         _.each(posts, (edge) => {
@@ -219,28 +284,6 @@ exports.createPages = ({ actions, graphql }) => {
                 component: templates.categoriePosts,
                 context: {
                     categorie,
-                },
-            });
-        });
-
-        // Post List pagintion
-        const postsPerPage = 3;
-        const numberOfPages = Math.ceil(posts.length / postsPerPage);
-
-        Array.from({ length: numberOfPages }).forEach((_, index) => {
-            const inFirstPage = index === 0;
-            const currentPage = index + 1;
-
-            if (inFirstPage) return;
-
-            createPage({
-                path: `/blog/${currentPage}`,
-                component: templates.postList,
-                context: {
-                    limit: postsPerPage,
-                    skip: index * postsPerPage,
-                    currentPage,
-                    numberOfPages,
                 },
             });
         });

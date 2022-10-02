@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
-import PageBreadcrumb from "../../components/pagebreadcrumb";
 import { graphql } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sideber";
+import BlogSidebar from "@containers/blog/blog-sidebar";
 import BlogList from "../../components/blog/list-blog";
 import PaginationLinks from "../../components/pagination";
 import { BlogPostContentArea, BlogDetailsArea } from "./style";
@@ -19,11 +18,6 @@ const PostList = ({ location, data, pageContext, ...props }) => {
                 title={"Page 2 of 6 - Collections, News, Tips by Givest"}
                 pathname="/"
                 isBlogPost
-            />
-            <PageBreadcrumb
-                pageContext={pageContext}
-                location={location}
-                title="Blog Post"
             />
             <BlogDetailsArea>
                 <Container>

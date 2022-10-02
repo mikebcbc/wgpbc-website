@@ -8,7 +8,7 @@ const PaginationLinks = ({ currentPage, numberOfPages }) => {
     const isLast = currentPage === numberOfPages;
     const previousPage =
         currentPage - 1 === 1
-            ? "/blog/"
+            ? "/blog"
             : "/blog/" + (currentPage - 1).toString();
     const nextPage = "/blog/" + (currentPage + 1).toString();
 
@@ -16,11 +16,11 @@ const PaginationLinks = ({ currentPage, numberOfPages }) => {
         <Pagination>
             {isFirst ? (
                 <NavItem className="disabled">
-                    <NavLink href="/blog/">Next</NavLink>
+                    <NavLink href="/blog">Prev</NavLink>
                 </NavItem>
             ) : (
                 <NavItem>
-                    <NavLink href={previousPage}>Next</NavLink>
+                    <NavLink href={previousPage}>Prev</NavLink>
                 </NavItem>
             )}
             {Array.from({ length: numberOfPages }, (_, i) =>
@@ -45,11 +45,11 @@ const PaginationLinks = ({ currentPage, numberOfPages }) => {
             )}
             {isLast ? (
                 <NavItem className="disabled">
-                    <NavLink href={nextPage}>Prev</NavLink>
+                    <NavLink href={nextPage}>Next</NavLink>
                 </NavItem>
             ) : (
                 <NavItem>
-                    <NavLink href={nextPage}>Prev</NavLink>
+                    <NavLink href={nextPage}>Next</NavLink>
                 </NavItem>
             )}
         </Pagination>

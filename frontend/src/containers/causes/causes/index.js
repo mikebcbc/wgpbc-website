@@ -13,6 +13,7 @@ const CausesAll = () => {
                     node {
                         id
                         title
+                        link
                         dec
                         preacherName
                         image {
@@ -51,6 +52,7 @@ const CausesAll = () => {
                                     <SermonItem
                                         image={causesData.node.image}
                                         title={causesData.node.title}
+                                        sermon={causesData.node.link}
                                         dec={causesData.node.dec}
                                         preacherName={
                                             causesData.node.preacherName

@@ -14,6 +14,7 @@ const Button = ({
     className,
     path,
     label,
+    onClick,
     ...props
 }) => {
     const buttonProps = {
@@ -71,6 +72,7 @@ const Button = ({
             type={type}
             {...buttonProps}
             sx={sx}
+            onClick={onClick}
         >
             {children}
         </StyledButton>
@@ -98,6 +100,7 @@ Button.propTypes = {
     variant: PropTypes.oneOf(["outlined", "iconButton"]),
     path: PropTypes.string,
     label: PropTypes.string,
+    onClick: PropTypes.func,
 };
 
 Button.defaultProps = {

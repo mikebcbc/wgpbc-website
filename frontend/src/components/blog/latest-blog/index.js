@@ -17,15 +17,7 @@ import {
     PostFooter,
 } from "./style";
 
-const LatestBlogItem = ({
-    thumbnail,
-    title,
-    date,
-    categories,
-    body,
-    postAuthor,
-    slug,
-}) => {
+const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
     const dateSplit = date.split(" ");
     const month = dateSplit[0];
     const day = dateSplit[1];
@@ -47,14 +39,14 @@ const LatestBlogItem = ({
             <LatestBlogContent>
                 <LatestBlogContentInner>
                     <MetaBox>
-                        {categories &&
-                            categories.map((categorie, i) => (
+                        {tags &&
+                            tags.map((tag, i) => (
                                 <Link
                                     className="post-category"
-                                    key={`${slugify(categorie)}-${i}`}
-                                    to={`/categories/${slugify(categorie)}`}
+                                    key={`${slugify(tag.Name)}-${i}`}
+                                    to={`/tag/${slugify(tag.Name)}`}
                                 >
-                                    {categorie}
+                                    {tag.Name}
                                 </Link>
                             ))}
                         <PostShare>
@@ -85,15 +77,12 @@ const LatestBlogItem = ({
                 </LatestBlogContentInner>
                 <PostFooter className="post-footer">
                     <Button
-                        path={`/${slug}`}
+                        path={`/blog/${slug}`}
                         size="xsmall"
                         color="border-gradient"
                     >
-                        Details
+                        Read More
                     </Button>
-                    <Link className="post-author" to="/">
-                        By: {postAuthor}
-                    </Link>
                 </PostFooter>
             </LatestBlogContent>
         </PostItemWrap>
@@ -104,7 +93,7 @@ LatestBlogItem.propTypes = {
     thumbnail: PropTypes.object,
     title: PropTypes.string,
     date: PropTypes.string,
-    categories: PropTypes.array,
+    tags: PropTypes.array,
     body: PropTypes.string,
     postAuthor: PropTypes.string,
     slug: PropTypes.string,
