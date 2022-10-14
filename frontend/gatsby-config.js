@@ -14,35 +14,31 @@ const strapiConfig = {
         {
             singularName: "sermon",
             queryParams: {
+                populate: {
+                    Image: "*",
+                    Preacher: {
+                        populate: {
+                            Avatar: "*",
+                        },
+                    },
+                },
+            },
+        },
+        {
+            singularName: "post",
+            queryParams: {
                 publicationState:
                     process.env.GATSBY_IS_PREVIEW === "true"
                         ? "preview"
                         : "live",
                 populate: {
-                    cover: "*",
-                    blocks: {
-                        populate: "*",
-                    },
+                    Image: "*",
+                    Author: "*",
+                    Tags: "*",
                 },
             },
         },
-        "post",
         "tag",
-        // {
-        //     singularName: "post",
-        //     queryParams: {
-        //         publicationState:
-        //             process.env.GATSBY_IS_PREVIEW === "true"
-        //                 ? "preview"
-        //                 : "live",
-        //         populate: {
-        //             cover: "*",
-        //             blocks: {
-        //                 populate: "*",
-        //             },
-        //         },
-        //     },
-        // },
     ],
     singleTypes: [],
 };

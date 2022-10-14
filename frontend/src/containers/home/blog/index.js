@@ -70,8 +70,8 @@ const LatestBlog = () => {
                                     <LatestBlogItem
                                         title={blog.Title}
                                         thumbnail={
-                                            blog.Image[0].localFile
-                                                .childImageSharp.gatsbyImageData
+                                            blog.Image.localFile.childImageSharp
+                                                .gatsbyImageData
                                         }
                                         tags={blog.Tags}
                                         body={

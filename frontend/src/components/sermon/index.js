@@ -20,14 +20,9 @@ const SermonItem = ({
     dec,
     preacherName,
     preacherImage,
-    slug,
-    link,
+    videoId,
 }) => {
     const [open, setOpen] = useState(false);
-
-    const videoId = link.match(
-        /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
-    )[5];
 
     return (
         <Sermon>
@@ -39,15 +34,13 @@ const SermonItem = ({
                 <p>{dec}</p>
                 <SermonFooter>
                     <Preacher>
-                        <Link to={`/causes/${slug}`}>
-                            <PreacherImage>
-                                <GatsbyImage
-                                    image={getImage(preacherImage)}
-                                    alt="Icon"
-                                />
-                            </PreacherImage>
-                            {preacherName}
-                        </Link>
+                        <PreacherImage>
+                            <GatsbyImage
+                                image={getImage(preacherImage)}
+                                alt="Preacher Avatar"
+                            />
+                        </PreacherImage>
+                        {preacherName}
                     </Preacher>
                     <Button
                         size="small"
@@ -76,9 +69,8 @@ SermonItem.propTypes = {
     dec: PropTypes.string,
     preacherName: PropTypes.string,
     preacherImage: PropTypes.object,
-    slug: PropTypes.string,
-    link: PropTypes.string,
-    image: PropTypes.string,
+    videoId: PropTypes.string,
+    image: PropTypes.object,
 };
 
 export default SermonItem;

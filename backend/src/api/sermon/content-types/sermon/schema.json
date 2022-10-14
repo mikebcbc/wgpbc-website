@@ -21,9 +21,28 @@
       "type": "string",
       "required": true
     },
-    "Author": {
+    "Verses": {
       "type": "string",
       "required": true
+    },
+    "Preacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::preacher.preacher"
+    },
+    "VideoID": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

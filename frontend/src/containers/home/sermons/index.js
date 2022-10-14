@@ -9,26 +9,32 @@ import { graphql, useStaticQuery } from "gatsby";
 const SermonArea = () => {
     const sermonQuery = useStaticQuery(graphql`
         query SermonQuery {
-            allSermonsJson {
-                edges {
-                    node {
-                        id
-                        title
-                        link
-                        dec
-                        preacherName
-                        image {
+            allStrapiSermon(
+                sort: { fields: publishedAt, order: DESC }
+                limit: 3
+            ) {
+                totalCount
+                nodes {
+                    id
+                    publishedAt(formatString: "MMM DD")
+                    Image {
+                        localFile {
                             childImageSharp {
-                                gatsbyImageData(width: 580)
+                                gatsbyImageData(width: 590)
                             }
                         }
-                        preacherImage {
-                            childImageSharp {
-                                gatsbyImageData
+                    }
+                    Title
+                    Verses
+                    VideoID
+                    Preacher {
+                        Name
+                        Avatar {
+                            localFile {
+                                childImageSharp {
+                                    gatsbyImageData
+                                }
                             }
-                        }
-                        fields {
-                            slug
                         }
                     }
                 }
@@ -36,7 +42,7 @@ const SermonArea = () => {
         }
     `);
 
-    const sermonData = sermonQuery.allSermonsJson.edges;
+    const sermonData = sermonQuery.allStrapiSermon.nodes;
 
     return (
         <SectionArea>
@@ -57,17 +63,20 @@ const SermonArea = () => {
                     {sermonData &&
                         sermonData.slice(0, 3).map((sermon) => {
                             return (
-                                <Col lg={4} md={6} sm={6} key={sermon.node.id}>
+                                <Col lg={4} md={6} sm={6} key={sermon.id}>
                                     <SermonItem
-                                        title={sermon.node.title}
-                                        link={sermon.node.link}
-                                        image={sermon.node.image}
-                                        dec={sermon.node.dec}
-                                        preacherName={sermon.node.preacherName}
-                                        preacherImage={
-                                            sermon.node.preacherImage
+                                        title={sermon.Title}
+                                        image={
+                                            sermon.Image.localFile
+                                                .childImageSharp.gatsbyImageData
                                         }
-                                        slug={sermon.node.fields.slug}
+                                        dec={sermon.Verses}
+                                        preacherName={sermon.Preacher.Name}
+                                        preacherImage={
+                                            sermon.Preacher.Avatar.localFile
+                                                .childImageSharp.gatsbyImageData
+                                        }
+                                        videoId={sermon.VideoID}
                                     />
                                 </Col>
                             );

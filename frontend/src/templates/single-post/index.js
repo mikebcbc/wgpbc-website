@@ -30,10 +30,8 @@ import {
 } from "./style";
 
 const SinglePosts = ({ data, location, pageContext }) => {
-    console.log(pageContext);
     const post = data.strapiPost;
-    console.log(post);
-    const image = post.Image[0].localFile.childImageSharp.gatsbyImageData;
+    const image = post.Image.localFile.childImageSharp.gatsbyImageData;
     const author = `${post.Author.firstname} ${post.Author.lastname}`;
     // const image = getImage(post.thumbnail.childImageSharp);
 

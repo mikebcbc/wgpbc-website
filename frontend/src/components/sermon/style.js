@@ -40,10 +40,8 @@ export const Preacher = styled.h5`
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 0;
-    a {
-        display: flex;
-        align-items: center;
-    }
+    display: flex;
+    align-items: center;
 `;
 
 export const PreacherImage = styled.div`

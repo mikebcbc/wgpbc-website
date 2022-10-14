@@ -13,10 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Content": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "Author": {
       "type": "relation",
@@ -25,7 +27,8 @@
     },
     "Slug": {
       "type": "uid",
-      "targetField": "Title"
+      "targetField": "Title",
+      "required": true
     },
     "Tags": {
       "type": "relation",
@@ -33,12 +36,12 @@
       "target": "api::tag.tag"
     },
     "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": true
+      ]
     }
   }
 }

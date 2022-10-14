@@ -72,7 +72,6 @@ exports.createPages = ({ actions, graphql }) => {
         tagPosts: path.resolve("src/templates/tag-post/index.js"),
         categoriePosts: path.resolve("src/templates/categories-post/index.js"),
         postList: path.resolve("src/templates/blog/index.js"),
-        causesPost: path.resolve("src/templates/sermon-single/index.js"),
         eventPosts: path.resolve("src/templates/event-details/index.js"),
         servicesPosts: path.resolve("src/templates/services-details/index.js"),
     };
@@ -104,16 +103,6 @@ exports.createPages = ({ actions, graphql }) => {
                 }
             }
 
-            allSermonsJson {
-                edges {
-                    node {
-                        fields {
-                            slug
-                        }
-                    }
-                }
-            }
-
             allEventJson {
                 edges {
                     node {
@@ -127,6 +116,19 @@ exports.createPages = ({ actions, graphql }) => {
             allStrapiTag {
                 nodes {
                     Name
+                }
+            }
+
+            allStrapiPreacher {
+                nodes {
+                    Name
+                    Avatar {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData
+                            }
+                        }
+                    }
                 }
             }
 
@@ -239,17 +241,6 @@ exports.createPages = ({ actions, graphql }) => {
             createPage({
                 path: `/services/${node.fields.slug}`,
                 component: templates.servicesPosts,
-                context: {
-                    slug: node.fields.slug,
-                },
-            });
-        });
-        // Create Causes Details Page
-        const sermonsJson = res.data.allSermonsJson.edges;
-        sermonsJson.forEach(({ node }) => {
-            createPage({
-                path: `/causes/${node.fields.slug}`,
-                component: templates.causesPost,
                 context: {
                     slug: node.fields.slug,
                 },

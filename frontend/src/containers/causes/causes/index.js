@@ -6,34 +6,34 @@ import { Container, Row, Col } from "react-bootstrap";
 import { graphql, useStaticQuery } from "gatsby";
 
 const CausesAll = () => {
-    const sermonQuery = useStaticQuery(graphql`
-        query SermonPageQuery {
-            allSermonsJson {
-                edges {
-                    node {
-                        id
-                        title
-                        link
-                        dec
-                        preacherName
-                        image {
-                            childImageSharp {
-                                gatsbyImageData(width: 580)
-                            }
-                        }
-                        preacherImage {
-                            childImageSharp {
-                                gatsbyImageData
-                            }
-                        }
-                        fields {
-                            slug
-                        }
-                    }
-                }
-            }
-        }
-    `);
+    // const sermonQuery = useStaticQuery(graphql`
+    //     query SermonPageQuery {
+    //         allSermonsJson {
+    //             edges {
+    //                 node {
+    //                     id
+    //                     title
+    //                     link
+    //                     dec
+    //                     preacherName
+    //                     image {
+    //                         childImageSharp {
+    //                             gatsbyImageData(width: 580)
+    //                         }
+    //                     }
+    //                     preacherImage {
+    //                         childImageSharp {
+    //                             gatsbyImageData
+    //                         }
+    //                     }
+    //                     fields {
+    //                         slug
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `);
 
     const causesAreaData = sermonQuery.allSermonsJson.edges;
     return (

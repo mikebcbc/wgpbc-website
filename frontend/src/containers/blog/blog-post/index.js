@@ -17,8 +17,7 @@ const BlogPostArea = ({ blogs, totalCount, currentPage }) => {
                         key={i}
                         title={blog.Title}
                         thumbnail={
-                            blog.Image[0].localFile.childImageSharp
-                                .gatsbyImageData
+                            blog.Image.localFile.childImageSharp.gatsbyImageData
                         }
                         tags={blog.Tags}
                         body={blog.Content.data.childMarkdownRemark.excerpt}
