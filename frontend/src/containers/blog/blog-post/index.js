@@ -32,6 +32,7 @@ const BlogPostArea = ({ blogs, totalCount, currentPage }) => {
                 <PaginationLinks
                     currentPage={currentPage}
                     numberOfPages={numberOfPages}
+                    slug="blog"
                 />
             </PaginationArea>
         </BlogPostContentArea>

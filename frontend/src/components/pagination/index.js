@@ -3,20 +3,20 @@ import { Pagination } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { NavItem, NavLink } from "./style";
 
-const PaginationLinks = ({ currentPage, numberOfPages }) => {
+const PaginationLinks = ({ currentPage, numberOfPages, slug }) => {
     const isFirst = currentPage === 1;
     const isLast = currentPage === numberOfPages;
     const previousPage =
         currentPage - 1 === 1
-            ? "/blog"
-            : "/blog/" + (currentPage - 1).toString();
-    const nextPage = "/blog/" + (currentPage + 1).toString();
+            ? `/${slug}`
+            : `/${slug}/` + (currentPage - 1).toString();
+    const nextPage = `/${slug}/` + (currentPage + 1).toString();
 
     return (
         <Pagination>
             {isFirst ? (
                 <NavItem className="disabled">
-                    <NavLink href="/blog">Prev</NavLink>
+                    <NavLink href={`/${slug}`}>Prev</NavLink>
                 </NavItem>
             ) : (
                 <NavItem>
@@ -28,7 +28,7 @@ const PaginationLinks = ({ currentPage, numberOfPages }) => {
                     <NavItem key={`page-number-${i + 1}`}>
                         <NavLink
                             className="active"
-                            href={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
+                            href={`/${slug}${i === 0 ? "" : "/" + (i + 1)}`}
                         >
                             {i + 1}
                         </NavLink>
@@ -36,7 +36,9 @@ const PaginationLinks = ({ currentPage, numberOfPages }) => {
                 ) : (
                     <NavItem key={`page-number-${i + 1}`}>
                         <NavLink
-                            href={`${i === 0 ? "/blog" : "/blog/" + (i + 1)}`}
+                            href={`${
+                                i === 0 ? `/${slug}` : `/${slug}/` + (i + 1)
+                            }`}
                         >
                             {i + 1}
                         </NavLink>
@@ -59,6 +61,7 @@ const PaginationLinks = ({ currentPage, numberOfPages }) => {
 PaginationLinks.propTypes = {
     currentPage: PropTypes.number,
     numberOfPages: PropTypes.number,
+    slug: PropTypes.string,
 };
 
 export default PaginationLinks;

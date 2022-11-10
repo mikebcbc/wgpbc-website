@@ -56,6 +56,7 @@ const PostList = ({ location, data, pageContext, ...props }) => {
                             <PaginationLinks
                                 currentPage={currentPage}
                                 numberOfPages={numberOfPages}
+                                slug="blog"
                             />
                         </Col>
                         <Col lg={4}>

@@ -72,6 +72,7 @@ exports.createPages = ({ actions, graphql }) => {
         tagPosts: path.resolve("src/templates/tag-post/index.js"),
         categoriePosts: path.resolve("src/templates/categories-post/index.js"),
         postList: path.resolve("src/templates/blog/index.js"),
+        sermonsList: path.resolve("src/templates/sermons/index.js"),
         eventPosts: path.resolve("src/templates/event-details/index.js"),
         servicesPosts: path.resolve("src/templates/services-details/index.js"),
     };
@@ -161,6 +162,33 @@ exports.createPages = ({ actions, graphql }) => {
                     }
                 }
             }
+
+            allStrapiSermon {
+                nodes {
+                    id
+                    publishedAt(formatString: "MMM DD")
+                    Image {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(width: 590)
+                            }
+                        }
+                    }
+                    Title
+                    Verses
+                    VideoID
+                    Preacher {
+                        Name
+                        Avatar {
+                            localFile {
+                                childImageSharp {
+                                    gatsbyImageData
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     `).then((res) => {
         if (res.errors) return Promise.reject(res.errors);
@@ -202,9 +230,9 @@ exports.createPages = ({ actions, graphql }) => {
 
         // Post List pagintion
         const postsPerPage = 3;
-        const numberOfPages = Math.ceil(posts.length / postsPerPage);
+        const numberOfPostPages = Math.ceil(posts.length / postsPerPage);
 
-        Array.from({ length: numberOfPages }).forEach((_, index) => {
+        Array.from({ length: numberOfPostPages }).forEach((_, index) => {
             const inFirstPage = index === 0;
             const currentPage = index + 1;
 
@@ -216,8 +244,8 @@ exports.createPages = ({ actions, graphql }) => {
                         limit: postsPerPage,
                         skip: 0,
                         currentPage,
-                        numberOfPages,
-                        counts: tagPostCounts,
+                        numberOfPostPages,
+                        // counts: tagPostCounts,
                     },
                 });
             } else {
@@ -228,7 +256,43 @@ exports.createPages = ({ actions, graphql }) => {
                         limit: postsPerPage,
                         skip: index * postsPerPage,
                         currentPage,
-                        numberOfPages,
+                        numberOfPostPages,
+                        // counts: tagPostCounts,
+                    },
+                });
+            }
+        });
+
+        // Sermon List Pagination
+        const sermons = res.data.allStrapiSermon.nodes;
+        const sermonsPerPage = 9;
+        const numberOfSermonPages = Math.ceil(sermons.length / sermonsPerPage);
+
+        Array.from({ length: numberOfSermonPages }).forEach((_, index) => {
+            const inFirstPage = index === 0;
+            const currentPage = index + 1;
+
+            if (inFirstPage) {
+                createPage({
+                    path: `/sermons`,
+                    component: templates.sermonsList,
+                    context: {
+                        limit: sermonsPerPage,
+                        skip: 0,
+                        currentPage,
+                        numberOfSermonPages,
+                        counts: tagPostCounts,
+                    },
+                });
+            } else {
+                createPage({
+                    path: `/sermons/${currentPage}`,
+                    component: templates.sermonsList,
+                    context: {
+                        limit: sermonsPerPage,
+                        skip: index * sermonsPerPage,
+                        currentPage,
+                        numberOfSermonPages,
                         counts: tagPostCounts,
                     },
                 });

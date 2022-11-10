@@ -6,61 +6,61 @@ import { Container, Row, Col } from "react-bootstrap";
 import { graphql, useStaticQuery } from "gatsby";
 
 const CausesAll = () => {
-    // const sermonQuery = useStaticQuery(graphql`
-    //     query SermonPageQuery {
-    //         allSermonsJson {
-    //             edges {
-    //                 node {
-    //                     id
-    //                     title
-    //                     link
-    //                     dec
-    //                     preacherName
-    //                     image {
-    //                         childImageSharp {
-    //                             gatsbyImageData(width: 580)
-    //                         }
-    //                     }
-    //                     preacherImage {
-    //                         childImageSharp {
-    //                             gatsbyImageData
-    //                         }
-    //                     }
-    //                     fields {
-    //                         slug
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // `);
+    const sermonsQuery = useStaticQuery(graphql`
+        query SermonsQuery {
+            allStrapiSermon {
+                totalCount
+                nodes {
+                    id
+                    publishedAt(formatString: "MMM DD")
+                    Image {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(width: 590)
+                            }
+                        }
+                    }
+                    Title
+                    Verses
+                    VideoID
+                    Preacher {
+                        Name
+                        Avatar {
+                            localFile {
+                                childImageSharp {
+                                    gatsbyImageData
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `);
 
-    const causesAreaData = sermonQuery.allSermonsJson.edges;
+    const causesAreaData = sermonsQuery.allStrapiSermon.nodes;
     return (
         <SectionArea>
             <Container>
                 <Row>
                     {causesAreaData &&
-                        causesAreaData.map((causesData) => {
+                        causesAreaData.map((sermon) => {
+                            console.log(sermon);
                             return (
-                                <Col
-                                    lg={4}
-                                    md={6}
-                                    sm={6}
-                                    key={causesData.node.id}
-                                >
+                                <Col lg={4} md={6} sm={6} key={sermon.id}>
                                     <SermonItem
-                                        image={causesData.node.image}
-                                        title={causesData.node.title}
-                                        sermon={causesData.node.link}
-                                        dec={causesData.node.dec}
-                                        preacherName={
-                                            causesData.node.preacherName
+                                        title={sermon.Title}
+                                        image={
+                                            sermon.Image.localFile
+                                                .childImageSharp.gatsbyImageData
                                         }
+                                        dec={sermon.Verses}
+                                        preacherName={sermon.Preacher.Name}
                                         preacherImage={
-                                            causesData.node.preacherImage
+                                            sermon.Preacher.Avatar.localFile
+                                                .childImageSharp.gatsbyImageData
                                         }
-                                        slug={causesData.node.fields.slug}
+                                        videoId={sermon.VideoID}
                                     />
                                 </Col>
                             );
