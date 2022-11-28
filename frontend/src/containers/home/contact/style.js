@@ -1,12 +1,8 @@
 import styled, { themeGet, device } from "@theme/utils";
-import testimonialTitleBg from "@data/images/testimonial/bg-testi1.jpg";
+import testimonialTitleBg from "@data/images/contact/congregation.jpg";
 
 export const SectionArea = styled.section`
     padding: ${themeGet("padding.rowPadding.md")};
-
-    .title {
-        order: -1;
-    }
 
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.md")};
@@ -14,10 +10,6 @@ export const SectionArea = styled.section`
 
     ${device.large} {
         padding: ${themeGet("padding.rowPadding.lg")};
-
-        .title {
-            order: 1;
-        }
     }
 `;
 

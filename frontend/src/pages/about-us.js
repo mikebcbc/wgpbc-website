@@ -12,10 +12,10 @@ const AboutUsPage = ({ location, pageContext }) => {
         <Layout>
             <SEO title="About us" pathname="/" />
             <AboutPageArea />
-            <VolunteerArea />
-            <FunfactArea />
+            {/* <VolunteerArea /> */}
+            {/* <FunfactArea /> */}
             <ContactArea />
-            <SponsorsArea />
+            {/* <SponsorsArea /> */}
         </Layout>
     );
 };

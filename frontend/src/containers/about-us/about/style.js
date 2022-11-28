@@ -1,34 +1,65 @@
 import styled, { themeGet, device } from "@theme/utils";
+import image from "../../../data/images/photos/bg-page-title.jpg";
+
+export const Header = styled.div`
+    background-image: url(${image});
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    padding: 35px 0;
+    position: relative;
+    z-index: 1;
+`;
+
+export const HeaderTitle = styled.div`
+    letter-spacing: 0;
+    padding: 77px 0;
+    text-align: center;
+    font-size: 38px;
+    line-height: 1.414;
+    margin-bottom: 6px;
+    font-family: ${themeGet("fonts.heading")};
+    color: #fff;
+    ${device.large} {
+        font-size: 58px;
+    }
+`;
 
 export const SectionArea = styled.section`
-    padding: 46px 0 0px;
-    ${device.small} {
-        padding: 48px 0 08px;
-    }
+    padding: ${themeGet("padding.rowPadding.lg")};
+
     ${device.medium} {
-        padding: 88px 0 92px;
+        padding: ${themeGet("padding.rowPadding.md")};
     }
+
     ${device.large} {
-        padding: 88px 0 92px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
-    ${device.xlarge} {
-        padding: 146px 0 15px;
+`;
+
+export const DarkSectionArea = styled.section`
+    background-color: ${themeGet("colors.backgroundAlt")};
+    padding: ${themeGet("padding.rowPadding.lg")};
+
+    ${device.medium} {
+        padding: ${themeGet("padding.rowPadding.md")};
     }
 
-    position: relative;
+    ${device.large} {
+        padding: ${themeGet("padding.rowPadding.lg")};
+    }
+`;
 
-    &:before {
-        background-color: #f7f7f7;
-        bottom: 0;
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        width: calc(50% - 315px);
-        z-index: -1;
-    }
-    & .img-one {
-    }
+export const ArticlesOfFaith = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+`;
+
+export const ArticleFaith = styled.div`
+    background: white;
+    padding: 32px;
 `;
 
 export const LayerStyle = styled.div`
@@ -68,7 +99,7 @@ export const AboutTextStyle = styled.p`
     &:before {
         background-color: #fc6539;
         content: "";
-        height: 75px;
+        height: 100%;
         left: -29px;
         position: absolute;
         top: 7px;
