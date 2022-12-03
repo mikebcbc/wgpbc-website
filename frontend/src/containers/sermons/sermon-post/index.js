@@ -20,16 +20,17 @@ const SermonListArea = ({ sermons, totalCount, currentPage, limit }) => {
                                     key={i}
                                     title={sermon.Title}
                                     image={
-                                        sermon.Image.localFile.childImageSharp
-                                            .gatsbyImageData
+                                        sermon.Image?.localFile.childImageSharp
+                                            .gatsbyImageData || null
                                     }
                                     dec={sermon.Verses}
                                     preacherName={sermon.Preacher.Name}
                                     preacherImage={
-                                        sermon.Preacher.Avatar.localFile
+                                        sermon.Preacher?.Avatar?.localFile
                                             .childImageSharp.gatsbyImageData
                                     }
                                     videoId={sermon.VideoID}
+                                    audioLink={sermon.Audio.localFile.publicURL}
                                 />
                             </Col>
                         );

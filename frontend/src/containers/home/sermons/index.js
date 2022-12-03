@@ -24,6 +24,11 @@ const SermonArea = () => {
                             }
                         }
                     }
+                    Audio {
+                        localFile {
+                            publicURL
+                        }
+                    }
                     Title
                     Verses
                     VideoID
@@ -62,6 +67,7 @@ const SermonArea = () => {
                 <Row>
                     {sermonData &&
                         sermonData.slice(0, 3).map((sermon) => {
+                            console.log(sermon.Audio);
                             return (
                                 <Col lg={4} md={6} sm={6} key={sermon.id}>
                                     <SermonItem
@@ -77,6 +83,9 @@ const SermonArea = () => {
                                                 .childImageSharp.gatsbyImageData
                                         }
                                         videoId={sermon.VideoID}
+                                        audioLink={
+                                            sermon.Audio.localFile.publicURL
+                                        }
                                     />
                                 </Col>
                             );

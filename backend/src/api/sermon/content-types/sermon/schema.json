@@ -14,7 +14,7 @@
   "attributes": {
     "Link": {
       "type": "string",
-      "required": true,
+      "required": false,
       "regex": "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
     },
     "Title": {
@@ -23,7 +23,7 @@
     },
     "Verses": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "Preacher": {
       "type": "relation",
@@ -39,6 +39,14 @@
       "required": false,
       "allowedTypes": [
         "images"
+      ]
+    },
+    "Audio": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "audios"
       ]
     }
   }

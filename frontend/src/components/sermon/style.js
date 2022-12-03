@@ -33,6 +33,26 @@ export const SermonFooter = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+
+    .dropdown-menu.show {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        right: 0;
+        left: 16% !important;
+        top: 42px !important;
+        width: 70%;
+        font-size: 15px;
+        border: 2px solid #d7d7d7;
+        border-top: none;
+
+        .dropdown-item {
+            margin: 5px 0;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 `;
 
 export const Preacher = styled.h5`

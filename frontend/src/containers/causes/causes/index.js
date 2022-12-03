@@ -61,6 +61,9 @@ const CausesAll = () => {
                                                 .childImageSharp.gatsbyImageData
                                         }
                                         videoId={sermon.VideoID}
+                                        audioLink={
+                                            sermon.Audio.localFile.publicURL
+                                        }
                                     />
                                 </Col>
                             );

@@ -50,6 +50,11 @@ export const listSermonQuery = graphql`
                         }
                     }
                 }
+                Audio {
+                    localFile {
+                        publicURL
+                    }
+                }
                 Title
                 Verses
                 VideoID

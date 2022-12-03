@@ -12,7 +12,8 @@ import {
     Title,
 } from "./style";
 import ModalVideo from "react-modal-video";
-import { useState } from "react";
+import React, { useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const SermonItem = ({
     title,
@@ -21,13 +22,22 @@ const SermonItem = ({
     preacherName,
     preacherImage,
     videoId,
+    audioLink,
 }) => {
     const [open, setOpen] = useState(false);
+    const [show, setShow] = useState(false);
 
     return (
         <Sermon>
             <SermonImage>
-                <GatsbyImage image={getImage(image)} alt={title} />
+                {image ? (
+                    <GatsbyImage image={getImage(image)} alt={title} />
+                ) : (
+                    <StaticImage
+                        src="../../data/images/sermons/audio-default.jpg"
+                        alt="Audio Only Image"
+                    />
+                )}
             </SermonImage>
             <ContentBox>
                 <Title>{title}</Title>
@@ -42,15 +52,35 @@ const SermonItem = ({
                         </PreacherImage>
                         {preacherName}
                     </Preacher>
-                    <Button
-                        size="small"
-                        variant="outlined"
-                        color="light"
-                        sx={{ fontWeight: "400" }}
-                        onClick={() => setOpen(true)}
+                    <Dropdown
+                        show={show}
+                        onMouseEnter={(e) => setShow(true)}
+                        onMouseLeave={(e) => setShow(false)}
                     >
-                        Watch <i className="flaticon-right-arrow"></i>
-                    </Button>
+                        <Dropdown.Toggle
+                            as={Button}
+                            size="small"
+                            variant="outlined"
+                            color="light"
+                            onClick={(e) => setOpen(true)}
+                        >
+                            View
+                            <Dropdown.Menu align="end">
+                                <Dropdown.Item onClick={(e) => setOpen(true)}>
+                                    Video
+                                </Dropdown.Item>
+                                {audioLink && (
+                                    <Dropdown.Item
+                                        onClick={(e) => e.stopPropagation()}
+                                        href={audioLink}
+                                        target="_blank"
+                                    >
+                                        Audio Only
+                                    </Dropdown.Item>
+                                )}
+                            </Dropdown.Menu>
+                        </Dropdown.Toggle>
+                    </Dropdown>
                 </SermonFooter>
             </ContentBox>
             <ModalVideo
@@ -71,6 +101,7 @@ SermonItem.propTypes = {
     preacherImage: PropTypes.object,
     videoId: PropTypes.string,
     image: PropTypes.object,
+    audioLink: PropTypes.string,
 };
 
 export default SermonItem;

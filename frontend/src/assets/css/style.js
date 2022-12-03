@@ -68,13 +68,6 @@ export const GlobalCSS = () => {
                 [hidden] {
                     display: none;
                 }
-                html,
-                button,
-                input,
-                select,
-                textarea {
-                    font-family: "Source Sans Pro", Helvetica, sans-serif;
-                }
                 a:focus {
                     outline: thin dotted;
                 }
@@ -331,7 +324,6 @@ export const GlobalCSS = () => {
                     border: 1px solid ${theme.colors.boder};
                     transition: ${theme.transition};
                     color: ${theme.colors.text};
-                    &:focus,
                     &:active {
                         outline: none;
                         border-color: ${theme.colors.primary};

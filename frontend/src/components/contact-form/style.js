@@ -3,6 +3,7 @@ export const ContactFormArea = styled.div`
     padding: 64px;
     background-color: #f7f7f7;
     max-height: 580px;
+    min-width: 50%;
 `;
 
 export const Form = styled.form``;
@@ -34,7 +35,7 @@ export const Title = styled.h2`
 `;
 
 export const FormGroup = styled.div`
-    margin-bottom: 20px;
+    margin: 10px 0;
 `;
 
 export const Input = styled.input`
@@ -45,4 +46,9 @@ export const Input = styled.input`
     font-size: 15px;
     height: 55px;
     padding: 14px 20px;
+`;
+
+export const Error = styled.span`
+    color: red;
+    font-size: 13px;
 `;

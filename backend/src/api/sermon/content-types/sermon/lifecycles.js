@@ -21,22 +21,24 @@ async function fetchAndUploadSocialImage(img, videoId) {
 module.exports = {
   async beforeCreate({ params }) {
     const { data } = params;
-    const videoId = data.Link.match(
-      /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
-    )[5];
+    if (data.Link) {
+      const videoId = data.Link.match(
+        /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
+      )[5];
 
-    const vimeo = await axios.get(
-      `https://vimeo.com/api/v2/video/${videoId}.json`
-    );
-    const vimeoData = await vimeo.data;
+      const vimeo = await axios.get(
+        `https://vimeo.com/api/v2/video/${videoId}.json`
+      );
+      const vimeoData = await vimeo.data;
 
-    const thumbnail = await fetchAndUploadSocialImage(
-      vimeoData[0]?.thumbnail_large,
-      videoId
-    );
+      const thumbnail = await fetchAndUploadSocialImage(
+        vimeoData[0]?.thumbnail_large,
+        videoId
+      );
 
-    data.VideoID = videoId;
-    data.Image = thumbnail.data;
+      data.VideoID = videoId;
+      data.Image = thumbnail.data;
+    }
   },
 
   async beforeUpdate({ params }) {

@@ -1,39 +1,31 @@
 import styled, { themeGet, device } from "@theme/utils";
+import image from "../../../data/images/photos/bg-page-title.jpg";
 
 export const SectionArea = styled.section`
-    padding: 70px 0 280px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: ${themeGet("padding.rowPadding.lg")};
+
     ${device.medium} {
-        padding: 100px 0 300px;
-    }
-    ${device.large} {
-        padding: 120px 0 300px;
-    }
-    ${device.xlarge} {
-        padding: 150px 0 390px;
-    }
-`;
-export const ContactColunm = styled.div`
-    display: block;
-    ${device.small} {
-        padding: 0 100px;
-    }
-    ${device.medium} {
-        padding: 0 100px;
+        padding: ${themeGet("padding.rowPadding.md")};
     }
 
     ${device.large} {
-        padding: 0 100px;
+        padding: ${themeGet("padding.rowPadding.lg")};
     }
+`;
+
+export const ContactColunm = styled.div`
+    display: block;
 
     ${device.xlarge} {
         display: flex;
-        padding-left: 83px;
         padding-right: 0;
     }
 
     ${device.xxlarge} {
         display: flex;
-        padding-left: 183px;
         padding-right: 0;
     }
 `;
@@ -42,10 +34,6 @@ export const ContactMapArea = styled.div`
     position: relative;
     width: 100%;
     height: auto;
-    iframe {
-        height: 100%;
-        width: 100%;
-    }
     ${device.medium} {
         height: 900px;
     }
@@ -54,38 +42,15 @@ export const ContactMapArea = styled.div`
     }
 `;
 export const ContactInfoContentArea = styled.div`
-    margin-bottom: 70px;
     min-width: auto;
-    padding: 51px 20px 49px 20px;
+    padding: 40px;
     position: relative;
     top: auto;
     transform: none;
     width: 100%;
     transform: translate(0, 0);
     background: ${themeGet("colors.orange")};
-    background-image: -ms-linear-gradient(
-        -30deg,
-        #fc6539 0%,
-        ${themeGet("colors.orange")} 100%
-    );
-    background: linear-gradient(
-        -30deg,
-        #fc6539 0%,
-        ${themeGet("colors.orange")} 100%
-    );
-    ${device.small} {
-        left: 0;
-        max-width: 500px;
-        top: 50%;
-    }
-    ${device.medium} {
-        padding: 53px 70px 49px 70px;
-    }
-    ${device.medium} {
-        transform: translate(0, -50%);
-        position: absolute;
-        top: 50%;
-    }
+    background: ${themeGet("colors.gradient")};
 `;
 export const ContactInfoItem = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -116,14 +81,11 @@ export const ContactIcon = styled.div`
 `;
 export const ContactInfoContent = styled.div`
     padding-left: 128px;
-    a {
-        color: #fff;
-        display: block;
-        margin-bottom: 1px;
-    }
+    color: #fff;
+    a,
     p {
+        display: block;
         color: #fff;
-        margin-bottom: 0;
     }
 `;
 export const ContactTitle = styled.h4`

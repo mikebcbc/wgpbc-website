@@ -5,4 +5,10 @@ module.exports = ({ env }) => ({
   "duplicate-button": {
     enabled: true,
   },
+  "import-export-entries": {
+    enabled: true,
+  },
+  "export-import-form": {
+    enabled: true,
+  },
 });

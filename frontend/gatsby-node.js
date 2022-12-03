@@ -64,6 +64,17 @@ exports.onCreateNode = ({ node, actions }) => {
     }
 };
 
+// exports.createSchemaCustomization = ({ actions }) => {
+//     const { createTypes } = actions;
+//     const typeDefs = `
+//       type STRAPI_SERMON implements Node {
+//         Image: STRAPI__MEDIA
+//         Audio: STRAPI__MEDIA
+//       }
+//     `;
+//     createTypes(typeDefs);
+// };
+
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
     //  const singlePostTemplate = path.resolve('src/templates/single-post.js')
@@ -172,6 +183,11 @@ exports.createPages = ({ actions, graphql }) => {
                             childImageSharp {
                                 gatsbyImageData(width: 590)
                             }
+                        }
+                    }
+                    Audio {
+                        localFile {
+                            publicURL
                         }
                     }
                     Title

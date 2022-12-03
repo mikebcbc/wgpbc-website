@@ -10,12 +10,14 @@ require("dotenv").config({
 const strapiConfig = {
     apiURL: process.env.STRAPI_API_URL,
     accessToken: process.env.STRAPI_TOKEN,
+    // skipFileDownloads: true,
     collectionTypes: [
         {
             singularName: "sermon",
             queryParams: {
                 populate: {
                     Image: "*",
+                    Audio: "*",
                     Preacher: {
                         populate: {
                             Avatar: "*",
@@ -92,6 +94,12 @@ module.exports = {
                 autoGenHomeLabel: `Home`,
                 exclude: [`/dev-404-page`, `/404`, `/404.html`],
                 useClassNames: true,
+            },
+        },
+        {
+            resolve: "gatsby-plugin-mailchimp",
+            options: {
+                endpoint: process.env.MAILCHIMP_ENDPOINT,
             },
         },
         {
