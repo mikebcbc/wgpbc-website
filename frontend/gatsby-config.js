@@ -10,7 +10,6 @@ require("dotenv").config({
 const strapiConfig = {
     apiURL: process.env.STRAPI_API_URL,
     accessToken: process.env.STRAPI_TOKEN,
-    // skipFileDownloads: true,
     collectionTypes: [
         {
             singularName: "sermon",
@@ -68,6 +67,7 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-use-query-params`,
         `gatsby-plugin-image`,
         `gatsby-plugin-emotion`,
         `gatsby-plugin-theme-ui`,

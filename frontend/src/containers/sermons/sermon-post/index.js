@@ -1,14 +1,15 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "theme-ui";
+import { navigate } from "gatsby";
 import SermonItem from "@components/sermon";
-import { PaginationArea, SermonsContainer } from "./style";
+import { SermonsContainer } from "./style";
 import { Col, Row, Container } from "react-bootstrap";
-import PaginationLinks from "../../../components/pagination";
+import Pagination from "react-js-pagination";
+import { StyledPagination } from "../../../SharedStyles";
 import PropTypes from "prop-types";
 
-const SermonListArea = ({ sermons, totalCount, currentPage, limit }) => {
-    let numberOfPages = Math.ceil(totalCount / limit);
+const SermonListArea = ({ sermons, totalCount, currentPage }) => {
     return (
         <SermonsContainer>
             <Container>
@@ -37,13 +38,20 @@ const SermonListArea = ({ sermons, totalCount, currentPage, limit }) => {
                     })}
                 </Row>
 
-                <PaginationArea>
-                    <PaginationLinks
-                        currentPage={currentPage}
-                        numberOfPages={numberOfPages}
-                        slug="sermons"
+                <StyledPagination>
+                    <Pagination
+                        activePage={currentPage}
+                        itemsCountPerPage={9}
+                        totalItemsCount={totalCount}
+                        pageRangeDisplayed={10}
+                        onChange={(e) =>
+                            navigate(`/sermons/${e !== 1 ? e : ""}`)
+                        }
+                        hideDisabled
+                        itemClass="page-item"
+                        linkClass="page-link"
                     />
-                </PaginationArea>
+                </StyledPagination>
             </Container>
         </SermonsContainer>
     );
@@ -53,7 +61,6 @@ SermonListArea.propTypes = {
     sermons: PropTypes.array,
     totalCount: PropTypes.number,
     currentPage: PropTypes.number,
-    limit: PropTypes.number,
 };
 
 export default SermonListArea;

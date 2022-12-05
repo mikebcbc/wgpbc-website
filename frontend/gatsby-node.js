@@ -77,7 +77,6 @@ exports.onCreateNode = ({ node, actions }) => {
 
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
-    //  const singlePostTemplate = path.resolve('src/templates/single-post.js')
     const templates = {
         singlePost: path.resolve("src/templates/single-post/index.js"),
         tagPosts: path.resolve("src/templates/tag-post/index.js"),
@@ -128,6 +127,7 @@ exports.createPages = ({ actions, graphql }) => {
             allStrapiTag {
                 nodes {
                     Name
+                    Slug
                 }
             }
 
@@ -170,6 +170,7 @@ exports.createPages = ({ actions, graphql }) => {
                     Slug
                     Tags {
                         Name
+                        Slug
                     }
                 }
             }
@@ -209,27 +210,21 @@ exports.createPages = ({ actions, graphql }) => {
     `).then((res) => {
         if (res.errors) return Promise.reject(res.errors);
 
-        // Create Tags Page
-        // const tags = res.data.allStrapiTag.nodes;
-
-        // tags.forEach((tag) => {
-        //     createPage({
-        //         path: `/tags/${slugify(tag.Name)}`,
-        //         component: templates.tagPosts,
-        //         context: {
-        //             tag,
-        //         },
-        //     });
-        // });
-
         // Create Single Blog Post Page
         const posts = res.data.allStrapiPost.nodes;
 
         // Tag Number Count
         let tagPostCounts = {};
         posts.forEach(({ Tags }) => {
-            Tags.forEach(({ Name }) => {
-                tagPostCounts[Name] = (tagPostCounts[Name] || 0) + 1;
+            tagPostCounts["All"] = {
+                slug: null,
+                count: (tagPostCounts["All"]?.count || 0) + 1,
+            };
+            Tags.forEach(({ Name, Slug }) => {
+                tagPostCounts[Name] = {
+                    slug: Slug,
+                    count: (tagPostCounts[Name]?.count || 0) + 1,
+                };
             });
         });
 
@@ -261,7 +256,7 @@ exports.createPages = ({ actions, graphql }) => {
                         skip: 0,
                         currentPage,
                         numberOfPostPages,
-                        // counts: tagPostCounts,
+                        counts: tagPostCounts,
                     },
                 });
             } else {
@@ -273,7 +268,7 @@ exports.createPages = ({ actions, graphql }) => {
                         skip: index * postsPerPage,
                         currentPage,
                         numberOfPostPages,
-                        // counts: tagPostCounts,
+                        counts: tagPostCounts,
                     },
                 });
             }

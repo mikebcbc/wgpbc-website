@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
 import { Row, Container, Col } from "react-bootstrap";
-import { Header, HeaderTitle } from "./style";
+import { Header, HeaderTitle } from "../../SharedStyles";
 import SermonListArea from "../../containers/sermons/sermon-post";
 import BlogSidebar from "../../containers/blog/blog-sidebar";
 import { graphql } from "gatsby";
@@ -26,7 +26,6 @@ const SermonsPage = ({ data, pageContext }) => {
                 sermons={data.allStrapiSermon.nodes}
                 totalCount={data.allStrapiSermon.totalCount}
                 currentPage={pageContext.currentPage}
-                limit={pageContext.limit}
             />
         </Layout>
     );

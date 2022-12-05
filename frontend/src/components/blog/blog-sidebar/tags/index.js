@@ -12,8 +12,13 @@ const Tags = ({ tags }) => {
     return (
         <TagSidebar>
             {Object.keys(tags).map((tag) => (
-                <Link key={tag} to={`/tags/${slugify(tag)}`}>
-                    {tag} <span>({tags[tag]})</span>
+                <Link
+                    key={tag}
+                    to={`/blog${
+                        tags[tag].slug ? `?category=${tags[tag].slug}` : ""
+                    }`}
+                >
+                    {tag} <span>({tags[tag].count})</span>
                 </Link>
             ))}
         </TagSidebar>

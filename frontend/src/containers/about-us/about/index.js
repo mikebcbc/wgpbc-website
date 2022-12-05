@@ -2,9 +2,8 @@
 import { jsx } from "theme-ui";
 import { Col, Container, Row } from "react-bootstrap";
 import SectionTitle from "@components/title";
-import { graphql, useStaticQuery } from "gatsby";
-import MissionBox from "@components/mission";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { Header, HeaderTitle } from "../../../SharedStyles";
 import {
     SectionArea,
     DarkSectionArea,
@@ -15,47 +14,9 @@ import {
     AboutTextStyle,
     AboutContent,
     ContentBoxWrp,
-    Header,
-    HeaderTitle,
 } from "./style";
 
 const AboutPageArea = () => {
-    // const aboutSectonQery = useStaticQuery(graphql`
-    //     query AboutPageQuery {
-    //         aboutUsJson(id: { eq: "about-us-page-section" }) {
-    //             id
-    //             section_title {
-    //                 title
-    //                 subTitle
-    //             }
-    //             content1
-    //             content2
-    //             image1 {
-    //                 childImageSharp {
-    //                     gatsbyImageData
-    //                 }
-    //             }
-    //             mission {
-    //                 id
-    //                 VerientClassName
-    //                 text1
-    //                 text2
-    //                 title
-    //             }
-    //         }
-    //     }
-    // `);
-    // const {
-    //     section_title: { title, subTitle },
-    //     image1,
-    //     content1,
-    //     content2,
-    //     content3,
-    //     mission,
-    // } = aboutSectonQery.aboutUsJson;
-
-    // const imageOne = getImage(image1);
-
     return (
         <div>
             <Header>

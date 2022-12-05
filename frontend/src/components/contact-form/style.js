@@ -4,11 +4,15 @@ export const ContactFormArea = styled.div`
     background-color: #f7f7f7;
     max-height: 580px;
     min-width: 50%;
+
+    &.sidebar {
+        padding: 0;
+    }
 `;
 
 export const Form = styled.form``;
 export const SectionTitle = styled.form`
-    margin-bottom: 54px;
+    margin-bottom: 27px;
 `;
 export const Subtitle = styled.h5`
     color: #fc6539;

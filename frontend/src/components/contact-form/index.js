@@ -11,8 +11,9 @@ import {
     Error,
 } from "./style";
 import addToMailchimp from "gatsby-plugin-mailchimp";
+import PropTypes from "prop-types";
 
-const ContactForm = () => {
+const ContactForm = ({ sidebar }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -20,29 +21,27 @@ const ContactForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(e);
-        console.log(name);
-        console.log(email);
         const result = await addToMailchimp(email, {
             FName: firstName,
             LName: lastName,
         });
-        console.log(result);
         setResult(result);
     };
 
     return (
-        <ContactFormArea>
+        <ContactFormArea className={sidebar ? "sidebar" : ""}>
             <Row>
                 <Col lg={12}>
                     <SectionTitle>
-                        <Title>
-                            {result?.result === "success"
-                                ? "Thank you!"
-                                : result?.result === "error"
-                                ? "Uh oh."
-                                : "Get In Touch."}
-                        </Title>
+                        {!sidebar && (
+                            <Title>
+                                {result?.result === "success"
+                                    ? "Thank you!"
+                                    : result?.result === "error"
+                                    ? "Uh oh."
+                                    : "Get In Touch."}
+                            </Title>
+                        )}
                         <p>
                             {result?.result === "success"
                                 ? result?.msg
@@ -56,7 +55,7 @@ const ContactForm = () => {
                     <Col lg={12}>
                         <Form onSubmit={handleSubmit}>
                             <Row className="row-gutter-20">
-                                <Col lg={6}>
+                                <Col lg={sidebar ? 12 : 6}>
                                     <FormGroup>
                                         <Input
                                             type="text"
@@ -68,7 +67,7 @@ const ContactForm = () => {
                                         />
                                     </FormGroup>
                                 </Col>
-                                <Col lg={6}>
+                                <Col lg={sidebar ? 12 : 6}>
                                     <FormGroup>
                                         <Input
                                             type="text"
@@ -97,8 +96,17 @@ const ContactForm = () => {
                                 </Col>
                                 <Col lg={12}>
                                     <FormGroup>
-                                        <Button type="submit" color="gradient">
-                                            Submit Now
+                                        <Button
+                                            type="submit"
+                                            color={
+                                                sidebar ? undefined : "gradient"
+                                            }
+                                            variant={
+                                                sidebar ? "outlined" : undefined
+                                            }
+                                            size={sidebar ? "small" : "medium"}
+                                        >
+                                            Subscribe
                                         </Button>
                                     </FormGroup>
                                 </Col>
@@ -109,6 +117,10 @@ const ContactForm = () => {
             )}
         </ContactFormArea>
     );
+};
+
+ContactForm.propTypes = {
+    sidebar: PropTypes.bool,
 };
 
 export default ContactForm;

@@ -37,6 +37,7 @@ const LatestBlog = () => {
                     }
                     Tags {
                         Name
+                        Slug
                     }
                     Slug
                 }

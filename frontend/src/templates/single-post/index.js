@@ -190,6 +190,7 @@ export const postQuery = graphql`
             }
             Tags {
                 Name
+                Slug
             }
         }
     }

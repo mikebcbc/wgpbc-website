@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import SermonItem from "@components/sermon";
+import Button from "@components/ui/button";
 import { SectionArea } from "./style";
 import SectionTitle from "@components/title";
 import { Container, Row, Col } from "react-bootstrap";
@@ -73,8 +74,9 @@ const SermonArea = () => {
                                     <SermonItem
                                         title={sermon.Title}
                                         image={
-                                            sermon.Image.localFile
-                                                .childImageSharp.gatsbyImageData
+                                            sermon.Image?.localFile
+                                                .childImageSharp
+                                                .gatsbyImageData || null
                                         }
                                         dec={sermon.Verses}
                                         preacherName={sermon.Preacher.Name}
@@ -90,6 +92,12 @@ const SermonArea = () => {
                                 </Col>
                             );
                         })}
+                </Row>
+                <Row className="justify-content-md-center" sx={{ mt: 30 }}>
+                    <Button path="/sermons" color="primary" size="small">
+                        View All Sermons{" "}
+                        <i className="flaticon-right-arrow"></i>
+                    </Button>
                 </Row>
             </Container>
         </SectionArea>

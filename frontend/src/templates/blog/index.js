@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
+import React, { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import Layout from "@layout";
 import SEO from "@components/seo";
@@ -7,18 +8,23 @@ import { Row, Container, Col } from "react-bootstrap";
 import BlogPostArea from "../../containers/blog/blog-post";
 import BlogSidebar from "../../containers/blog/blog-sidebar";
 import { graphql } from "gatsby";
+import { Header, HeaderTitle } from "../../SharedStyles";
+import { BlogContainer } from "./style";
 
 const BlogPage = ({ data, pageContext }) => {
     return (
         <Layout>
             <SEO title="Blog" pathname="/" />
-            <div
-                className="blog-grid-area"
-                sx={{
-                    pt: ["70px", "100px", "120px", "150px"],
-                    pb: ["280px", "300px", "300px", "390px"],
-                }}
-            >
+            <Header>
+                <Container>
+                    <Row>
+                        <Col>
+                            <HeaderTitle>All Posts</HeaderTitle>
+                        </Col>
+                    </Row>
+                </Container>
+            </Header>
+            <BlogContainer>
                 <Container>
                     <Row>
                         <Col lg={8}>
@@ -26,6 +32,7 @@ const BlogPage = ({ data, pageContext }) => {
                                 blogs={data.allStrapiPost.nodes}
                                 totalCount={data.allStrapiPost.totalCount}
                                 currentPage={pageContext.currentPage}
+                                counts={pageContext.counts}
                             />
                         </Col>
                         <Col lg={4}>
@@ -33,7 +40,7 @@ const BlogPage = ({ data, pageContext }) => {
                         </Col>
                     </Row>
                 </Container>
-            </div>
+            </BlogContainer>
         </Layout>
     );
 };
@@ -73,6 +80,7 @@ export const listBlogQuery = graphql`
                 }
                 Tags {
                     Name
+                    Slug
                 }
                 Slug
             }
