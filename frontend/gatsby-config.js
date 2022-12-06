@@ -71,9 +71,14 @@ module.exports = {
         `gatsby-plugin-image`,
         `gatsby-plugin-emotion`,
         `gatsby-plugin-theme-ui`,
-        `gatsby-transformer-json`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
+        {
+            resolve: "gatsby-plugin-mailchimp",
+            options: {
+                endpoint: process.env.MAILCHIMP_ENDPOINT,
+            },
+        },
         {
             resolve: `gatsby-transformer-remark`,
             options: {
@@ -85,28 +90,6 @@ module.exports = {
                         },
                     },
                 ],
-            },
-        },
-        {
-            resolve: `gatsby-plugin-breadcrumb`,
-            options: {
-                useAutoGen: true,
-                autoGenHomeLabel: `Home`,
-                exclude: [`/dev-404-page`, `/404`, `/404.html`],
-                useClassNames: true,
-            },
-        },
-        {
-            resolve: "gatsby-plugin-mailchimp",
-            options: {
-                endpoint: process.env.MAILCHIMP_ENDPOINT,
-            },
-        },
-        {
-            resolve: "gatsby-source-filesystem",
-            options: {
-                name: "data",
-                path: `${__dirname}/src/data/`,
             },
         },
         {
@@ -122,61 +105,6 @@ module.exports = {
                 rule: {
                     include: /\.svg$/,
                 },
-            },
-        },
-        {
-            resolve: "gatsby-plugin-manifest",
-            options: {
-                name: config.title,
-                short_name: config.shortName,
-                theme_color: config.themeColor,
-                background_color: config.backgroundColor,
-                display: "standalone",
-                scope: "/",
-                start_url: "/",
-                icon: config.favicon,
-                icons: [
-                    {
-                        src: "/icons/icon-72x72.png",
-                        sizes: "72x72",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-96x96.png",
-                        sizes: "96x96",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-128x128.png",
-                        sizes: "128x128",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-144x144.png",
-                        sizes: "144x144",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-152x152.png",
-                        sizes: "152x152",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-192x192.png",
-                        sizes: "192x192",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-384x384.png",
-                        sizes: "384x384",
-                        type: "image/png",
-                    },
-                    {
-                        src: "/icons/icon-512x512.png",
-                        sizes: "512x512",
-                        type: "image/png",
-                    },
-                ],
             },
         },
         {
