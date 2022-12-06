@@ -5,5 +5,3 @@ export const BlogPostContentArea = styled.div`
         padding-right: 50px;
     }
 `;
-
-export const PaginationArea = styled.div``;

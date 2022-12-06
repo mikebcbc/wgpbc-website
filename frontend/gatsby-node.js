@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 const path = require("path");
+const { object } = require("prop-types");
+const { author } = require("./config/config");
 const { slugify } = require("./src/utils/functions");
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -30,6 +32,7 @@ exports.createPages = ({ actions, graphql }) => {
         singlePost: path.resolve("src/templates/single-post/index.js"),
         postList: path.resolve("src/templates/blog/index.js"),
         sermonsList: path.resolve("src/templates/sermons/index.js"),
+        preacherList: path.resolve("src/templates/preacher/index.js"),
     };
 
     return graphql(`
@@ -214,6 +217,79 @@ exports.createPages = ({ actions, graphql }) => {
             if (inFirstPage) {
                 createPage({
                     path: `/sermons`,
+                    component: templates.sermonsList,
+                    context: {
+                        limit: sermonsPerPage,
+                        skip: 0,
+                        currentPage,
+                        numberOfSermonPages,
+                        counts: authorSermonCounts,
+                    },
+                });
+            } else {
+                createPage({
+                    path: `/sermons/${currentPage}`,
+                    component: templates.sermonsList,
+                    context: {
+                        limit: sermonsPerPage,
+                        skip: index * sermonsPerPage,
+                        currentPage,
+                        numberOfSermonPages,
+                        counts: authorSermonCounts,
+                    },
+                });
+            }
+        });
+
+        // Preachers
+        Object.keys(authorSermonCounts).forEach((name, i) => {
+            const numberOfPreacherPages = Math.ceil(
+                authorSermonCounts[name].count / sermonsPerPage
+            );
+
+            Array.from({ length: numberOfPreacherPages }).forEach(
+                (_, index) => {
+                    const inFirstPage = index === 0;
+                    const currentPage = index + 1;
+
+                    if (inFirstPage) {
+                        createPage({
+                            path: `/preacher/${authorSermonCounts[name].slug}`,
+                            component: templates.preacherList,
+                            context: {
+                                limit: sermonsPerPage,
+                                skip: 0,
+                                preacher: name,
+                                currentPage,
+                                numberOfPreacherPages,
+                                counts: authorSermonCounts,
+                            },
+                        });
+                    } else {
+                        createPage({
+                            path: `/preacher/${authorSermonCounts[name].slug}/${currentPage}`,
+                            component: templates.preacherList,
+                            context: {
+                                limit: sermonsPerPage,
+                                skip: index * sermonsPerPage,
+                                preacher: name,
+                                currentPage,
+                                numberOfPreacherPages,
+                                counts: authorSermonCounts,
+                            },
+                        });
+                    }
+                }
+            );
+        });
+
+        Array.from({ length: numberOfSermonPages }).forEach((_, index) => {
+            const inFirstPage = index === 0;
+            const currentPage = index + 1;
+
+            if (inFirstPage) {
+                createPage({
+                    path: `/preacher`,
                     component: templates.sermonsList,
                     context: {
                         limit: sermonsPerPage,

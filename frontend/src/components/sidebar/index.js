@@ -39,9 +39,7 @@ const Sidebar = ({ tags, title, route }) => {
                         <Link
                             key={tag}
                             to={`/${route}${
-                                sortedTags[tag].slug
-                                    ? `?category=${tags[tag].slug}`
-                                    : ""
+                                sortedTags[tag].slug ? `/${tags[tag].slug}` : ""
                             }`}
                         >
                             {tag} <span>({tags[tag].count})</span>

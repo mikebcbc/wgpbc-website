@@ -10,7 +10,7 @@ import Sidebar from "@components/sidebar";
 import { graphql } from "gatsby";
 import { SermonsContainer } from "./style";
 
-const SermonsPage = ({ data, pageContext }) => {
+const PreacherPage = ({ data, pageContext }) => {
     return (
         <Layout>
             <SEO title="Sermons" pathname="/" />
@@ -32,7 +32,10 @@ const SermonsPage = ({ data, pageContext }) => {
                                 totalCount={data.allStrapiSermon.totalCount}
                                 currentPage={pageContext.currentPage}
                                 counts={pageContext.counts}
-                                route="sermons"
+                                route={`preacher/${
+                                    pageContext.counts[pageContext.preacher]
+                                        .slug
+                                }`}
                             />
                         </Col>
                         <Col lg={4}>
@@ -49,12 +52,13 @@ const SermonsPage = ({ data, pageContext }) => {
     );
 };
 
-export const listSermonQuery = graphql`
-    query ListSermonQuery($skip: Int, $limit: Int) {
+export const ListPreacherQuery = graphql`
+    query listPreacherQuery($skip: Int, $limit: Int, $preacher: String) {
         allStrapiSermon(
             sort: { fields: createdAt, order: DESC }
             limit: $limit
             skip: $skip
+            filter: { Preacher: { Name: { eq: $preacher } } }
         ) {
             totalCount
             nodes {
@@ -94,9 +98,9 @@ export const listSermonQuery = graphql`
     }
 `;
 
-SermonsPage.propTypes = {
+PreacherPage.propTypes = {
     data: PropTypes.object,
     pageContext: PropTypes.object,
 };
 
-export default SermonsPage;
+export default PreacherPage;
