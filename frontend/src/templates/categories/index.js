@@ -11,7 +11,7 @@ import { graphql } from "gatsby";
 import { Header, HeaderTitle } from "../../SharedStyles";
 import { BlogContainer } from "./style";
 
-const BlogPage = ({ data, pageContext }) => {
+const CategoryPage = ({ data, pageContext }) => {
     return (
         <Layout>
             <SEO title="Blog" pathname="/" />
@@ -49,12 +49,13 @@ const BlogPage = ({ data, pageContext }) => {
     );
 };
 
-export const listBlogQuery = graphql`
-    query ListBlogQuery($skip: Int, $limit: Int) {
+export const listCategoryQuery = graphql`
+    query ListCategoryQuery($skip: Int, $limit: Int, $category: String) {
         allStrapiPost(
             sort: { fields: publishedAt, order: DESC }
             limit: $limit
             skip: $skip
+            filter: { Tags: { elemMatch: { Name: { in: [$category] } } } }
         ) {
             totalCount
             nodes {
@@ -92,9 +93,9 @@ export const listBlogQuery = graphql`
     }
 `;
 
-BlogPage.propTypes = {
+CategoryPage.propTypes = {
     data: PropTypes.object,
     pageContext: PropTypes.object,
 };
 
-export default BlogPage;
+export default CategoryPage;

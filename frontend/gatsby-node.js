@@ -31,6 +31,7 @@ exports.createPages = ({ actions, graphql }) => {
     const templates = {
         singlePost: path.resolve("src/templates/single-post/index.js"),
         postList: path.resolve("src/templates/blog/index.js"),
+        categoryList: path.resolve("src/templates/categories/index.js"),
         sermonsList: path.resolve("src/templates/sermons/index.js"),
         preacherList: path.resolve("src/templates/preacher/index.js"),
     };
@@ -187,6 +188,48 @@ exports.createPages = ({ actions, graphql }) => {
             }
         });
 
+        // Authors
+        Object.keys(tagPostCounts).forEach((name, i) => {
+            const numberOfCategoryPages = Math.ceil(
+                tagPostCounts[name].count / postsPerPage
+            );
+
+            Array.from({ length: numberOfCategoryPages }).forEach(
+                (_, index) => {
+                    const inFirstPage = index === 0;
+                    const currentPage = index + 1;
+
+                    if (inFirstPage) {
+                        createPage({
+                            path: `/category/${tagPostCounts[name].slug}`,
+                            component: templates.categoryList,
+                            context: {
+                                limit: postsPerPage,
+                                skip: 0,
+                                category: name,
+                                currentPage,
+                                numberOfCategoryPages,
+                                counts: tagPostCounts,
+                            },
+                        });
+                    } else {
+                        createPage({
+                            path: `/category/${tagPostCounts[name].slug}/${currentPage}`,
+                            component: templates.categoryList,
+                            context: {
+                                limit: postsPerPage,
+                                skip: index * postsPerPage,
+                                category: name,
+                                currentPage,
+                                numberOfCategoryPages,
+                                counts: tagPostCounts,
+                            },
+                        });
+                    }
+                }
+            );
+        });
+
         // Sermons
         const sermons = res.data.allStrapiSermon.nodes;
         const sermonsPerPage = 8;
@@ -281,37 +324,6 @@ exports.createPages = ({ actions, graphql }) => {
                     }
                 }
             );
-        });
-
-        Array.from({ length: numberOfSermonPages }).forEach((_, index) => {
-            const inFirstPage = index === 0;
-            const currentPage = index + 1;
-
-            if (inFirstPage) {
-                createPage({
-                    path: `/preacher`,
-                    component: templates.sermonsList,
-                    context: {
-                        limit: sermonsPerPage,
-                        skip: 0,
-                        currentPage,
-                        numberOfSermonPages,
-                        counts: authorSermonCounts,
-                    },
-                });
-            } else {
-                createPage({
-                    path: `/sermons/${currentPage}`,
-                    component: templates.sermonsList,
-                    context: {
-                        limit: sermonsPerPage,
-                        skip: index * sermonsPerPage,
-                        currentPage,
-                        numberOfSermonPages,
-                        counts: authorSermonCounts,
-                    },
-                });
-            }
         });
     });
 };
