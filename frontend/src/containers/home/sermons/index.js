@@ -11,7 +11,7 @@ const SermonArea = () => {
     const sermonQuery = useStaticQuery(graphql`
         query SermonQuery {
             allStrapiSermon(
-                sort: { fields: publishedAt, order: DESC }
+                sort: { fields: createdAt, order: DESC }
                 limit: 3
             ) {
                 totalCount

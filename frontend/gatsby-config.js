@@ -71,6 +71,7 @@ module.exports = {
         `gatsby-plugin-image`,
         `gatsby-plugin-emotion`,
         `gatsby-plugin-theme-ui`,
+        `gatsby-transformer-json`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
@@ -90,6 +91,13 @@ module.exports = {
                         },
                     },
                 ],
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: "data",
+                path: `${__dirname}/src/data/`,
             },
         },
         {
