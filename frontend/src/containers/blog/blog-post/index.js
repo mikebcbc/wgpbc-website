@@ -3,8 +3,6 @@ import { jsx } from "theme-ui";
 import React, { useEffect } from "react";
 import BlogList from "@components/blog/list-blog";
 import { BlogPostContentArea, PaginationArea } from "./style";
-import { graphql, useStaticQuery } from "gatsby";
-import PaginationLinks from "../../../components/pagination";
 import { StyledPagination } from "../../../SharedStyles";
 import Pagination from "react-js-pagination";
 import PropTypes from "prop-types";

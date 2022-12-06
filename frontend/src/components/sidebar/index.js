@@ -30,7 +30,7 @@ const Sidebar = ({ tags, title, route }) => {
                 <SeparatorLine>
                     <StaticImage
                         className="me-1"
-                        src="../data/images/shape/line-t2.png"
+                        src="../../data/images/shape/line-t2.png"
                         alt="Image-Givest"
                     />
                 </SeparatorLine>
@@ -54,7 +54,7 @@ const Sidebar = ({ tags, title, route }) => {
                 <SeparatorLine>
                     <StaticImage
                         className="me-1"
-                        src="../data/images/shape/line-t2.png"
+                        src="../../data/images/shape/line-t2.png"
                         alt="Image-Givest"
                     />
                 </SeparatorLine>

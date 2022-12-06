@@ -4,6 +4,7 @@ export const ContactFormArea = styled.div`
     background-color: #f7f7f7;
     max-height: 580px;
     min-width: 50%;
+    height: 100%;
 
     &.sidebar {
         padding: 0;
