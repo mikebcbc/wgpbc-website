@@ -40,6 +40,7 @@ const CategoryPage = ({ data, pageContext }) => {
                                 title="Categories"
                                 tags={pageContext.counts}
                                 route="category"
+                                allRoute="blog"
                             />
                         </Col>
                     </Row>

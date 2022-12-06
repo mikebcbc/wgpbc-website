@@ -43,6 +43,7 @@ const PreacherPage = ({ data, pageContext }) => {
                                 title="Preachers"
                                 tags={pageContext.counts}
                                 route="preacher"
+                                allRoute="sermons"
                             />
                         </Col>
                     </Row>

@@ -12,7 +12,7 @@ import {
 import { Link } from "gatsby";
 1;
 
-const Sidebar = ({ tags, title, route }) => {
+const Sidebar = ({ tags, title, route, allRoute }) => {
     const sortedTags = {};
 
     Object.keys(tags)
@@ -38,9 +38,15 @@ const Sidebar = ({ tags, title, route }) => {
                     {Object.keys(sortedTags).map((tag) => (
                         <Link
                             key={tag}
-                            to={`/${route}${
-                                sortedTags[tag].slug ? `/${tags[tag].slug}` : ""
-                            }`}
+                            to={
+                                tags[tag].slug
+                                    ? `/${route}${
+                                          sortedTags[tag].slug
+                                              ? `/${tags[tag].slug}`
+                                              : ""
+                                      }`
+                                    : `/${allRoute}`
+                            }
                         >
                             {tag} <span>({tags[tag].count})</span>
                         </Link>
@@ -66,6 +72,7 @@ Sidebar.propTypes = {
     tags: PropTypes.object,
     title: PropTypes.string,
     route: PropTypes.string,
+    allRoute: PropTypes.string,
 };
 
 export default Sidebar;
