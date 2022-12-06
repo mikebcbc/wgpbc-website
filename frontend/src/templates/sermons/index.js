@@ -6,8 +6,9 @@ import SEO from "@components/seo";
 import { Row, Container, Col } from "react-bootstrap";
 import { Header, HeaderTitle } from "../../SharedStyles";
 import SermonListArea from "../../containers/sermons/sermon-post";
-import BlogSidebar from "../../containers/blog/blog-sidebar";
+import Sidebar from "@components/sidebar";
 import { graphql } from "gatsby";
+import { SermonsContainer } from "./style";
 
 const SermonsPage = ({ data, pageContext }) => {
     return (
@@ -22,11 +23,26 @@ const SermonsPage = ({ data, pageContext }) => {
                     </Row>
                 </Container>
             </Header>
-            <SermonListArea
-                sermons={data.allStrapiSermon.nodes}
-                totalCount={data.allStrapiSermon.totalCount}
-                currentPage={pageContext.currentPage}
-            />
+            <SermonsContainer>
+                <Container>
+                    <Row>
+                        <Col lg={8}>
+                            <SermonListArea
+                                sermons={data.allStrapiSermon.nodes}
+                                totalCount={data.allStrapiSermon.totalCount}
+                                currentPage={pageContext.currentPage}
+                            />
+                        </Col>
+                        <Col lg={4}>
+                            <Sidebar
+                                title="Preachers"
+                                tags={pageContext.counts}
+                                route="sermons"
+                            />
+                        </Col>
+                    </Row>
+                </Container>
+            </SermonsContainer>
         </Layout>
     );
 };
@@ -62,7 +78,11 @@ export const listSermonQuery = graphql`
                     Avatar {
                         localFile {
                             childImageSharp {
-                                gatsbyImageData
+                                gatsbyImageData(
+                                    width: 40
+                                    height: 40
+                                    transformOptions: { fit: COVER }
+                                )
                             }
                         }
                     }

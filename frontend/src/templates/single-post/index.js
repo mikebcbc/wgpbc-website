@@ -7,7 +7,7 @@ import SEO from "@components/seo";
 import { graphql, Link } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
 import { slugify } from "@utils/functions";
-import BlogSidebar from "@containers/blog/blog-sidebar";
+import Sidebar from "@components/sidebar";
 import authors from "@utils/authors";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import { DiscussionEmbed } from "disqus-react";
@@ -151,7 +151,7 @@ const SinglePosts = ({ data, location, pageContext }) => {
                             </PostDetailsContentWrap>
                         </Col>
                         <Col lg={4}>
-                            <BlogSidebar tags={pageContext.counts} />
+                            <Sidebar tags={pageContext.counts} />
                         </Col>
                     </Row>
                 </Container>

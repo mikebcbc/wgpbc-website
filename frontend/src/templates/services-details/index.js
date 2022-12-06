@@ -5,7 +5,7 @@ import Layout from "@layout";
 import SEO from "@components/seo";
 import { graphql, Link } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sidebar";
+import Sidebar from "@components/sidebar";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
     ServicesDetailsArea,
@@ -85,7 +85,7 @@ const ServicesPosts = ({ data, location, pageContext }) => {
                             </ServicesDetailsContent>
                         </Col>
                         <Col lg={4}>
-                            <BlogSidebar />
+                            <Sidebar />
                         </Col>
                     </Row>
                 </Container>

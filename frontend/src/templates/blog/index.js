@@ -6,7 +6,7 @@ import Layout from "@layout";
 import SEO from "@components/seo";
 import { Row, Container, Col } from "react-bootstrap";
 import BlogPostArea from "../../containers/blog/blog-post";
-import BlogSidebar from "../../containers/blog/blog-sidebar";
+import Sidebar from "@components/sidebar";
 import { graphql } from "gatsby";
 import { Header, HeaderTitle } from "../../SharedStyles";
 import { BlogContainer } from "./style";
@@ -36,7 +36,11 @@ const BlogPage = ({ data, pageContext }) => {
                             />
                         </Col>
                         <Col lg={4}>
-                            <BlogSidebar tags={pageContext.counts} />
+                            <Sidebar
+                                title="Categories"
+                                tags={pageContext.counts}
+                                route="blog"
+                            />
                         </Col>
                     </Row>
                 </Container>

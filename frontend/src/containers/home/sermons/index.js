@@ -68,7 +68,6 @@ const SermonArea = () => {
                 <Row>
                     {sermonData &&
                         sermonData.slice(0, 3).map((sermon) => {
-                            console.log(sermon.Audio);
                             return (
                                 <Col lg={4} md={6} sm={6} key={sermon.id}>
                                     <SermonItem
@@ -86,7 +85,8 @@ const SermonArea = () => {
                                         }
                                         videoId={sermon.VideoID}
                                         audioLink={
-                                            sermon.Audio.localFile.publicURL
+                                            sermon.Audio?.localFile.publicURL ||
+                                            null
                                         }
                                     />
                                 </Col>

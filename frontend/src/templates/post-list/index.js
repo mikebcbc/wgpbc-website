@@ -3,7 +3,7 @@ import Layout from "@layout";
 import SEO from "@components/seo";
 import { graphql } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
-import BlogSidebar from "@containers/blog/blog-sidebar";
+import Sidebar from "@components/sidebar";
 import BlogList from "../../components/blog/list-blog";
 import PaginationLinks from "../../components/pagination";
 import { BlogPostContentArea, BlogDetailsArea } from "./style";
@@ -60,7 +60,7 @@ const PostList = ({ location, data, pageContext, ...props }) => {
                             />
                         </Col>
                         <Col lg={4}>
-                            <BlogSidebar />
+                            <Sidebar />
                         </Col>
                     </Row>
                 </Container>

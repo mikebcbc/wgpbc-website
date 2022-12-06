@@ -276,8 +276,26 @@ exports.createPages = ({ actions, graphql }) => {
 
         // Sermon List Pagination
         const sermons = res.data.allStrapiSermon.nodes;
-        const sermonsPerPage = 9;
+        const sermonsPerPage = 8;
         const numberOfSermonPages = Math.ceil(sermons.length / sermonsPerPage);
+
+        // Tag Number Count
+        let authorSermonCounts = {};
+        sermons.forEach(({ Preacher }) => {
+            if (Preacher == null) {
+                return;
+            }
+
+            authorSermonCounts["All"] = {
+                slug: null,
+                count: (authorSermonCounts["All"]?.count || 0) + 1,
+            };
+
+            authorSermonCounts[Preacher.Name] = {
+                slug: slugify(Preacher.Name),
+                count: (authorSermonCounts[Preacher.Name]?.count || 0) + 1,
+            };
+        });
 
         Array.from({ length: numberOfSermonPages }).forEach((_, index) => {
             const inFirstPage = index === 0;
@@ -292,7 +310,7 @@ exports.createPages = ({ actions, graphql }) => {
                         skip: 0,
                         currentPage,
                         numberOfSermonPages,
-                        counts: tagPostCounts,
+                        counts: authorSermonCounts,
                     },
                 });
             } else {
@@ -304,7 +322,7 @@ exports.createPages = ({ actions, graphql }) => {
                         skip: index * sermonsPerPage,
                         currentPage,
                         numberOfSermonPages,
-                        counts: tagPostCounts,
+                        counts: authorSermonCounts,
                     },
                 });
             }

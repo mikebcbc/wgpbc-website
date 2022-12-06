@@ -62,7 +62,8 @@ const CausesAll = () => {
                                         }
                                         videoId={sermon.VideoID}
                                         audioLink={
-                                            sermon.Audio.localFile.publicURL
+                                            sermon.Audio?.localFile.publicURL ||
+                                            null
                                         }
                                     />
                                 </Col>
