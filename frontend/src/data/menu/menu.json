@@ -1,0 +1,22 @@
+[
+    {
+        "text": "Home",
+        "link": "/",
+        "isSubmenu": false
+    },
+    {
+        "text": "About",
+        "link": "/about-us/",
+        "isSubmenu": false
+    },
+    {
+        "text": "Sermons",
+        "link": "/sermons/",
+        "isSubmenu": false
+    },
+    {
+        "text": "Blog",
+        "link": "/blog/",
+        "isSubmenu": false
+    }
+]

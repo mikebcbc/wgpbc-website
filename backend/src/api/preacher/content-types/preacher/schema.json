@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "preachers",
+  "info": {
+    "singularName": "preacher",
+    "pluralName": "preachers",
+    "displayName": "Preacher",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

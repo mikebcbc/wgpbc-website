@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sermons",
+  "info": {
+    "singularName": "sermon",
+    "pluralName": "sermons",
+    "displayName": "Sermon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Link": {
+      "type": "string",
+      "required": false,
+      "regex": "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Verses": {
+      "type": "string",
+      "required": false
+    },
+    "Preacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::preacher.preacher"
+    },
+    "VideoID": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Audio": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "audios"
+      ]
+    }
+  }
+}
