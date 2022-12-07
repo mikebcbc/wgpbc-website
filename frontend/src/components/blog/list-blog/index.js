@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import Button from "@components/ui/button";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import { slugify } from "../../../utils/functions";
-import authors from "../../../utils/authors";
 import {
     PostItemWrap,
     PostThumb,
@@ -18,14 +17,11 @@ import {
     Excerpt,
 } from "./style";
 
-const BlogList = ({ thumbnail, title, date, tags, body, postAuthor, slug }) => {
+const BlogList = ({ thumbnail, title, date, tags, body, slug }) => {
     const dateSplit = date.split(" ");
     const month = dateSplit[0];
     const day = dateSplit[1];
     const image = getImage(thumbnail);
-
-    // Author Post page
-    const author = authors.find((x) => x.name === postAuthor);
 
     return (
         <PostItemWrap>
@@ -52,18 +48,6 @@ const BlogList = ({ thumbnail, title, date, tags, body, postAuthor, slug }) => {
                                     {tag.Name}
                                 </Link>
                             ))}
-                        {author && (
-                            <Link className="post-author" to="/">
-                                <span className="icon">
-                                    <StaticImage
-                                        className="icon-img"
-                                        src="../../../data/images/icons/admin1.png"
-                                        alt="Icon-Image"
-                                    />
-                                </span>
-                                By: {author && author.name}
-                            </Link>
-                        )}
                     </MetaBox>
                     <Title>
                         <Link to={`/blog/${slug}`}>{title}</Link>
@@ -93,7 +77,6 @@ BlogList.propTypes = {
     date: PropTypes.string,
     tags: PropTypes.array,
     body: PropTypes.string,
-    postAuthor: PropTypes.string,
     slug: PropTypes.string,
 };
 

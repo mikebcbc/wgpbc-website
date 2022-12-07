@@ -60,8 +60,8 @@ const Hero = () => {
                             <Content>
                                 <SubTitle>
                                     <StaticImage
-                                        src="../../../data/images/icons/1.png"
-                                        alt="Givest"
+                                        src="../../../data/images/icons/giving-hand.png"
+                                        alt="Hand with heart in it"
                                     />
                                     <h6>{subTitle}</h6>
                                 </SubTitle>
@@ -76,7 +76,7 @@ const Hero = () => {
                                     className="btn-wrp"
                                     sx={{ display: "flex" }}
                                 >
-                                    <Button path="/about" color="gradient">
+                                    <Button path="/about-us" color="gradient">
                                         Who We Are{" "}
                                         <i className="flaticon-right-arrow"></i>
                                     </Button>
@@ -118,6 +118,7 @@ const Hero = () => {
                                     >
                                         <GatsbyImage
                                             image={getImage(shapeImage)}
+                                            alt="floating accent square"
                                         />
                                     </span>
                                 </div>
@@ -128,10 +129,16 @@ const Hero = () => {
                 <SliderShape>
                     <div className="slider-shape">
                         <div className="shape-banner-line1">
-                            <StaticImage src="../../../data/images/shape/banner-line1.png" />
+                            <StaticImage
+                                src="../../../data/images/shape/banner-line1.png"
+                                alt="banner line"
+                            />
                         </div>
                         <div className="shape-banner-line2">
-                            <StaticImage src="../../../data/images/shape/banner-line2.png" />
+                            <StaticImage
+                                src="../../../data/images/shape/banner-line2.png"
+                                alt="banner line"
+                            />
                         </div>
                     </div>
                 </SliderShape>

@@ -18,3 +18,5 @@ ContactPages.propTypes = {
 };
 
 export default ContactPages;
+
+export const Head = () => <SEO title="Contact Us" pathname="/contact-us" />;

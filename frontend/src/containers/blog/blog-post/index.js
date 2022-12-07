@@ -40,7 +40,6 @@ const BlogPostArea = ({ blogs, totalCount, currentPage, counts }) => {
                         body={blog.Content.data.childMarkdownRemark.excerpt}
                         date={blog.publishedAt}
                         slug={blog.Slug}
-                        postAuthor={`${blog.Author.firstname} ${blog.Author.lastname}`}
                     />
                 );
             })}

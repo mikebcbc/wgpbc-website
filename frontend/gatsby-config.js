@@ -47,26 +47,16 @@ const strapiConfig = {
 module.exports = {
     pathPrefix: config.pathPrefix,
     siteMetadata: {
-        title: config.title,
-        titleTemplate: config.titleTemplate,
-        description: config.description,
-        image: config.image,
-        siteLanguage: config.siteLanguage,
-        author: config.author,
-        mainUrl: config.siteUrl,
-        siteUrl:
-            activeEnv === "development"
-                ? config.localUrl
-                : `${config.siteUrl}${config.pathPrefix}`,
-        canonical: config.canonical,
-        twitterUsername: config.twitterUsername,
-        keywords: config.keywords,
+        title: `Winter Garden Primitive Baptist Church`,
+        description: `Step into a time tunnel, walk in "the old paths", and worship in a manner that is 2000 years old. No distractions from the message of Jesus Christ and Him crucified.`,
+        image: `/images/church.png`,
+        siteUrl: `https://www.wintergardenpbc.com`,
+        keywords: `primitive baptist, winter garden, winter garden church, church in winter garden, winter garden pbc, wgpbc`,
     },
     flags: {
         DEV_SSR: true,
     },
     plugins: [
-        `gatsby-plugin-react-helmet`,
         `gatsby-plugin-use-query-params`,
         `gatsby-plugin-image`,
         `gatsby-plugin-emotion`,

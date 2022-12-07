@@ -101,3 +101,5 @@ SermonsPage.propTypes = {
 };
 
 export default SermonsPage;
+
+export const Head = () => <SEO title="Sermons" pathname="/sermons" />;

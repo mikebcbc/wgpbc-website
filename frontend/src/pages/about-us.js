@@ -20,3 +20,5 @@ AboutUsPage.propTypes = {
 };
 
 export default AboutUsPage;
+
+export const Head = () => <SEO title="Who We Are" pathname="/about-us" />;

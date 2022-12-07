@@ -122,42 +122,6 @@ export const SingleBlogContent = styled.div`
         }
     }
 `;
-export const CategorySocialContent = styled.div`
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 41px;
-    padding-bottom: 20px;
-`;
-export const PostSocialItems = styled.div`
-    a {
-        background-color: #f7f7f7;
-        border-radius: 50%;
-        color: #001d23;
-        display: inline-block;
-        font-size: 16px;
-        height: 45px;
-        line-height: 45px;
-        margin-right: 6px;
-        min-width: 45px;
-        text-align: center;
-        width: 45px;
-        transition: 0.1s;
-        -webkit-transition: 0.1s;
-        -moz-transition: 0.1s;
-        -ms-transition: 0.1s;
-        -o-transition: 0.1s;
-        &:hover {
-            color: #fff;
-            background: ${themeGet("colors.orange")};
-            background: linear-gradient(
-                to right,
-                ${themeGet("colors.orange")} 0%,
-                #fc6539 100%
-            );
-        }
-    }
-`;
 
 export const PostCategoryItems = styled.div`
     span {
@@ -175,12 +139,3 @@ export const PostCategoryItems = styled.div`
         }
     }
 `;
-
-export const CommentArea = styled.div`
-    padding-top: 34px;
-    ${device.large} {
-        padding-top: 54px;
-    }
-`;
-
-export const CommentTitle = styled.h4``;

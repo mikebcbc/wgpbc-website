@@ -8,9 +8,7 @@ import { graphql, Link } from "gatsby";
 import { Row, Container, Col } from "react-bootstrap";
 import { slugify } from "@utils/functions";
 import Sidebar from "@components/sidebar";
-import authors from "@utils/authors";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
-import { DiscussionEmbed } from "disqus-react";
 import {
     SingleBlogContent,
     PostDetailsContentWrap,
@@ -20,11 +18,6 @@ import {
     Content,
     Title,
     MetaBox,
-    CategorySocialContent,
-    PostSocialItems,
-    PostCategoryItems,
-    CommentArea,
-    CommentTitle,
     PostHeader,
     PostTitle,
 } from "./style";
@@ -33,25 +26,9 @@ const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.strapiPost;
     const image = post.Image.localFile.childImageSharp.gatsbyImageData;
     const author = `${post.Author.firstname} ${post.Author.lastname}`;
-    // const image = getImage(post.thumbnail.childImageSharp);
-
-    // Author Post page
-    // const author = authors.find((x) => x.name === post.author);
-
-    // // Social Share
-    // const baseUrl = "https://hasthems.com";
-
-    // // Disqus Comments add
-    // const disqusShorttname = "mitech-1";
-    // const disquscConfig = {
-    //     identifier: data.markdownRemark.id,
-    //     title: post.title,
-    //     url: baseUrl + "/" + pageContext.slug,
-    // };
 
     return (
         <Layout>
-            {/* <SEO title={post.title} pathname="/" /> */}
             <PostHeader>
                 <Container>
                     <Row>
@@ -70,7 +47,7 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                     <Thumb>
                                         <GatsbyImage
                                             image={image}
-                                            alt={post.title}
+                                            alt={post.Title}
                                         />
                                     </Thumb>
                                     <Content>
@@ -109,44 +86,7 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                     .childMarkdownRemark.html,
                                             }}
                                         />
-
-                                        <CategorySocialContent>
-                                            {/* <PostSocialItems>
-                                                <a
-                                                    href={
-                                                        "https://www.facebook.com/sharer/sharer.php?u=" +
-                                                        baseUrl +
-                                                        pageContext.slug
-                                                    }
-                                                >
-                                                    <i className="icofont-facebook"></i>
-                                                </a>
-                                                <a href="#/">
-                                                    <i className="icofont-skype"></i>
-                                                </a>
-                                                <a
-                                                    href={
-                                                        "https://twitter.com/share?url=" +
-                                                        baseUrl +
-                                                        pageContext.slug +
-                                                        "&text=" +
-                                                        post.title +
-                                                        "&via" +
-                                                        "twitterHandle"
-                                                    }
-                                                >
-                                                    <i className="icofont-twitter"></i>
-                                                </a>
-                                            </PostSocialItems> */}
-                                        </CategorySocialContent>
                                     </Content>
-                                    {/* <CommentArea>
-                                        <CommentTitle>Comments</CommentTitle>
-                                        <DiscussionEmbed
-                                            shortname={disqusShorttname}
-                                            config={disquscConfig}
-                                        />
-                                    </CommentArea> */}
                                 </PostDetailsBody>
                             </PostDetailsContentWrap>
                         </Col>
@@ -197,3 +137,9 @@ export const postQuery = graphql`
 `;
 
 export default SinglePosts;
+
+export const Head = ({ data }) => <SEO title={data.strapiPost.Title} />;
+
+Head.propTypes = {
+    data: PropTypes.object,
+};

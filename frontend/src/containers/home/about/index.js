@@ -71,7 +71,7 @@ const AboutArea = () => {
                                             <GatsbyImage
                                                 image={imageOne}
                                                 className="img-one"
-                                                alt="Image-Givest"
+                                                alt="Mother and baby in worship service"
                                             />
                                         </Tilt>
                                     </Col>
@@ -95,7 +95,7 @@ const AboutArea = () => {
                                                 image={imageTwo}
                                                 className="img-two"
                                                 src=""
-                                                alt="Image-Givest"
+                                                alt="Four generation family in service"
                                             />
                                         </Tilt>
                                     </Col>
@@ -109,7 +109,7 @@ const AboutArea = () => {
                             <p className="secondary">{content2}</p>
                             <p className="secondary">{content3}</p>
                             <Button
-                                path="/about"
+                                path="/about-us"
                                 color="gradient"
                                 className="d-block d-md-inline-block"
                             >

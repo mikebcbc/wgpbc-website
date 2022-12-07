@@ -12,7 +12,6 @@ import { useStaticQuery, graphql } from "gatsby";
 const IndexPage = () => {
     return (
         <Layout>
-            <SEO title="Home" pathname="/" />
             <Hero />
             <AboutArea />
             <SermonArea />
@@ -23,3 +22,7 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const Head = () => (
+    <SEO title="Winter Garden Primitive Baptist Church - Home" pathname="/" />
+);
