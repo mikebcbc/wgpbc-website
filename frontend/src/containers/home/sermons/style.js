@@ -1,7 +1,7 @@
 import styled, { themeGet, device } from "@theme/utils";
 
 export const SectionArea = styled.section`
-    padding: 48px 0 52px;
+    padding: ${themeGet("padding.rowPadding.sm")};
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.md")};
     }

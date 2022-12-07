@@ -80,7 +80,7 @@ const AboutArea = () => {
                                         md={8}
                                         lg={12}
                                         xl={8}
-                                        className="tilt-animation"
+                                        className="text-center text-md-left"
                                     >
                                         <Tilt
                                             className=" js-tilt"
@@ -108,7 +108,11 @@ const AboutArea = () => {
                             <AboutTextStyle>{content1}</AboutTextStyle>
                             <p className="secondary">{content2}</p>
                             <p className="secondary">{content3}</p>
-                            <Button path="/about" color="gradient">
+                            <Button
+                                path="/about"
+                                color="gradient"
+                                className="d-block d-md-inline-block"
+                            >
                                 Learn More
                             </Button>
                         </div>

@@ -3,15 +3,16 @@ import image from "../../../data/images/photos/bg-page-title.jpg";
 
 export const SectionArea = styled.section`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0;
-    padding: ${themeGet("padding.rowPadding.lg")};
+    padding: ${themeGet("padding.rowPadding.sm")};
 
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.md")};
     }
 
     ${device.large} {
+        grid-template-columns: 1fr 1fr;
         padding: ${themeGet("padding.rowPadding.lg")};
     }
 `;
@@ -42,8 +43,7 @@ export const ContactMapArea = styled.div`
     }
 `;
 export const ContactInfoContentArea = styled.div`
-    min-width: auto;
-    padding: 40px;
+    padding: 20px;
     position: relative;
     top: auto;
     transform: none;
@@ -51,6 +51,10 @@ export const ContactInfoContentArea = styled.div`
     transform: translate(0, 0);
     background: ${themeGet("colors.orange")};
     background: ${themeGet("colors.gradient")};
+
+    ${device.medium} {
+        padding: 40px;
+    }
 `;
 export const ContactInfoItem = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);

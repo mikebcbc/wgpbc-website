@@ -30,9 +30,9 @@ const theme = {
     },
     padding: {
         rowPadding: {
-            sm: "15px 0",
-            md: "30px 0",
-            lg: "60px 0",
+            sm: "15px 15px",
+            md: "30px 15px",
+            lg: "60px 15px",
         },
     },
     fontSize: {

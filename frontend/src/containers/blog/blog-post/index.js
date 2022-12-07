@@ -50,7 +50,7 @@ const BlogPostArea = ({ blogs, totalCount, currentPage, counts }) => {
                     activePage={currentPage}
                     itemsCountPerPage={3}
                     totalItemsCount={pageCount}
-                    pageRangeDisplayed={10}
+                    pageRangeDisplayed={8}
                     onChange={(e) => navigate(`/blog/${e !== 1 ? e : ""}`)}
                     hideDisabled
                     itemClass="page-item"

@@ -2,7 +2,7 @@ import styled, { themeGet, device } from "@theme/utils";
 import image from "../../../data/images/photos/bg-page-title.jpg";
 
 export const SectionArea = styled.section`
-    padding: ${themeGet("padding.rowPadding.lg")};
+    padding: ${themeGet("padding.rowPadding.sm")};
 
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.md")};
@@ -28,8 +28,11 @@ export const DarkSectionArea = styled.section`
 
 export const ArticlesOfFaith = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
+    grid-template-columns: 1fr;
+    ${device.medium} {
+        grid-template-columns: 1fr 1fr;
+    }
 `;
 
 export const ArticleFaith = styled.div`
@@ -38,7 +41,6 @@ export const ArticleFaith = styled.div`
 `;
 
 export const LayerStyle = styled.div`
-    margin-top: 25px;
     position: relative;
 
     .row > [class*="col-"] {
@@ -48,20 +50,21 @@ export const LayerStyle = styled.div`
     .row.m-0 {
         margin: 0 !important;
     }
-    .img-two {
-        margin-left: 0px;
-        ${device.small} {
-            margin-left: 0px;
+`;
+export const Thumb = styled.div`
+    .gatsby-image-wrapper {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 25px;
+        ${device.medium} {
+            height: 600px;
         }
         ${device.large} {
-            margin-left: 0px;
-        }
-        ${device.xlarge} {
-            margin-left: -23px;
+            width: auto;
+            height: auto;
         }
     }
 `;
-export const Thumb = styled.div``;
 
 export const AboutTextStyle = styled.p`
     color: #464444;

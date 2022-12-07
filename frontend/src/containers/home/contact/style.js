@@ -2,7 +2,7 @@ import styled, { themeGet, device } from "@theme/utils";
 import testimonialTitleBg from "@data/images/contact/congregation.jpg";
 
 export const SectionArea = styled.section`
-    padding: ${themeGet("padding.rowPadding.md")};
+    padding: ${themeGet("padding.rowPadding.sm")};
 
     ${device.medium} {
         padding: ${themeGet("padding.rowPadding.md")};

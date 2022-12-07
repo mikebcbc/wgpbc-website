@@ -49,7 +49,7 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                                     {tag.Name}
                                 </Link>
                             ))}
-                        <PostShare>
+                        {/* <PostShare>
                             <Link className="icon-share" to="/">
                                 <StaticImage
                                     src="../../../data/images/icons/share-line-gradient.png"
@@ -68,7 +68,7 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                                     </a>
                                 </li>
                             </ul>
-                        </PostShare>
+                        </PostShare> */}
                     </MetaBox>
                     <Title>
                         <Link to={`/${slug}`}>{title}</Link>

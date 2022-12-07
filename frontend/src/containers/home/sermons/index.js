@@ -93,7 +93,7 @@ const SermonArea = () => {
                             );
                         })}
                 </Row>
-                <Row className="justify-content-md-center" sx={{ mt: 30 }}>
+                <Row className="justify-content-center" sx={{ mt: 30 }}>
                     <Button path="/sermons" color="primary" size="small">
                         View All Sermons{" "}
                         <i className="flaticon-right-arrow"></i>

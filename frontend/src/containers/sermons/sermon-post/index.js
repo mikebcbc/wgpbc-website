@@ -41,7 +41,7 @@ const SermonListArea = ({
                         return;
                     }
                     return (
-                        <Col lg={6} md={6} sm={6} key={sermon.id}>
+                        <Col lg={6} md={6} sm={12} key={sermon.id}>
                             <SermonItem
                                 key={i}
                                 title={sermon.Title}
@@ -70,7 +70,7 @@ const SermonListArea = ({
                     activePage={currentPage}
                     itemsCountPerPage={8}
                     totalItemsCount={pageCount}
-                    pageRangeDisplayed={10}
+                    pageRangeDisplayed={8}
                     onChange={(e) => navigate(`/${route}/${e !== 1 ? e : ""}`)}
                     hideDisabled
                     itemClass="page-item"

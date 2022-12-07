@@ -53,10 +53,10 @@ export const HeaderActionArea = styled.div`
     }
 `;
 export const ButtonBoxArea = styled.span`
-    display: none;
+    order: -1;
     margin-top: 10px;
     ${device.small} {
-        display: block;
+        order: 1;
     }
 `;
 export const MobileMenuBtn = styled.button`

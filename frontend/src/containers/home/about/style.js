@@ -3,7 +3,7 @@ import styled, { themeGet, device } from "@theme/utils";
 export const SectionArea = styled.section`
     position: relative;
     background-color: ${themeGet("colors.backgroundAlt")};
-    padding: ${themeGet("padding.rowPadding.md")};
+    padding: ${themeGet("padding.rowPadding.sm")};
 
     .title {
         text-align: center;
@@ -23,7 +23,7 @@ export const SectionArea = styled.section`
 
     & .img-one {
         display: none !important;
-        ${device.small} {
+        ${device.medium} {
             display: inline-block !important;
         }
         ${device.large} {
@@ -93,6 +93,7 @@ export const AboutTextStyle = styled.p`
     position: relative;
 
     ${device.large} {
+        margin: -30px 0px 30px 15px;
         font-size: 22px;
         line-height: 1.364;
         margin-bottom: 26px;
