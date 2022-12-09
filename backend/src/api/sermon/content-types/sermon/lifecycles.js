@@ -21,7 +21,7 @@ async function fetchAndUploadSocialImage(img, videoId) {
 module.exports = {
   async beforeCreate({ params }) {
     const { data } = params;
-    if (data.Link) {
+    if (data.Link && !data.Image) {
       const videoId = data.Link.match(
         /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
       )[5];
@@ -43,7 +43,7 @@ module.exports = {
 
   async beforeUpdate({ params }) {
     const { data } = params;
-    if (data.Link) {
+    if (data.Link && !data.Image) {
       const videoId = data.Link.match(
         /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
       )[5];
