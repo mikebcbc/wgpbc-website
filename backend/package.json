@@ -2,7 +2,7 @@
   "name": "backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "WGPBC Backend",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -25,7 +25,7 @@
     "strapi-plugin-import-export-entries": "^1.18.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Mike Constantino"
   },
   "strapi": {
     "uuid": "e380fb7c-8bb8-4cef-94fa-697df42a0bfe"
