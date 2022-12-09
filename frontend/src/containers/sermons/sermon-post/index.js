@@ -56,9 +56,7 @@ const SermonListArea = ({
                                         .childImageSharp.gatsbyImageData
                                 }
                                 videoId={sermon.VideoID}
-                                audioLink={
-                                    sermon.Audio?.localFile.publicURL || null
-                                }
+                                audioLink={sermon.AudioURL || null}
                             />
                         </Col>
                     );

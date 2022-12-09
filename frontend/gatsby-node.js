@@ -100,11 +100,7 @@ exports.createPages = ({ actions, graphql }) => {
                             }
                         }
                     }
-                    Audio {
-                        localFile {
-                            publicURL
-                        }
-                    }
+                    AudioURL
                     Title
                     Verses
                     VideoID

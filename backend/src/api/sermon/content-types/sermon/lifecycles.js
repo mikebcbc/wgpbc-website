@@ -19,47 +19,100 @@ async function fetchAndUploadSocialImage(img, videoId) {
 }
 
 module.exports = {
-  async beforeCreate({ params }) {
-    const { data } = params;
-    if (data.Link && !data.Image) {
-      const videoId = data.Link.match(
-        /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
-      )[5];
+  async afterFindMany({ result }) {
+    // console.log(result);
+    // console.log(result.length);
 
-      const vimeo = await axios.get(
-        `https://vimeo.com/api/v2/video/${videoId}.json`
-      );
-      const vimeoData = await vimeo.data;
+    for (const s in result) {
+      if (result[s].Audio) {
+        const details = await strapi.entityService.findOne(
+          "plugin::upload.file",
+          result[s].Audio.id,
+          { fields: ["url"] }
+        );
 
-      const thumbnail = await fetchAndUploadSocialImage(
-        vimeoData[0]?.thumbnail_large,
-        videoId
-      );
-
-      data.VideoID = videoId;
-      data.Image = thumbnail.data;
+        await strapi.entityService
+          .update("api::sermon.sermon", result[s].id, {
+            data: { AudioURL: details.url },
+          })
+          .catch((e) => console.log(e));
+      }
     }
   },
 
-  async beforeUpdate({ params }) {
-    const { data } = params;
-    if (data.Link && !data.Image) {
-      const videoId = data.Link.match(
-        /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
-      )[5];
+  // async beforeCreate({ params }) {
+  //   const { data } = params;
 
-      const vimeo = await axios.get(
-        `https://vimeo.com/api/v2/video/${videoId}.json`
-      );
-      const vimeoData = await vimeo.data;
+  //   // Populate audio link
+  //   if (data.Audio) {
+  //     const details = await strapi.entityService.findOne(
+  //       "plugin::upload.file",
+  //       data.Audio,
+  //       { fields: ["url"] }
+  //     );
 
-      const thumbnail = await fetchAndUploadSocialImage(
-        vimeoData[0]?.thumbnail_large,
-        videoId
-      );
+  //     console.log(details.url);
 
-      data.VideoID = videoId;
-      data.Image = thumbnail.data;
-    }
-  },
+  //     data.AudioURL = details.url;
+  //   }
+
+  //   // Populate thumbnail
+  //   if (data.Link && !data.Image) {
+  //     const videoId = data.Link.match(
+  //       /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
+  //     )[5];
+
+  //     const vimeo = await axios.get(
+  //       `https://vimeo.com/api/v2/video/${videoId}.json`
+  //     );
+  //     const vimeoData = await vimeo.data;
+
+  //     const thumbnail = await fetchAndUploadSocialImage(
+  //       vimeoData[0]?.thumbnail_large,
+  //       videoId
+  //     );
+
+  //     data.VideoID = videoId;
+  //     data.Image = thumbnail.data;
+  //   }
+  // },
+
+  // async beforeUpdate({ params }) {
+  //   const { data } = params;
+
+  //   console.log(data);
+
+  //   // Populate audio link
+  //   if (data.Audio) {
+  //     const details = await strapi.entityService.findOne(
+  //       "plugin::upload.file",
+  //       data.Audio,
+  //       { fields: ["url"] }
+  //     );
+
+  //     console.log(details);
+
+  //     data.AudioURL = details.url;
+  //   }
+
+  //   // Populate thumbnail
+  //   if (data.Link && !data.Image) {
+  //     const videoId = data.Link.match(
+  //       /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(grou1ps\/[A-z]+\/videos\/))?([0-9]+)/
+  //     )[5];
+
+  //     const vimeo = await axios.get(
+  //       `https://vimeo.com/api/v2/video/${videoId}.json`
+  //     );
+  //     const vimeoData = await vimeo.data;
+
+  //     const thumbnail = await fetchAndUploadSocialImage(
+  //       vimeoData[0]?.thumbnail_large,
+  //       videoId
+  //     );
+
+  //     data.VideoID = videoId;
+  //     data.Image = thumbnail.data;
+  //   }
+  // },
 };

@@ -25,11 +25,7 @@ const SermonArea = () => {
                             }
                         }
                     }
-                    Audio {
-                        localFile {
-                            publicURL
-                        }
-                    }
+                    AudioURL
                     Title
                     Verses
                     VideoID
@@ -84,10 +80,7 @@ const SermonArea = () => {
                                                 .childImageSharp.gatsbyImageData
                                         }
                                         videoId={sermon.VideoID}
-                                        audioLink={
-                                            sermon.Audio?.localFile.publicURL ||
-                                            null
-                                        }
+                                        audioLink={sermon.AudioURL || null}
                                     />
                                 </Col>
                             );

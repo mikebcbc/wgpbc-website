@@ -72,11 +72,7 @@ export const ListPreacherQuery = graphql`
                         }
                     }
                 }
-                Audio {
-                    localFile {
-                        publicURL
-                    }
-                }
+                AudioURL
                 Title
                 Verses
                 VideoID
