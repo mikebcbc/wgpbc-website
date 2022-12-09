@@ -13,6 +13,9 @@ module.exports = [
             "blob:",
             "dl.airtable.com",
             "wintergardenpbc.squarespace.com",
+            "static1.1.sqspcdn.com",
+            "*.1.sqspcdn.com",
+            "*.*.sqspcdn.com",
             "*.digitaloceanspaces.com",
           ],
           "media-src": [
