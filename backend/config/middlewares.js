@@ -12,6 +12,7 @@ module.exports = [
             "data:",
             "blob:",
             "dl.airtable.com",
+            "wintergardenpbc.squarespace.com",
             "*.digitaloceanspaces.com",
           ],
           "media-src": [
@@ -19,6 +20,7 @@ module.exports = [
             "data:",
             "blob:",
             "dl.airtable.com",
+            "wintergardenpbc.squarespace.com",
             "*.digitaloceanspaces.com",
           ],
           upgradeInsecureRequests: null,
