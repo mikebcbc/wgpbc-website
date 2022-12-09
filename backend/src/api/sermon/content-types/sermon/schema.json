@@ -46,7 +46,8 @@
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "audios"
+        "audios",
+        "videos"
       ]
     }
   }
