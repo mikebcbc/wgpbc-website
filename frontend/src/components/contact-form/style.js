@@ -2,7 +2,6 @@ import styled, { themeGet, device } from "@theme/utils";
 export const ContactFormArea = styled.div`
     padding: 64px;
     background-color: #f7f7f7;
-    max-height: 580px;
     min-width: 50%;
     height: 100%;
 

@@ -4,15 +4,11 @@ import ContactForm from "@components/contact-form";
 import { StaticImage } from "gatsby-plugin-image";
 import {
     SectionArea,
-    ContactColunm,
-    ContactMapArea,
     ContactInfoContentArea,
     ContactInfoItem,
     ContactIcon,
     ContactInfoContent,
     ContactTitle,
-    Header,
-    HeaderTitle,
 } from "./style";
 const ContactUsArea = () => {
     return (
@@ -40,10 +36,8 @@ const ContactUsArea = () => {
                                 />
                             </ContactIcon>
                             <ContactInfoContent>
-                                <ContactTitle>Services</ContactTitle>
-                                <strong>Sunday Worship</strong>: 10:30 AM <br />
-                                <strong>Wednesday Bible Study</strong>
-                                : 7:00 PM <br />
+                                <ContactTitle>Phone</ContactTitle>
+                                <a href="tel:4076567007">407-656-7007</a>
                             </ContactInfoContent>
                         </ContactInfoItem>
                         <ContactInfoItem>
@@ -71,11 +65,10 @@ const ContactUsArea = () => {
                                 />
                             </ContactIcon>
                             <ContactInfoContent>
-                                <ContactTitle>Email</ContactTitle>
-                                Ray Blanchard
-                                <a href="mailto://raymondblanchard123@gmail.com">
-                                    raymondblanchard123@gmail.com
-                                </a>
+                                <ContactTitle>Services</ContactTitle>
+                                <strong>Sunday Worship</strong>: 10:30 AM <br />
+                                <strong>Wednesday Bible Study</strong>
+                                : 7:00 PM <br />
                             </ContactInfoContent>
                         </ContactInfoItem>
                     </ContactInfoContentArea>

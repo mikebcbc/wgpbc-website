@@ -89,22 +89,9 @@ export const MetaBox = styled.div`
     display: flex;
     justify-content: flex-start;
     margin-bottom: 31px;
-    .post-category {
-        background-color: ${themeGet("colors.darkgrey")};
-        color: #fc6539;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        min-width: 105px;
-        padding: 2.5px 11px;
-        text-align: center;
-        text-transform: uppercase;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-        -ms-transition: 0.3s;
-        -o-transition: 0.3s;
-    }
+    flex-direction: column;
+    gap: 15px;
+
     .post-category {
         background-color: #fc6539;
         color: #fff;
@@ -137,6 +124,11 @@ export const MetaBox = styled.div`
                 transition: 0.1s;
             }
         }
+    }
+
+    ${device.small} {
+        flex-direction: row;
+        gap: 0px;
     }
 `;
 export const Title = styled.h4`

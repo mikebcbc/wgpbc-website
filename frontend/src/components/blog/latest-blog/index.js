@@ -25,11 +25,18 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
     return (
         <PostItemWrap>
             <Thumb>
-                <Link to={`/${slug}`}>
-                    <GatsbyImage image={getImage(thumbnail)} alt={title} />
+                <Link to={`/blog/${slug}`}>
+                    {thumbnail ? (
+                        <GatsbyImage image={getImage(thumbnail)} alt={title} />
+                    ) : (
+                        <StaticImage
+                            src="../../../data/images/sermons/audio-default.jpg"
+                            alt={title}
+                        />
+                    )}
                 </Link>
                 <MetaDate>
-                    <Link to={`/${slug}`}>
+                    <Link to={`/blog/${slug}`}>
                         <span>{day}</span>
                         {month}
                     </Link>
@@ -71,7 +78,7 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                         </PostShare> */}
                     </MetaBox>
                     <Title>
-                        <Link to={`/${slug}`}>{title}</Link>
+                        <Link to={`/blog/${slug}`}>{title}</Link>
                     </Title>
                     <Excerpt>{body}</Excerpt>
                 </LatestBlogContentInner>

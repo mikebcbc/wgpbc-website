@@ -166,6 +166,8 @@ export const MetaBox = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    flex-direction: column;
+    gap: 15px;
 
     .post-category {
         background-color: ${themeGet("colors.darkgrey")};
@@ -178,6 +180,15 @@ export const MetaBox = styled.div`
         text-align: center;
         text-transform: uppercase;
         transition: 0.3s;
+        width: 100%;
+    }
+
+    ${device.small} {
+        flex-direction: row;
+        gap: 0px;
+        .post-category {
+            width: auto;
+        }
     }
 `;
 export const Title = styled.h5`

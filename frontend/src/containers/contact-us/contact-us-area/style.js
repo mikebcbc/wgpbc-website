@@ -47,7 +47,7 @@ export const ContactInfoContentArea = styled.div`
     position: relative;
     top: auto;
     transform: none;
-    width: 100%;
+    min-width: 100%;
     transform: translate(0, 0);
     background: ${themeGet("colors.orange")};
     background: ${themeGet("colors.gradient")};
@@ -68,28 +68,39 @@ export const ContactInfoItem = styled.div`
     }
 `;
 export const ContactIcon = styled.div`
-    left: 30px;
+    left: 5px;
     position: absolute;
     top: 29px;
-    &:before {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        content: "";
-        height: 75px;
-        left: -30px;
-        position: absolute;
-        top: -27px;
-        width: 75px;
-        z-index: -1;
+    width: 30px;
+
+    ${device.small} {
+        left: 30px;
+        width: auto;
+
+        &:before {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            content: "";
+            height: 75px;
+            left: -30px;
+            position: absolute;
+            top: -27px;
+            width: 75px;
+            z-index: -1;
+        }
     }
 `;
 export const ContactInfoContent = styled.div`
-    padding-left: 128px;
+    padding-left: 64px;
     color: #fff;
     a,
     p {
         display: block;
         color: #fff;
+    }
+
+    ${device.small} {
+        padding-left: 128px;
     }
 `;
 export const ContactTitle = styled.h4`

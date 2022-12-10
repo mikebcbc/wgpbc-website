@@ -62,13 +62,16 @@ const SermonItem = ({
                             size="small"
                             variant="outlined"
                             color="light"
-                            onClick={(e) => setOpen(true)}
                         >
                             View
                             <Dropdown.Menu align="end">
-                                <Dropdown.Item onClick={(e) => setOpen(true)}>
-                                    Video
-                                </Dropdown.Item>
+                                {videoId && (
+                                    <Dropdown.Item
+                                        onClick={(e) => setOpen(true)}
+                                    >
+                                        Video
+                                    </Dropdown.Item>
+                                )}
                                 {audioLink && (
                                     <Dropdown.Item
                                         onClick={(e) => e.stopPropagation()}
@@ -83,13 +86,15 @@ const SermonItem = ({
                     </Dropdown>
                 </SermonFooter>
             </ContentBox>
-            <ModalVideo
-                channel="vimeo"
-                autoplay={true}
-                isOpen={open}
-                videoId={videoId}
-                onClose={() => setOpen(false)}
-            />
+            {videoId && (
+                <ModalVideo
+                    channel="vimeo"
+                    autoplay={true}
+                    isOpen={open}
+                    videoId={videoId}
+                    onClose={() => setOpen(false)}
+                />
+            )}
         </Sermon>
     );
 };

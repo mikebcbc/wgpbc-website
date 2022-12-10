@@ -24,7 +24,7 @@ import {
 
 const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.strapiPost;
-    const image = post.Image.localFile.childImageSharp.gatsbyImageData;
+    const image = post.Image?.localFile?.childImageSharp?.gatsbyImageData;
     const author = `${post.Author.firstname} ${post.Author.lastname}`;
 
     return (
@@ -45,10 +45,17 @@ const SinglePosts = ({ data, location, pageContext }) => {
                             <PostDetailsContentWrap>
                                 <PostDetailsBody>
                                     <Thumb>
-                                        <GatsbyImage
-                                            image={image}
-                                            alt={post.Title}
-                                        />
+                                        {image ? (
+                                            <GatsbyImage
+                                                image={getImage(image)}
+                                                alt={post.Title}
+                                            />
+                                        ) : (
+                                            <StaticImage
+                                                src="../../../data/images/sermons/audio-default.jpg"
+                                                alt={post.Title}
+                                            />
+                                        )}
                                     </Thumb>
                                     <Content>
                                         <MetaBox>
@@ -68,13 +75,13 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                 ))}
                                             {author && (
                                                 <div className="post-author">
-                                                    <span className="icon">
+                                                    {/* <span className="icon">
                                                         <StaticImage
                                                             className="author-img"
                                                             src="../../data/images/team/mike.jpg"
                                                             alt="Author"
                                                         />
-                                                    </span>
+                                                    </span> */}
                                                     By: {author}
                                                 </div>
                                             )}
@@ -91,7 +98,12 @@ const SinglePosts = ({ data, location, pageContext }) => {
                             </PostDetailsContentWrap>
                         </Col>
                         <Col lg={4}>
-                            <Sidebar tags={pageContext.counts} />
+                            <Sidebar
+                                title="Categories"
+                                route="category"
+                                allRoute="blog"
+                                tags={pageContext.counts}
+                            />
                         </Col>
                     </Row>
                 </Container>
@@ -138,8 +150,5 @@ export const postQuery = graphql`
 
 export default SinglePosts;
 
+/* eslint-disable-next-line react/prop-types */
 export const Head = ({ data }) => <SEO title={data.strapiPost.Title} />;
-
-Head.propTypes = {
-    data: PropTypes.object,
-};

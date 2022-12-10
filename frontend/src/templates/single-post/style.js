@@ -53,6 +53,9 @@ export const MetaBox = styled.div`
     display: flex;
     justify-content: flex-start;
     margin-bottom: 30px;
+    flex-direction: column;
+    gap: 15px;
+
     .post-category {
         background-color: #fc6539;
         color: #fff;
@@ -60,7 +63,6 @@ export const MetaBox = styled.div`
         font-size: 13px;
         font-weight: 700;
         letter-spacing: 1.2px;
-        margin-right: 25px;
         min-width: 105px;
         padding: 3px 11px 2px;
         text-align: center;
@@ -82,6 +84,14 @@ export const MetaBox = styled.div`
             text-align: center;
             width: 34px;
             transition: 0.3s;
+        }
+    }
+
+    ${device.small} {
+        flex-direction: row;
+        gap: 0px;
+        .post-category {
+            margin-right: 25px;
         }
     }
 `;
