@@ -46,8 +46,8 @@ const SermonListArea = ({
                                 key={i}
                                 title={sermon.Title}
                                 image={
-                                    sermon.Image?.localFile.childImageSharp
-                                        .gatsbyImageData || null
+                                    sermon.Image?.localFile?.childImageSharp
+                                        ?.gatsbyImageData || null
                                 }
                                 dec={sermon.Verses}
                                 preacherName={sermon.Preacher.Name}
