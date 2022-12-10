@@ -70,8 +70,8 @@ const SermonArea = () => {
                                         title={sermon.Title}
                                         image={
                                             sermon.Image?.localFile
-                                                .childImageSharp
-                                                .gatsbyImageData || null
+                                                ?.childImageSharp
+                                                ?.gatsbyImageData || null
                                         }
                                         dec={sermon.Verses}
                                         preacherName={sermon.Preacher.Name}
