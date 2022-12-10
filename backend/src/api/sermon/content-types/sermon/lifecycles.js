@@ -10,7 +10,11 @@ async function fetchAndUploadSocialImage(img, videoId) {
   form.append("files", response.data, `sermon-${videoId}.jpg`);
 
   const upload = await axios
-    .post(`${process.env.API_URL}/api/upload`, form)
+    .post(`${process.env.API_URL}/api/upload`, form, {
+      headers: {
+        Authorization: `bearer ${process.env.STRAPI_TOKEN}`,
+      },
+    })
     .catch((error) => {
       console.log(error.response.data.error);
     });
@@ -29,8 +33,6 @@ module.exports = {
         data.Audio,
         { fields: ["url"] }
       );
-
-      console.log(details.url);
 
       data.AudioURL = details.url;
     }
@@ -59,8 +61,6 @@ module.exports = {
   async beforeUpdate({ params }) {
     const { data } = params;
 
-    console.log(data);
-
     // Populate audio link
     if (data.Audio) {
       const details = await strapi.entityService.findOne(
@@ -68,8 +68,6 @@ module.exports = {
         data.Audio,
         { fields: ["url"] }
       );
-
-      console.log(details);
 
       data.AudioURL = details.url;
     }
