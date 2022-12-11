@@ -92,7 +92,7 @@ exports.createPages = ({ actions, graphql }) => {
             allStrapiSermon {
                 nodes {
                     id
-                    publishedAt(formatString: "MMM DD")
+                    createdAt(formatString: "MMM DD")
                     Image {
                         localFile {
                             childImageSharp {

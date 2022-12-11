@@ -17,7 +17,7 @@ const SermonArea = () => {
                 totalCount
                 nodes {
                     id
-                    publishedAt(formatString: "MMM DD")
+                    createdAt(formatString: "MMM DD")
                     Image {
                         localFile {
                             childImageSharp {
