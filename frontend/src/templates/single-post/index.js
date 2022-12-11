@@ -52,7 +52,7 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                             />
                                         ) : (
                                             <StaticImage
-                                                src="../../../data/images/sermons/audio-default.jpg"
+                                                src="../../data/images/sermons/audio-default.jpg"
                                                 alt={post.Title}
                                             />
                                         )}
