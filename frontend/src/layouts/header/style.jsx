@@ -49,7 +49,7 @@ export const HeaderActionArea = styled.div`
     display: flex;
     align-items: center;
     ${device.medium} {
-        margin-left: 50px;
+        margin-left: 0;
     }
 `;
 export const ButtonBoxArea = styled.span`

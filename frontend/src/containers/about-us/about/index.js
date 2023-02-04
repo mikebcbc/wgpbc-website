@@ -37,6 +37,7 @@ const AboutPageArea = () => {
                                     <StaticImage
                                         src="../../../data/images/about/jonah.jpg"
                                         alt="Picture of children at WGPBC"
+                                        placeholder="blurred"
                                     />
                                 </Thumb>
                             </LayerStyle>

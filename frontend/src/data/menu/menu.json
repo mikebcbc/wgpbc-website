@@ -18,5 +18,11 @@
         "text": "Blog",
         "link": "/blog/",
         "isSubmenu": false
+    },
+    {
+        "text": "Give",
+        "link": "https://tithe.ly/give?c=6732063",
+        "isSubmenu": false,
+        "isExternal": true
     }
 ]

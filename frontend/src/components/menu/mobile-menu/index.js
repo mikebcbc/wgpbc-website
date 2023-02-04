@@ -56,12 +56,22 @@ const MobileNavMenu = ({ MobilemenuData }) => {
                                     hasSubmenu ? "has-submenu-dropdown" : ""
                                 }`}
                             >
-                                <Link
-                                    activeClassName="active"
-                                    to={menu.node.link}
-                                >
-                                    {menu.node.text}
-                                </Link>
+                                {menu.node.isExternal ? (
+                                    <a
+                                        href={menu.node.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {menu.node.text}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        activeClassName="active"
+                                        to={menu.node.link}
+                                    >
+                                        {menu.node.text}
+                                    </Link>
+                                )}
                                 {submenu && (
                                     <Fragment>
                                         <button

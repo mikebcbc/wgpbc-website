@@ -30,7 +30,8 @@ const SectionTitle = ({
                     <StaticImage
                         className="img-shape"
                         src="../../data/images/shape/3.png"
-                        alt="Givest-HasTech"
+                        placeholder="blurred"
+                        alt="shape"
                     />
                 )}
             </TitleBoxArea>

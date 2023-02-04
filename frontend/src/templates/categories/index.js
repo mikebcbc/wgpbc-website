@@ -68,6 +68,7 @@ export const listCategoryQuery = graphql`
                             gatsbyImageData(
                                 layout: FULL_WIDTH
                                 aspectRatio: 1.77
+                                placeholder: BLURRED
                             )
                         }
                     }

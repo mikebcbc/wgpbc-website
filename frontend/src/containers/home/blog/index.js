@@ -23,6 +23,7 @@ const LatestBlog = () => {
                                 gatsbyImageData(
                                     layout: FULL_WIDTH
                                     aspectRatio: 1
+                                    placeholder: BLURRED
                                 )
                             }
                         }

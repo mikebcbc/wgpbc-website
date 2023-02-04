@@ -68,7 +68,7 @@ export const ListPreacherQuery = graphql`
                 Image {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(width: 590)
+                            gatsbyImageData(width: 590, placeholder: BLURRED)
                         }
                     }
                 }
@@ -85,6 +85,7 @@ export const ListPreacherQuery = graphql`
                                     width: 40
                                     height: 40
                                     transformOptions: { fit: COVER }
+                                    placeholder: BLURRED
                                 )
                             }
                         }

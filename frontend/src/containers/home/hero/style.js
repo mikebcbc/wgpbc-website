@@ -48,20 +48,13 @@ export const SubTitle = styled.div`
     display: flex;
     align-items: center;
 
-    img {
-        margin-right: 14px;
-        position: relative;
-        top: -9px;
-        vertical-align: middle;
-    }
     h6 {
         margin-left: 14px;
         display: inline-block;
         font-family: ${themeGet("fonts.body")};
         font-size: 20px;
         font-weight: 700;
-        margin: 0;
-        margin-left: 20px;
+        margin: 0 0 0 20px;
         background: ${themeGet("colors.gradient")};
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
