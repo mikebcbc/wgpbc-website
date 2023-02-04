@@ -31,6 +31,7 @@ const SectionTitle = ({
                         className="img-shape"
                         src="../../data/images/shape/3.png"
                         placeholder="blurred"
+                        alt="shape"
                     />
                 )}
             </TitleBoxArea>

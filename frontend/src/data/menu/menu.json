@@ -21,7 +21,8 @@
     },
     {
         "text": "Give",
-        "link": "/give/",
-        "isSubmenu": false
+        "link": "https://tithe.ly/give?c=6732063",
+        "isSubmenu": false,
+        "isExternal": true
     }
 ]
