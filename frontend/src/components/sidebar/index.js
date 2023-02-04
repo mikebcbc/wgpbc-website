@@ -32,6 +32,7 @@ const Sidebar = ({ tags, title, route, allRoute }) => {
                         className="me-1"
                         src="../../data/images/shape/line-t2.png"
                         alt="Image-Givest"
+                        placeholder="blurred"
                     />
                 </SeparatorLine>
                 <TagSidebar>
@@ -60,6 +61,7 @@ const Sidebar = ({ tags, title, route, allRoute }) => {
                         className="me-1"
                         src="../../data/images/shape/line-t2.png"
                         alt="Image-Givest"
+                        placeholder="blurred"
                     />
                 </SeparatorLine>
                 <ContactForm sidebar={true} />

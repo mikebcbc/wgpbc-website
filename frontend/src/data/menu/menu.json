@@ -18,5 +18,10 @@
         "text": "Blog",
         "link": "/blog/",
         "isSubmenu": false
+    },
+    {
+        "text": "Give",
+        "link": "/give/",
+        "isSubmenu": false
     }
 ]

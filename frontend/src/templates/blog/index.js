@@ -67,6 +67,7 @@ export const listBlogQuery = graphql`
                             gatsbyImageData(
                                 layout: FULL_WIDTH
                                 aspectRatio: 1.77
+                                placeholder: BLURRED
                             )
                         }
                     }

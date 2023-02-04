@@ -33,6 +33,7 @@ const ContactUsArea = () => {
                                     className="icon-img"
                                     src="../../../data/images/icons/c1.png"
                                     alt="Icon"
+                                    placeholder="blurred"
                                 />
                             </ContactIcon>
                             <ContactInfoContent>
@@ -46,6 +47,7 @@ const ContactUsArea = () => {
                                     className="icon-img"
                                     src="../../../data/images/icons/c3.png"
                                     alt="Icon"
+                                    placeholder="blurred"
                                 />
                             </ContactIcon>
                             <ContactInfoContent>
@@ -62,6 +64,7 @@ const ContactUsArea = () => {
                                     className="icon-img"
                                     src="../../../data/images/icons/c2.png"
                                     alt="Icon"
+                                    placeholder="blurred"
                                 />
                             </ContactIcon>
                             <ContactInfoContent>

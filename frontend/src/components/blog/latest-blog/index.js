@@ -32,6 +32,7 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                         <StaticImage
                             src="../../../data/images/sermons/audio-default.jpg"
                             alt={title}
+                            placeholder="blurred"
                         />
                     )}
                 </Link>

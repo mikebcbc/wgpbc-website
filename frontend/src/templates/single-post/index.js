@@ -54,6 +54,7 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                             <StaticImage
                                                 src="../../data/images/sermons/audio-default.jpg"
                                                 alt={post.Title}
+                                                placeholder="blurred"
                                             />
                                         )}
                                     </Thumb>
@@ -124,7 +125,11 @@ export const postQuery = graphql`
             Image {
                 localFile {
                     childImageSharp {
-                        gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.77)
+                        gatsbyImageData(
+                            layout: FULL_WIDTH
+                            aspectRatio: 1.77
+                            placeholder: BLURRED
+                        )
                     }
                 }
             }

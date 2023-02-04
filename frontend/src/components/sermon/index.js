@@ -36,6 +36,7 @@ const SermonItem = ({
                     <StaticImage
                         src="../../data/images/sermons/audio-default.jpg"
                         alt="Audio Only Image"
+                        placeholder="blurred"
                     />
                 )}
             </SermonImage>

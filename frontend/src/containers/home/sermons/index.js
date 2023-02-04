@@ -21,7 +21,10 @@ const SermonArea = () => {
                     Image {
                         localFile {
                             childImageSharp {
-                                gatsbyImageData(width: 590)
+                                gatsbyImageData(
+                                    width: 590
+                                    placeholder: BLURRED
+                                )
                             }
                         }
                     }

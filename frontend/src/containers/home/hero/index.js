@@ -26,12 +26,12 @@ const Hero = () => {
                 title2
                 sliderImage {
                     childImageSharp {
-                        gatsbyImageData
+                        gatsbyImageData(placeholder: BLURRED)
                     }
                 }
                 shapeImage {
                     childImageSharp {
-                        gatsbyImageData
+                        gatsbyImageData(placeholder: BLURRED)
                     }
                 }
             }
@@ -62,6 +62,7 @@ const Hero = () => {
                                     <StaticImage
                                         src="../../../data/images/icons/giving-hand.png"
                                         alt="Hand with heart in it"
+                                        placeholder="blurred"
                                     />
                                     <h6>{subTitle}</h6>
                                 </SubTitle>
@@ -132,12 +133,14 @@ const Hero = () => {
                             <StaticImage
                                 src="../../../data/images/shape/banner-line1.png"
                                 alt="banner line"
+                                placeholder="blurred"
                             />
                         </div>
                         <div className="shape-banner-line2">
                             <StaticImage
                                 src="../../../data/images/shape/banner-line2.png"
                                 alt="banner line"
+                                placeholder="blurred"
                             />
                         </div>
                     </div>
