@@ -64,7 +64,11 @@ export const listSermonQuery = graphql`
                 Image {
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(width: 590, placeholder: BLURRED)
+                            gatsbyImageData(
+                                width: 590
+                                placeholder: BLURRED
+                                quality: 100
+                            )
                         }
                     }
                 }
@@ -82,6 +86,7 @@ export const listSermonQuery = graphql`
                                     height: 40
                                     transformOptions: { fit: COVER }
                                     placeholder: BLURRED
+                                    quality: 100
                                 )
                             }
                         }

@@ -24,6 +24,7 @@ const LatestBlog = () => {
                                     layout: FULL_WIDTH
                                     aspectRatio: 1
                                     placeholder: BLURRED
+                                    quality: 100
                                 )
                             }
                         }

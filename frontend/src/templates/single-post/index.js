@@ -129,6 +129,7 @@ export const postQuery = graphql`
                             layout: FULL_WIDTH
                             aspectRatio: 1.77
                             placeholder: BLURRED
+                            quality: 100
                         )
                     }
                 }
