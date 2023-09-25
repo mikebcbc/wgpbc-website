@@ -24,6 +24,7 @@ const SermonArea = () => {
                                 gatsbyImageData(
                                     width: 590
                                     placeholder: BLURRED
+                                    quality: 100
                                 )
                             }
                         }
@@ -37,7 +38,10 @@ const SermonArea = () => {
                         Avatar {
                             localFile {
                                 childImageSharp {
-                                    gatsbyImageData
+                                    gatsbyImageData(
+                                        placeholder: BLURRED
+                                        quality: 100
+                                    )
                                 }
                             }
                         }

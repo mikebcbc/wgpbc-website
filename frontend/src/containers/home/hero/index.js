@@ -26,12 +26,20 @@ const Hero = () => {
                 title2
                 sliderImage {
                     childImageSharp {
-                        gatsbyImageData(placeholder: BLURRED)
+                        gatsbyImageData(
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                            quality: 100
+                        )
                     }
                 }
                 shapeImage {
                     childImageSharp {
-                        gatsbyImageData(placeholder: BLURRED)
+                        gatsbyImageData(
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP]
+                            quality: 90
+                        )
                     }
                 }
             }

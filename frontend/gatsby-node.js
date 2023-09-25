@@ -51,7 +51,10 @@ exports.createPages = ({ actions, graphql }) => {
                     Avatar {
                         localFile {
                             childImageSharp {
-                                gatsbyImageData(placeholder: BLURRED)
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    quality: 100
+                                )
                             }
                         }
                     }
@@ -63,7 +66,10 @@ exports.createPages = ({ actions, graphql }) => {
                     Image {
                         localFile {
                             childImageSharp {
-                                gatsbyImageData(placeholder: BLURRED)
+                                gatsbyImageData(
+                                    placeholder: BLURRED
+                                    quality: 100
+                                )
                             }
                         }
                     }
@@ -99,6 +105,7 @@ exports.createPages = ({ actions, graphql }) => {
                                 gatsbyImageData(
                                     width: 590
                                     placeholder: BLURRED
+                                    quality: 100
                                 )
                             }
                         }
@@ -112,7 +119,10 @@ exports.createPages = ({ actions, graphql }) => {
                         Avatar {
                             localFile {
                                 childImageSharp {
-                                    gatsbyImageData(placeholder: BLURRED)
+                                    gatsbyImageData(
+                                        placeholder: BLURRED
+                                        quality: 100
+                                    )
                                 }
                             }
                         }

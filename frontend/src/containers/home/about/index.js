@@ -17,7 +17,8 @@ const AboutArea = () => {
                     childImageSharp {
                         gatsbyImageData(
                             placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
+                            formats: [AUTO, WEBP]
+                            quality: 100
                         )
                     }
                 }
@@ -25,7 +26,8 @@ const AboutArea = () => {
                     childImageSharp {
                         gatsbyImageData(
                             placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
+                            formats: [AUTO, WEBP]
+                            quality: 100
                         )
                     }
                 }
