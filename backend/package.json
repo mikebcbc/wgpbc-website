@@ -12,14 +12,18 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.4.3",
-    "@strapi/plugin-users-permissions": "4.4.3",
-    "@strapi/provider-upload-aws-s3": "^4.5.3",
-    "@strapi/strapi": "4.4.3",
+    "@strapi/plugin-i18n": "4.15.5",
+    "@strapi/plugin-users-permissions": "4.15.5",
+    "@strapi/provider-upload-aws-s3": "4.15.5",
+    "@strapi/strapi": "4.15.5",
     "better-sqlite3": "^7.4.6",
     "pg": "^8.8.0",
     "pg-connection-string": "^2.5.0",
-    "strapi-plugin-import-export-entries": "^1.18.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^5.2.0",
+    "strapi-plugin-import-export-entries": "^1.22.1",
+    "styled-components": "^5.2.1"
   },
   "author": {
     "name": "Mike Constantino"
@@ -28,7 +32,7 @@
     "uuid": "e380fb7c-8bb8-4cef-94fa-697df42a0bfe"
   },
   "engines": {
-    "node": ">=12.x.x <=16.x.x",
+    "node": ">=12.x.x <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
