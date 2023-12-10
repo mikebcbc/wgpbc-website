@@ -78,6 +78,10 @@
         "type": "git",
         "url": "https://github.com/gatsbyjs/gatsby-starter-default"
     },
+    "engines": {
+        "node": ">=12.x.x <=18.x.x",
+        "npm": ">=6.0.0"
+    },
     "bugs": {
         "url": "https://github.com/gatsbyjs/gatsby/issues"
     }
