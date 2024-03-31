@@ -677,6 +677,36 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiMeetingMeeting extends Schema.CollectionType {
+  collectionName: 'meetings';
+  info: {
+    singularName: 'meeting';
+    pluralName: 'meetings';
+    displayName: 'Meeting';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::meeting.meeting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::meeting.meeting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Schema.CollectionType {
   collectionName: 'posts';
   info: {
@@ -696,6 +726,11 @@ export interface ApiPostPost extends Schema.CollectionType {
     Slug: Attribute.UID<'api::post.post', 'Title'> & Attribute.Required;
     Tags: Attribute.Relation<'api::post.post', 'oneToMany', 'api::tag.tag'>;
     Image: Attribute.Media & Attribute.Required;
+    meeting: Attribute.Relation<
+      'api::post.post',
+      'oneToOne',
+      'api::meeting.meeting'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -761,6 +796,11 @@ export interface ApiSermonSermon extends Schema.CollectionType {
     Image: Attribute.Media;
     Audio: Attribute.Media & Attribute.Private;
     AudioURL: Attribute.String;
+    Meeting: Attribute.Relation<
+      'api::sermon.sermon',
+      'oneToOne',
+      'api::meeting.meeting'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -817,6 +857,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::meeting.meeting': ApiMeetingMeeting;
       'api::post.post': ApiPostPost;
       'api::preacher.preacher': ApiPreacherPreacher;
       'api::sermon.sermon': ApiSermonSermon;

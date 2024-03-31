@@ -34,6 +34,7 @@ exports.createPages = ({ actions, graphql }) => {
         categoryList: path.resolve("src/templates/categories/index.js"),
         sermonsList: path.resolve("src/templates/sermons/index.js"),
         preacherList: path.resolve("src/templates/preacher/index.js"),
+        meetingList: path.resolve("src/templates/meeting/index.js"),
     };
 
     return graphql(`
@@ -42,6 +43,12 @@ exports.createPages = ({ actions, graphql }) => {
                 nodes {
                     Name
                     Slug
+                }
+            }
+
+            allStrapiMeeting {
+                nodes {
+                    Title
                 }
             }
 
@@ -114,6 +121,9 @@ exports.createPages = ({ actions, graphql }) => {
                     Title
                     Verses
                     VideoID
+                    Meeting {
+                        Title
+                    }
                     Preacher {
                         Name
                         Avatar {
@@ -291,6 +301,58 @@ exports.createPages = ({ actions, graphql }) => {
                     },
                 });
             }
+        });
+
+        // Meetings
+
+        let meetingCount = {};
+        sermons.forEach(({ Meeting }) => {
+            if (Meeting?.Title == null) {
+                return;
+            }
+            meetingCount[Meeting.Title] = {
+                slug: slugify(Meeting.Title),
+                count: (meetingCount[Meeting.Title]?.count || 0) + 1,
+            };
+        });
+
+        Object.keys(meetingCount).forEach((name) => {
+            const numberOfMeetingPages = Math.ceil(
+                meetingCount[name].count / sermonsPerPage
+            );
+
+            Array.from({ length: numberOfMeetingPages }).forEach((_, index) => {
+                const inFirstPage = index === 0;
+                const currentPage = index + 1;
+
+                if (inFirstPage) {
+                    createPage({
+                        path: `/meeting/${meetingCount[name].slug}`,
+                        component: templates.meetingList,
+                        context: {
+                            limit: sermonsPerPage,
+                            skip: 0,
+                            meeting: name,
+                            currentPage,
+                            numberOfMeetingPages,
+                            counts: meetingCount,
+                        },
+                    });
+                } else {
+                    createPage({
+                        path: `/meeting/${meetingCount[name].slug}/${currentPage}`,
+                        component: templates.meetingList,
+                        context: {
+                            limit: sermonsPerPage,
+                            skip: index * sermonsPerPage,
+                            meeting: name,
+                            currentPage,
+                            numberOfMeetingPages,
+                            counts: meetingCount,
+                        },
+                    });
+                }
+            });
         });
 
         // Preachers

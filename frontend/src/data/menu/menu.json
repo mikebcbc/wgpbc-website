@@ -12,7 +12,13 @@
     {
         "text": "Sermons",
         "link": "/sermons/",
-        "isSubmenu": false
+        "isSubmenu": true,
+        "submenu": [
+            {
+                "text": "Meetings",
+                "link": "/meetings/florida-fellowship-2024"
+            }
+        ]
     },
     {
         "text": "Blog",
