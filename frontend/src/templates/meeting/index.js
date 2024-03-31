@@ -10,15 +10,15 @@ import Sidebar from "@components/sidebar";
 import { graphql } from "gatsby";
 import { SermonsContainer } from "./style";
 
-const PreacherPage = ({ data, pageContext }) => {
+const MeetingPage = ({ data, pageContext }) => {
     return (
         <Layout>
-            <SEO title={`Sermons by ${pageContext.preacher}`} pathname="/" />
+            <SEO title="Sermons" pathname="/" />
             <Header>
                 <Container>
                     <Row>
                         <Col>
-                            <HeaderTitle>{pageContext.preacher}</HeaderTitle>
+                            <HeaderTitle>{pageContext.meeting}</HeaderTitle>
                         </Col>
                     </Row>
                 </Container>
@@ -32,17 +32,16 @@ const PreacherPage = ({ data, pageContext }) => {
                                 totalCount={data.allStrapiSermon.totalCount}
                                 currentPage={pageContext.currentPage}
                                 counts={pageContext.counts}
-                                route={`preacher/${
-                                    pageContext.counts[pageContext.preacher]
-                                        .slug
+                                route={`meeting/${
+                                    pageContext.counts[pageContext.meeting].slug
                                 }`}
                             />
                         </Col>
                         <Col lg={4}>
                             <Sidebar
-                                title="Preachers"
+                                title="Meetings"
                                 tags={pageContext.counts}
-                                route="preacher"
+                                route="meeting"
                                 allRoute="sermons"
                             />
                         </Col>
@@ -53,13 +52,13 @@ const PreacherPage = ({ data, pageContext }) => {
     );
 };
 
-export const ListPreacherQuery = graphql`
-    query listPreacherQuery($skip: Int, $limit: Int, $preacher: String) {
+export const ListMeetingQuery = graphql`
+    query listMeetingQuery($skip: Int, $limit: Int, $meeting: String) {
         allStrapiSermon(
             sort: { fields: createdAt, order: DESC }
             limit: $limit
             skip: $skip
-            filter: { Preacher: { Name: { eq: $preacher } } }
+            filter: { Meeting: { Title: { eq: $meeting } } }
         ) {
             totalCount
             nodes {
@@ -80,6 +79,9 @@ export const ListPreacherQuery = graphql`
                 Title
                 Verses
                 VideoID
+                Meeting {
+                    Title
+                }
                 Preacher {
                     Name
                     Avatar {
@@ -101,9 +103,9 @@ export const ListPreacherQuery = graphql`
     }
 `;
 
-PreacherPage.propTypes = {
+MeetingPage.propTypes = {
     data: PropTypes.object,
     pageContext: PropTypes.object,
 };
 
-export default PreacherPage;
+export default MeetingPage;

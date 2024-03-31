@@ -9,7 +9,6 @@ const MainMenu = ({ allmenuData }) => {
         <HeaderNavigationArea>
             <Navbar className="main-menu">
                 {menuarr.map((menu) => {
-                    console.log(menu.node);
                     const hasSubmenu = menu.node.isSubmenu ? true : false;
                     const submenu = menu.node.submenu;
                     return (
