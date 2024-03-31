@@ -36,10 +36,6 @@ const Header = () => {
                         text
                         link
                         isSubmenu
-                        submenu {
-                            text
-                            link
-                        }
                         isExternal
                     }
                 }

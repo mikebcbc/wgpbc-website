@@ -13,12 +13,12 @@ import { SermonsContainer } from "./style";
 const PreacherPage = ({ data, pageContext }) => {
     return (
         <Layout>
-            <SEO title={`Sermons by ${pageContext.preacher}`} pathname="/" />
+            <SEO title="Sermons" pathname="/" />
             <Header>
                 <Container>
                     <Row>
                         <Col>
-                            <HeaderTitle>{pageContext.preacher}</HeaderTitle>
+                            <HeaderTitle>All Sermons</HeaderTitle>
                         </Col>
                     </Row>
                 </Container>

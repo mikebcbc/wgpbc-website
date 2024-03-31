@@ -19,7 +19,6 @@ const strapiConfig = {
                             Avatar: "*",
                         },
                     },
-                    Meeting: "*",
                 },
             },
         },
@@ -38,7 +37,6 @@ const strapiConfig = {
             },
         },
         "tag",
-        "meeting",
     ],
     singleTypes: [],
 };

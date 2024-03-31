@@ -28,6 +28,7 @@ const MobileNavMenu = ({ MobilemenuData }) => {
             parentSiblings.forEach((sibling) => {
                 const sibChildNodes = sibling.childNodes;
                 sibChildNodes.forEach((child) => {
+                    //console.log(child);
                     if (child.nodeName === "UL") {
                         slideUp(child, 500);
                     }
