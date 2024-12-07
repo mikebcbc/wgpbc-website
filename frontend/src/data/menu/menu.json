@@ -26,6 +26,11 @@
         "isSubmenu": false
     },
     {
+        "text": "Pastor's Notes",
+        "link": "/pastors-notes/",
+        "isSubmenu": false
+    },
+    {
         "text": "Give",
         "link": "https://tithe.ly/give?c=6732063",
         "isSubmenu": false,

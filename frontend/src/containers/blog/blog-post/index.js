@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useQueryParam, StringParam } from "use-query-params";
 import { navigate } from "gatsby";
 
-const BlogPostArea = ({ blogs, totalCount, currentPage, counts }) => {
+const BlogPostArea = ({ blogs, totalCount, currentPage, counts, slug }) => {
     const [hasMounted, setHasMounted] = React.useState(false);
     const [category, setCategory] = useQueryParam("category", StringParam);
     useEffect(() => {
@@ -51,7 +51,7 @@ const BlogPostArea = ({ blogs, totalCount, currentPage, counts }) => {
                     itemsCountPerPage={3}
                     totalItemsCount={pageCount}
                     pageRangeDisplayed={8}
-                    onChange={(e) => navigate(`/blog/${e !== 1 ? e : ""}`)}
+                    onChange={(e) => navigate(`/${slug}/${e !== 0 ? e : ""}`)}
                     hideDisabled
                     itemClass="page-item"
                     linkClass="page-link"
@@ -66,6 +66,7 @@ BlogPostArea.propTypes = {
     totalCount: PropTypes.number,
     currentPage: PropTypes.number,
     counts: PropTypes.object,
+    slug: PropTypes.string,
 };
 
 export default BlogPostArea;

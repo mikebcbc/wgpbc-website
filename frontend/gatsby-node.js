@@ -31,6 +31,7 @@ exports.createPages = ({ actions, graphql }) => {
     const templates = {
         singlePost: path.resolve("src/templates/single-post/index.js"),
         postList: path.resolve("src/templates/blog/index.js"),
+        notesList: path.resolve("src/templates/pastors-notes/index.js"),
         categoryList: path.resolve("src/templates/categories/index.js"),
         sermonsList: path.resolve("src/templates/sermons/index.js"),
         preacherList: path.resolve("src/templates/preacher/index.js"),
@@ -144,9 +145,11 @@ exports.createPages = ({ actions, graphql }) => {
         if (res.errors) return Promise.reject(res.errors);
 
         // Posts
-        const posts = res.data.allStrapiPost.nodes;
+        const posts = res.data.allStrapiPost.nodes.filter((post) =>
+            post.Tags.some((tag) => tag.Name === "Church Updates")
+        );
 
-        // Tag Number Count
+        // Tag Post Number Count
         let tagPostCounts = {};
         posts.forEach(({ Tags }) => {
             tagPostCounts["All"] = {
@@ -207,10 +210,76 @@ exports.createPages = ({ actions, graphql }) => {
             }
         });
 
+        // Notes
+        const notes = res.data.allStrapiPost.nodes.filter((note) =>
+            note.Tags.some((tag) => tag.Name !== "Church Updates")
+        );
+
+        // Tag Note Number Count
+        let tagNoteCounts = {};
+        notes.forEach(({ Tags }) => {
+            tagNoteCounts["All"] = {
+                slug: null,
+                count: (tagNoteCounts["All"]?.count || 0) + 1,
+            };
+            Tags.forEach(({ Name, Slug }) => {
+                tagNoteCounts[Name] = {
+                    slug: Slug,
+                    count: (tagNoteCounts[Name]?.count || 0) + 1,
+                };
+            });
+        });
+
+        notes.forEach((note) => {
+            createPage({
+                path: `/pastors-notes/${note.Slug}`,
+                component: templates.singlePost,
+                context: {
+                    slug: note.Slug,
+                    counts: tagNoteCounts,
+                },
+            });
+        });
+
+        // Pastors Notes List Pagination
+        const notesPerPage = 3;
+        const numberOfNotesPages = Math.ceil(notes.length / notesPerPage);
+
+        Array.from({ length: numberOfNotesPages }).forEach((_, index) => {
+            const inFirstPage = index === 0;
+            const currentPage = index + 1;
+
+            if (inFirstPage) {
+                createPage({
+                    path: `/pastors-notes`,
+                    component: templates.notesList,
+                    context: {
+                        limit: notesPerPage,
+                        skip: 0,
+                        currentPage,
+                        numberOfNotesPages,
+                        counts: tagNoteCounts,
+                    },
+                });
+            } else {
+                createPage({
+                    path: `/pastors-notes/${currentPage}`,
+                    component: templates.notesList,
+                    context: {
+                        limit: notesPerPage,
+                        skip: index * notesPerPage,
+                        currentPage,
+                        numberOfNotesPages,
+                        counts: tagNoteCounts,
+                    },
+                });
+            }
+        });
+
         // Authors
-        Object.keys(tagPostCounts).forEach((name, i) => {
+        Object.keys(tagNoteCounts).forEach((name, i) => {
             const numberOfCategoryPages = Math.ceil(
-                tagPostCounts[name].count / postsPerPage
+                tagNoteCounts[name].count / postsPerPage
             );
 
             Array.from({ length: numberOfCategoryPages }).forEach(
@@ -220,7 +289,7 @@ exports.createPages = ({ actions, graphql }) => {
 
                     if (inFirstPage) {
                         createPage({
-                            path: `/category/${tagPostCounts[name].slug}`,
+                            path: `/category/${tagNoteCounts[name].slug}`,
                             component: templates.categoryList,
                             context: {
                                 limit: postsPerPage,
@@ -228,12 +297,12 @@ exports.createPages = ({ actions, graphql }) => {
                                 category: name,
                                 currentPage,
                                 numberOfCategoryPages,
-                                counts: tagPostCounts,
+                                counts: tagNoteCounts,
                             },
                         });
                     } else {
                         createPage({
-                            path: `/category/${tagPostCounts[name].slug}/${currentPage}`,
+                            path: `/category/${tagNoteCounts[name].slug}/${currentPage}`,
                             component: templates.categoryList,
                             context: {
                                 limit: postsPerPage,
@@ -241,7 +310,7 @@ exports.createPages = ({ actions, graphql }) => {
                                 category: name,
                                 currentPage,
                                 numberOfCategoryPages,
-                                counts: tagPostCounts,
+                                counts: tagNoteCounts,
                             },
                         });
                     }

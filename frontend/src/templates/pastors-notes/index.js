@@ -11,15 +11,15 @@ import { graphql } from "gatsby";
 import { Header, HeaderTitle } from "../../SharedStyles";
 import { BlogContainer } from "./style";
 
-const CategoryPage = ({ data, pageContext }) => {
+const PastorsNotesPage = ({ data, pageContext }) => {
     return (
         <Layout>
-            <SEO title="Blog" pathname="/" />
+            <SEO title="Pastors Notes" pathname="/" />
             <Header>
                 <Container>
                     <Row>
                         <Col>
-                            <HeaderTitle>All Posts</HeaderTitle>
+                            <HeaderTitle>All Pastor's Notes</HeaderTitle>
                         </Col>
                     </Row>
                 </Container>
@@ -51,13 +51,13 @@ const CategoryPage = ({ data, pageContext }) => {
     );
 };
 
-export const listCategoryQuery = graphql`
-    query ListCategoryQuery($skip: Int, $limit: Int, $category: String) {
+export const listPastorsNotesQuery = graphql`
+    query ListPastorsNotesQuery($skip: Int, $limit: Int) {
         allStrapiPost(
             sort: { fields: publishedAt, order: DESC }
             limit: $limit
             skip: $skip
-            filter: { Tags: { elemMatch: { Name: { in: [$category] } } } }
+            filter: { Tags: { elemMatch: { Name: { ne: "Church Updates" } } } }
         ) {
             totalCount
             nodes {
@@ -97,9 +97,9 @@ export const listCategoryQuery = graphql`
     }
 `;
 
-CategoryPage.propTypes = {
+PastorsNotesPage.propTypes = {
     data: PropTypes.object,
     pageContext: PropTypes.object,
 };
 
-export default CategoryPage;
+export default PastorsNotesPage;

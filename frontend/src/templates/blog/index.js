@@ -27,20 +27,13 @@ const BlogPage = ({ data, pageContext }) => {
             <BlogContainer>
                 <Container>
                     <Row>
-                        <Col lg={8}>
+                        <Col lg={12}>
                             <BlogPostArea
                                 blogs={data.allStrapiPost.nodes}
                                 totalCount={data.allStrapiPost.totalCount}
                                 currentPage={pageContext.currentPage}
                                 counts={pageContext.counts}
-                            />
-                        </Col>
-                        <Col lg={4}>
-                            <Sidebar
-                                title="Categories"
-                                tags={pageContext.counts}
-                                route="category"
-                                allRoute="blog"
+                                slug={"blog"}
                             />
                         </Col>
                     </Row>
@@ -56,6 +49,7 @@ export const listBlogQuery = graphql`
             sort: { fields: publishedAt, order: DESC }
             limit: $limit
             skip: $skip
+            filter: { Tags: { elemMatch: { Name: { eq: "Church Updates" } } } }
         ) {
             totalCount
             nodes {
