@@ -102,7 +102,7 @@ const SinglePosts = ({ data, location, pageContext }) => {
                             <Sidebar
                                 title="Categories"
                                 route="category"
-                                allRoute="blog"
+                                allRoute="pastors-notes"
                                 tags={pageContext.counts}
                             />
                         </Col>

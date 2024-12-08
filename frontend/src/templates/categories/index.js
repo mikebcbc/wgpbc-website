@@ -33,6 +33,7 @@ const CategoryPage = ({ data, pageContext }) => {
                                 totalCount={data.allStrapiPost.totalCount}
                                 currentPage={pageContext.currentPage}
                                 counts={pageContext.counts}
+                                route={"pastors-notes"}
                             />
                         </Col>
                         <Col lg={4}>
@@ -40,7 +41,7 @@ const CategoryPage = ({ data, pageContext }) => {
                                 title="Categories"
                                 tags={pageContext.counts}
                                 route="category"
-                                allRoute="blog"
+                                allRoute="pastors-notes"
                             />
                         </Col>
                     </Row>

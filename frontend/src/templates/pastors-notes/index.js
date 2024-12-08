@@ -11,15 +11,15 @@ import { graphql } from "gatsby";
 import { Header, HeaderTitle } from "../../SharedStyles";
 import { BlogContainer } from "./style";
 
-const BlogPage = ({ data, pageContext }) => {
+const PastorsNotesPage = ({ data, pageContext }) => {
     return (
         <Layout>
-            <SEO title="Blog" pathname="/" />
+            <SEO title="Pastors Notes" pathname="/" />
             <Header>
                 <Container>
                     <Row>
                         <Col>
-                            <HeaderTitle>All Posts</HeaderTitle>
+                            <HeaderTitle>All Pastor's Notes</HeaderTitle>
                         </Col>
                     </Row>
                 </Container>
@@ -27,13 +27,21 @@ const BlogPage = ({ data, pageContext }) => {
             <BlogContainer>
                 <Container>
                     <Row>
-                        <Col lg={12}>
+                        <Col lg={8}>
                             <BlogPostArea
                                 blogs={data.allStrapiPost.nodes}
                                 totalCount={data.allStrapiPost.totalCount}
                                 currentPage={pageContext.currentPage}
                                 counts={pageContext.counts}
-                                route={"blog"}
+                                route={"pastors-notes"}
+                            />
+                        </Col>
+                        <Col lg={4}>
+                            <Sidebar
+                                title="Categories"
+                                tags={pageContext.counts}
+                                route="category"
+                                allRoute="pastors-notes"
                             />
                         </Col>
                     </Row>
@@ -43,13 +51,13 @@ const BlogPage = ({ data, pageContext }) => {
     );
 };
 
-export const listBlogQuery = graphql`
-    query ListBlogQuery($skip: Int, $limit: Int) {
+export const listPastorsNotesQuery = graphql`
+    query ListPastorsNotesQuery($skip: Int, $limit: Int) {
         allStrapiPost(
             sort: { fields: publishedAt, order: DESC }
             limit: $limit
             skip: $skip
-            filter: { Tags: { elemMatch: { Name: { eq: "Church Updates" } } } }
+            filter: { Tags: { elemMatch: { Name: { ne: "Church Updates" } } } }
         ) {
             totalCount
             nodes {
@@ -89,9 +97,9 @@ export const listBlogQuery = graphql`
     }
 `;
 
-BlogPage.propTypes = {
+PastorsNotesPage.propTypes = {
     data: PropTypes.object,
     pageContext: PropTypes.object,
 };
 
-export default BlogPage;
+export default PastorsNotesPage;

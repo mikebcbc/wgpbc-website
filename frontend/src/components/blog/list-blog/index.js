@@ -17,7 +17,7 @@ import {
     Excerpt,
 } from "./style";
 
-const BlogList = ({ thumbnail, title, date, tags, body, slug }) => {
+const BlogList = ({ thumbnail, title, date, tags, body, slug, route }) => {
     const dateSplit = date.split(" ");
     const month = dateSplit[0];
     const day = dateSplit[1];
@@ -50,12 +50,12 @@ const BlogList = ({ thumbnail, title, date, tags, body, slug }) => {
                             ))}
                     </MetaBox>
                     <Title>
-                        <Link to={`/blog/${slug}`}>{title}</Link>
+                        <Link to={`/${route}/${slug}`}>{title}</Link>
                     </Title>
                     <Excerpt>{body}</Excerpt>
                     <Button
                         sx={{ mt: "20px" }}
-                        path={`/blog/${slug}`}
+                        path={`/${route}/${slug}`}
                         size="small"
                         color="border-gradient"
                     >
