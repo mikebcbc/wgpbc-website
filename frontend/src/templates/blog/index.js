@@ -33,7 +33,7 @@ const BlogPage = ({ data, pageContext }) => {
                                 totalCount={data.allStrapiPost.totalCount}
                                 currentPage={pageContext.currentPage}
                                 counts={pageContext.counts}
-                                slug={"blog"}
+                                route={"blog"}
                             />
                         </Col>
                     </Row>
