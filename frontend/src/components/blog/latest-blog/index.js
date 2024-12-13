@@ -25,7 +25,7 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
     return (
         <PostItemWrap>
             <Thumb>
-                <Link to={`/blog/${slug}`}>
+                <Link to={`/pastors-notes/${slug}`}>
                     {thumbnail ? (
                         <GatsbyImage image={getImage(thumbnail)} alt={title} />
                     ) : (
@@ -57,35 +57,15 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                                     {tag.Name}
                                 </Link>
                             ))}
-                        {/* <PostShare>
-                            <Link className="icon-share" to="/">
-                                <StaticImage
-                                    src="../../../data/images/icons/share-line-gradient.png"
-                                    alt="Icon"
-                                />
-                            </Link>
-                            <ul>
-                                <li>
-                                    <a className="color-facebook" href="#/">
-                                        <i className="social_facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="color-twitter" href="#/">
-                                        <i className="social_twitter"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </PostShare> */}
                     </MetaBox>
                     <Title>
-                        <Link to={`/blog/${slug}`}>{title}</Link>
+                        <Link to={`/pastors-notes/${slug}`}>{title}</Link>
                     </Title>
                     <Excerpt>{body}</Excerpt>
                 </LatestBlogContentInner>
                 <PostFooter className="post-footer">
                     <Button
-                        path={`/blog/${slug}`}
+                        path={`/pastors-notes/${slug}`}
                         size="xsmall"
                         color="border-gradient"
                     >
