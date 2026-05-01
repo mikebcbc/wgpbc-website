@@ -1,6 +1,0 @@
-{
-    "name": "gatsby-strapi-bootstrap",
-    "private": true,
-    "version": "1.0.0",
-    "main": "gatsby-node.js"
-}

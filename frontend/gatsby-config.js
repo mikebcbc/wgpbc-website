@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-const path = require("path");
 const config = require("./config/config");
 
 require("dotenv").config({
@@ -122,9 +121,6 @@ module.exports = {
                     include: /\.svg$/,
                 },
             },
-        },
-        {
-            resolve: path.join(__dirname, "plugins/gatsby-strapi-bootstrap"),
         },
         {
             resolve: "gatsby-source-strapi",
