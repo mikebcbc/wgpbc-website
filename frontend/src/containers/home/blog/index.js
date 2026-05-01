@@ -33,7 +33,7 @@ const LatestBlog = () => {
                     Content {
                         data {
                             childMarkdownRemark {
-                                excerpt(pruneLength: 60)
+                                excerpt(pruneLength: 110)
                             }
                         }
                     }

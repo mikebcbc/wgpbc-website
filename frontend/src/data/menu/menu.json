@@ -18,6 +18,10 @@
         "isExternal": false,
         "submenu": [
             {
+                "text": "All sermons",
+                "link": "/sermons/"
+            },
+            {
                 "text": "Meetings",
                 "link": "/meeting/florida-fellowship-2024"
             }

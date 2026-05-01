@@ -1,5 +1,4 @@
-import Button from "@components/ui/button";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import {
@@ -10,6 +9,7 @@ import {
     SermonFooter,
     SermonImage,
     Title,
+    SermonViewToggle,
 } from "./style";
 import ModalVideo from "react-modal-video";
 import React, { useState } from "react";
@@ -26,6 +26,8 @@ const SermonItem = ({
 }) => {
     const [open, setOpen] = useState(false);
     const [show, setShow] = useState(false);
+
+    const hasMenuItems = Boolean(videoId || audioLink);
 
     return (
         <Sermon>
@@ -53,40 +55,43 @@ const SermonItem = ({
                                 />
                             </PreacherImage>
                         ) : null}
-                        {preacherName || ""}
+                        <span>{preacherName || ""}</span>
                     </Preacher>
-                    <Dropdown
-                        show={show}
-                        onMouseEnter={(e) => setShow(true)}
-                        onMouseLeave={(e) => setShow(false)}
-                    >
-                        <Dropdown.Toggle
-                            as={Button}
-                            size="small"
-                            variant="outlined"
-                            color="light"
+                    {hasMenuItems ? (
+                        <Dropdown
+                            show={show}
+                            alignRight
+                            onMouseEnter={() => setShow(true)}
+                            onMouseLeave={() => setShow(false)}
                         >
-                            View
-                            <Dropdown.Menu align="end">
+                            <Dropdown.Toggle
+                                as={SermonViewToggle}
+                                id={`sermon-view-${title?.slice(0, 20)}`}
+                            >
+                                View
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu renderOnMount>
                                 {videoId && (
                                     <Dropdown.Item
-                                        onClick={(e) => setOpen(true)}
+                                        as="button"
+                                        type="button"
+                                        onClick={() => setOpen(true)}
                                     >
                                         Video
                                     </Dropdown.Item>
                                 )}
                                 {audioLink && (
                                     <Dropdown.Item
-                                        onClick={(e) => e.stopPropagation()}
                                         href={audioLink}
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                     >
-                                        Audio Only
+                                        Audio only
                                     </Dropdown.Item>
                                 )}
                             </Dropdown.Menu>
-                        </Dropdown.Toggle>
-                    </Dropdown>
+                        </Dropdown>
+                    ) : null}
                 </SermonFooter>
             </ContentBox>
             {videoId && (

@@ -96,67 +96,53 @@ export const MobileMenuBtn = styled.button`
         }
     }
 `;
-export const MobileMenuArea = styled.div`
+
+/** Covers the viewport when closed with pointer-events: none — does not block the page. */
+export const MobileMenuDimmer = styled.div`
     position: fixed;
-    right: -100%;
-    top: 0;
-    transition: 0.3s;
+    inset: 0;
+    z-index: 10040;
+    background-color: rgba(0, 0, 0, 0.55);
+    cursor: pointer;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    height: 100vh;
-    width: 100%;
-    z-index: 9999;
+    transition: opacity 0s linear, visibility 0s linear;
+
     &.mobile-menu-open {
         opacity: 1;
         visibility: visible;
-        pointer-events: visible;
-        right: 0;
-        .OffCanvasContent {
-            transform: none;
-            opacity: 1;
-            visibility: visible;
-        }
-    }
-    .OffCanvasContent {
-        background-color: rgba(0, 0, 0, 0.8);
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.3s;
-        height: 100%;
-        width: 100%;
-        z-index: 2;
+        pointer-events: auto;
     }
 `;
-export const OffCanvasInner = styled.div`
-    background-color: transparent;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    transform: translateX(0);
-    transition: 0.3s;
+
+/** Drawer shell — explicit width so the panel is not clipped when translated. */
+export const MobileMenuSheet = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
     height: 100vh;
-    width: 100%;
-    z-index: 3;
+    width: min(445px, 92vw);
+    z-index: 10060;
+    pointer-events: none;
+
+    &.mobile-menu-open {
+        pointer-events: auto;
+    }
 `;
-export const OffCanvasContent = styled.div`
-    width: 310px;
+
+export const OffCanvasPanel = styled.div`
+    width: 100%;
     background-color: #fff;
     height: 100%;
     padding: 0 30px;
     position: relative;
     overflow-y: auto;
-    transition: 0.4s;
-    transition-duration: 0.4s;
-    transform: translateX(100%);
-    width: 445px;
-    z-index: 9;
-    transform: none;
-    transition-delay: 0.4s;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+    transform: translateX(${(p) => (p.$isOpen ? "0" : "100%")});
+    transition: transform 0.3s ease;
 `;
+
 export const OffCanvasHeader = styled.div`
     display: flex;
     justify-content: space-between;

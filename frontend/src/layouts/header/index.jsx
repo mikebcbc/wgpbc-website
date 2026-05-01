@@ -16,11 +16,11 @@ import {
     HeaderTop,
     HeaderMenuArea,
     HeaderActionArea,
-    MobileMenuArea,
-    OffCanvasInner,
+    MobileMenuDimmer,
+    MobileMenuSheet,
     MobileMenuBtn,
     ButtonBoxArea,
-    OffCanvasContent,
+    OffCanvasPanel,
     OffCanvasHeader,
     CloseAction,
     ButtonClose,
@@ -73,8 +73,11 @@ const Header = () => {
         setOfCanvasOpen((prev) => !prev);
     };
 
-    const searchHandler = () => {
-        setOfCanvasSearchOpen((prev) => !prev);
+    const backdropKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            ofCanvasHandler();
+        }
     };
 
     return (
@@ -96,7 +99,9 @@ const Header = () => {
                                 <HeaderActionArea>
                                     <MobileMenuBtn
                                         onClick={ofCanvasHandler}
-                                        onKeyDown={searchHandler}
+                                        type="button"
+                                        aria-expanded={ofCanvasOpen}
+                                        aria-label="Open menu"
                                     >
                                         <span></span>
                                         <span></span>
@@ -119,34 +124,36 @@ const Header = () => {
                     </Row>
                 </Container>
             </HeaderTop>
-            <MobileMenuArea
-                className={`${ofCanvasOpen ? "mobile-menu-open" : ""}`}
+            <MobileMenuDimmer
+                className={ofCanvasOpen ? "mobile-menu-open" : ""}
+                onClick={ofCanvasHandler}
+                onKeyDown={backdropKeyDown}
+                role="button"
+                tabIndex={ofCanvasOpen ? 0 : -1}
+                aria-hidden={!ofCanvasOpen}
+                aria-label="Close menu"
+            />
+            <MobileMenuSheet
+                className={ofCanvasOpen ? "mobile-menu-open" : ""}
+                aria-hidden={!ofCanvasOpen}
             >
-                <OffCanvasInner>
-                    <div
-                        className="OffCanvasContent"
-                        onClick={ofCanvasHandler}
-                        onKeyDown={searchHandler}
-                        role="button"
-                        tabIndex={0}
-                    ></div>
-                    <OffCanvasContent>
-                        <OffCanvasHeader>
-                            <Logo />
-                            <CloseAction>
-                                <ButtonClose
-                                    onClick={ofCanvasHandler}
-                                    onKeyDown={searchHandler}
-                                >
-                                    <i className="icofont-close"></i>
-                                </ButtonClose>
-                            </CloseAction>
-                        </OffCanvasHeader>
+                <OffCanvasPanel $isOpen={ofCanvasOpen}>
+                    <OffCanvasHeader>
+                        <Logo />
+                        <CloseAction>
+                            <ButtonClose
+                                type="button"
+                                onClick={ofCanvasHandler}
+                                aria-label="Close menu"
+                            >
+                                <i className="icofont-close"></i>
+                            </ButtonClose>
+                        </CloseAction>
+                    </OffCanvasHeader>
 
-                        <MobileNavMenu MobilemenuData={menuData} />
-                    </OffCanvasContent>
-                </OffCanvasInner>
-            </MobileMenuArea>
+                    <MobileNavMenu MobilemenuData={menuData} />
+                </OffCanvasPanel>
+            </MobileMenuSheet>
         </Fragment>
     );
 };

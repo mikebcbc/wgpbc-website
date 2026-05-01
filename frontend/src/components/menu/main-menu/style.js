@@ -55,7 +55,32 @@ export const Navitem = styled.li`
     &.has-submenu {
         padding-right: 10px;
         position: relative;
+
+        > a::after,
+        > .menu-parent-label::after {
+            content: "";
+            display: inline-block;
+            margin-left: 6px;
+            margin-bottom: 2px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid currentColor;
+            opacity: 0.65;
+            vertical-align: middle;
+        }
+
+        > .menu-parent-label {
+            cursor: pointer;
+        }
+
         > .submenu-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            list-style: none;
+            margin: 0;
             padding: 15px 0 15px;
             position: absolute;
             top: 100%;
@@ -82,6 +107,8 @@ export const Navitem = styled.li`
                 height: 40px;
             }
             > li {
+                display: block;
+                width: 100%;
                 padding: 9px 25px;
                 > a {
                     color: #0e0e0e;

@@ -37,7 +37,7 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                     )}
                 </Link>
                 <MetaDate>
-                    <Link to={`/blog/${slug}`}>
+                    <Link to={`/pastors-notes/${slug}`}>
                         <span>{day}</span>
                         {month}
                     </Link>
@@ -68,6 +68,12 @@ const LatestBlogItem = ({ thumbnail, title, date, tags, body, slug }) => {
                         path={`/pastors-notes/${slug}`}
                         size="xsmall"
                         color="border-gradient"
+                        sx={{
+                            minWidth: "auto !important",
+                            width: "auto",
+                            maxWidth: "100%",
+                            px: 3,
+                        }}
                     >
                         Read More
                     </Button>
