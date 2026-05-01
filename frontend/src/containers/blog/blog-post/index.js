@@ -11,7 +11,7 @@ import { navigate } from "gatsby";
 
 const BlogPostArea = ({ blogs, totalCount, currentPage, counts, route }) => {
     const [hasMounted, setHasMounted] = React.useState(false);
-    const [category, setCategory] = useQueryParam("category", StringParam);
+    const [category] = useQueryParam("category", StringParam);
     useEffect(() => {
         setHasMounted(true);
     }, []);
@@ -19,19 +19,20 @@ const BlogPostArea = ({ blogs, totalCount, currentPage, counts, route }) => {
         return null;
     }
 
-    const pageCount = category
-        ? Object.values(counts).find((c) => c.slug === category).count
-        : totalCount;
+    const categoryEntry = category
+        ? Object.values(counts).find((c) => c.slug === category)
+        : null;
+    const pageCount = categoryEntry ? categoryEntry.count : totalCount;
 
     return (
         <BlogPostContentArea>
-            {blogs.map((blog, i) => {
+            {blogs.map((blog) => {
                 if (category && !blog.Tags.find((t) => t.Slug === category)) {
-                    return;
+                    return null;
                 }
                 return (
                     <BlogList
-                        key={i}
+                        key={blog.Slug || blog.id}
                         title={blog.Title}
                         thumbnail={
                             blog.Image?.localFile?.childImageSharp
@@ -67,7 +68,7 @@ BlogPostArea.propTypes = {
     totalCount: PropTypes.number,
     currentPage: PropTypes.number,
     counts: PropTypes.object,
-    slug: PropTypes.string,
+    route: PropTypes.string.isRequired,
 };
 
 export default BlogPostArea;

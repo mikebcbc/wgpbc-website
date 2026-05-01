@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useEffect, useState, Fragment } from "react";
-import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/flaticon.css";
 import "../../assets/css/elegantIcons.css";
@@ -65,18 +64,16 @@ const Header = () => {
         setScroll(window.scrollY);
     };
 
-    // OfCanvas Menu
-    const [ofCanvasOpen, setOfCanvasOpen] = useState(false);
+    const [offCanvasOpen, setOffCanvasOpen] = useState(false);
 
-    // OfCanvas Menu Open & Remove
-    const ofCanvasHandler = () => {
-        setOfCanvasOpen((prev) => !prev);
+    const offCanvasHandler = () => {
+        setOffCanvasOpen((prev) => !prev);
     };
 
     const backdropKeyDown = (e) => {
         if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            ofCanvasHandler();
+            offCanvasHandler();
         }
     };
 
@@ -98,9 +95,9 @@ const Header = () => {
 
                                 <HeaderActionArea>
                                     <MobileMenuBtn
-                                        onClick={ofCanvasHandler}
+                                        onClick={offCanvasHandler}
                                         type="button"
-                                        aria-expanded={ofCanvasOpen}
+                                        aria-expanded={offCanvasOpen}
                                         aria-label="Open menu"
                                     >
                                         <span></span>
@@ -125,25 +122,25 @@ const Header = () => {
                 </Container>
             </HeaderTop>
             <MobileMenuDimmer
-                className={ofCanvasOpen ? "mobile-menu-open" : ""}
-                onClick={ofCanvasHandler}
+                className={offCanvasOpen ? "mobile-menu-open" : ""}
+                onClick={offCanvasHandler}
                 onKeyDown={backdropKeyDown}
                 role="button"
-                tabIndex={ofCanvasOpen ? 0 : -1}
-                aria-hidden={!ofCanvasOpen}
+                tabIndex={offCanvasOpen ? 0 : -1}
+                aria-hidden={!offCanvasOpen}
                 aria-label="Close menu"
             />
             <MobileMenuSheet
-                className={ofCanvasOpen ? "mobile-menu-open" : ""}
-                aria-hidden={!ofCanvasOpen}
+                className={offCanvasOpen ? "mobile-menu-open" : ""}
+                aria-hidden={!offCanvasOpen}
             >
-                <OffCanvasPanel $isOpen={ofCanvasOpen}>
+                <OffCanvasPanel $isOpen={offCanvasOpen}>
                     <OffCanvasHeader>
                         <Logo />
                         <CloseAction>
                             <ButtonClose
                                 type="button"
-                                onClick={ofCanvasHandler}
+                                onClick={offCanvasHandler}
                                 aria-label="Close menu"
                             >
                                 <i className="icofont-close"></i>
@@ -158,7 +155,4 @@ const Header = () => {
     );
 };
 
-Header.propTypes = {
-    headerTop: PropTypes.object,
-};
 export default Header;

@@ -105,9 +105,7 @@ const MobileNavMenu = ({ MobilemenuData }) => {
                                                                 target="_blank"
                                                                 rel="noreferrer"
                                                             >
-                                                                {
-                                                                    submenu.text
-                                                                }
+                                                                {submenu.text}
                                                             </a>
                                                         ) : (
                                                             <Link
@@ -115,9 +113,7 @@ const MobileNavMenu = ({ MobilemenuData }) => {
                                                                     submenu.link
                                                                 }
                                                             >
-                                                                {
-                                                                    submenu.text
-                                                                }
+                                                                {submenu.text}
                                                             </Link>
                                                         )}
                                                     </MobileNavitem>

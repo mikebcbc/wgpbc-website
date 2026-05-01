@@ -46,7 +46,9 @@ const MainMenu = ({ allmenuData }) => {
                                     {submenu.map((submenu, i) => {
                                         return (
                                             <Navitem key={`submenu${i}`}>
-                                                {isExternalHref(submenu.link) ? (
+                                                {isExternalHref(
+                                                    submenu.link
+                                                ) ? (
                                                     <a
                                                         href={submenu.link}
                                                         target="_blank"

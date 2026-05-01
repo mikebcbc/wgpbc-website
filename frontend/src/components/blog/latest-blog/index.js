@@ -13,7 +13,6 @@ import {
     MetaBox,
     Title,
     Excerpt,
-    PostShare,
     PostFooter,
 } from "./style";
 
@@ -89,7 +88,6 @@ LatestBlogItem.propTypes = {
     date: PropTypes.string,
     tags: PropTypes.array,
     body: PropTypes.string,
-    postAuthor: PropTypes.string,
     slug: PropTypes.string,
 };
 

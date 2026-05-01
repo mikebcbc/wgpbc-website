@@ -1,6 +1,8 @@
-import { Link } from "gatsby";
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import Dropdown from "react-bootstrap/Dropdown";
+import ModalVideo from "react-modal-video";
 import {
     ContentBox,
     Preacher,
@@ -11,9 +13,6 @@ import {
     Title,
     SermonViewToggle,
 } from "./style";
-import ModalVideo from "react-modal-video";
-import React, { useState } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
 
 const SermonItem = ({
     title,
