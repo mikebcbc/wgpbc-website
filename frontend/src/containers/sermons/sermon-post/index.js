@@ -50,10 +50,10 @@ const SermonListArea = ({
                                         ?.gatsbyImageData || null
                                 }
                                 dec={sermon.Verses}
-                                preacherName={sermon.Preacher.Name}
+                                preacherName={sermon.Preacher?.Name ?? ""}
                                 preacherImage={
                                     sermon.Preacher?.Avatar?.localFile
-                                        .childImageSharp.gatsbyImageData
+                                        ?.childImageSharp?.gatsbyImageData
                                 }
                                 videoId={sermon.VideoID}
                                 audioLink={sermon.AudioURL || null}

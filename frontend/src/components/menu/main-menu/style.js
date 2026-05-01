@@ -38,6 +38,20 @@ export const Navitem = styled.li`
         }
     }
 
+    > .menu-parent-label {
+        padding: 7px 25px;
+        color: #001d23;
+        display: block;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 22px;
+        position: relative;
+        cursor: default;
+        &:hover {
+            color: ${themeGet("colors.orange")};
+        }
+    }
+
     &.has-submenu {
         padding-right: 10px;
         position: relative;
@@ -49,16 +63,14 @@ export const Navitem = styled.li`
             transition: 0.4s;
             opacity: 0;
             visibility: hidden;
-            min-width: 250px;
-            margin-top: 42px;
+            min-width: min(320px, 85vw);
+            margin-top: 25px;
             z-index: 3;
             background-color: #fff;
             border: none;
             border-radius: 0 0 5px 5px;
             box-shadow: 0px 20px 80px 0px rgb(171 181 189 / 35%);
             left: -10px;
-            margin-top: 25px;
-            min-width: 195px;
 
             &:before {
                 content: "";

@@ -1,8 +1,20 @@
 /* eslint-disable prettier/prettier */
 const path = require("path");
-const { object } = require("prop-types");
-const { author } = require("./config/config");
 const { slugify } = require("./src/utils/functions");
+
+/**
+ * Sermon→Meeting is stored as Meeting___NODE by gatsby-source-strapi. If no
+ * sermon has a populated Meeting relation, Gatsby never infers a `Meeting`
+ * field on STRAPI_SERMON and GraphQL queries fail. Link it explicitly.
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions;
+    createTypes(`
+        extend type STRAPI_SERMON implements Node {
+            Meeting: STRAPI_MEETING @link(from: "Meeting___NODE")
+        }
+    `);
+};
 
 exports.onCreateWebpackConfig = ({ actions }) => {
     actions.setWebpackConfig({

@@ -45,13 +45,15 @@ const SermonItem = ({
                 <p>{dec}</p>
                 <SermonFooter>
                     <Preacher>
-                        <PreacherImage>
-                            <GatsbyImage
-                                image={getImage(preacherImage)}
-                                alt="Preacher Avatar"
-                            />
-                        </PreacherImage>
-                        {preacherName}
+                        {preacherImage ? (
+                            <PreacherImage>
+                                <GatsbyImage
+                                    image={getImage(preacherImage)}
+                                    alt="Preacher Avatar"
+                                />
+                            </PreacherImage>
+                        ) : null}
+                        {preacherName || ""}
                     </Preacher>
                     <Dropdown
                         show={show}
