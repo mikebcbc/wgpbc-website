@@ -65,9 +65,12 @@ export const listSermonQuery = graphql`
                     localFile {
                         childImageSharp {
                             gatsbyImageData(
-                                width: 590
+                                width: 275
+                                height: 155
+                                layout: FIXED
                                 placeholder: BLURRED
-                                quality: 100
+                                quality: 90
+                                transformOptions: { fit: COVER }
                             )
                         }
                     }

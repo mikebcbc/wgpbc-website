@@ -32,12 +32,26 @@ const SermonItem = ({
         <Sermon>
             <SermonImage>
                 {image ? (
-                    <GatsbyImage image={getImage(image)} alt={title} />
+                    <GatsbyImage
+                        image={getImage(image)}
+                        alt={title}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        style={{ width: "100%", height: "100%" }}
+                    />
                 ) : (
                     <StaticImage
                         src="../../data/images/sermons/audio-default.jpg"
                         alt="Audio Only Image"
+                        width={275}
+                        height={155}
                         placeholder="blurred"
+                        transformOptions={{ fit: "cover" }}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
                     />
                 )}
             </SermonImage>

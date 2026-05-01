@@ -22,9 +22,12 @@ const SermonArea = () => {
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
-                                    width: 590
+                                    width: 275
+                                    height: 155
+                                    layout: FIXED
                                     placeholder: BLURRED
-                                    quality: 100
+                                    quality: 90
+                                    transformOptions: { fit: COVER }
                                 )
                             }
                         }
@@ -39,8 +42,11 @@ const SermonArea = () => {
                             localFile {
                                 childImageSharp {
                                     gatsbyImageData(
+                                        width: 40
+                                        height: 40
+                                        transformOptions: { fit: COVER }
                                         placeholder: BLURRED
-                                        quality: 100
+                                        quality: 90
                                     )
                                 }
                             }

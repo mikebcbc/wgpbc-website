@@ -6,12 +6,27 @@ export const Sermon = styled.div`
     margin-bottom: 30px;
     height: 450px;
 `;
+/** Fixed 275×155 thumbnail; sources use sharp COVER so portrait sources crop to this frame. */
 export const SermonImage = styled.div`
+    align-self: center;
+    width: 275px;
+    max-width: 100%;
+    height: 155px;
+    flex-shrink: 0;
     overflow: hidden;
-    display: flex;
+    position: relative;
+    background: ${themeGet("colors.grey")};
+
+    .gatsby-image-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
     img {
         width: 100%;
-        transition: 0.8s;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.35s ease;
     }
 `;
 

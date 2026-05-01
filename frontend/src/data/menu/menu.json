@@ -41,9 +41,9 @@
     },
     {
         "text": "Give",
-        "link": "#",
+        "link": "https://enroll.zellepay.com/qr-codes?data=eyJhY3Rpb24iOiJwYXltZW50IiwibmFtZSI6Ik5FVyBIT1BFIFBSSU1JVElWRSBCQVBUSVNUIENIVVJDSCwgSU5DLiIsInFyQ29kZU5hbWUiOiJORVcgSE9QRSBQUklNSVRJVkUgQkFQVElTVCBDSFVSQ0gsIElOQy4iLCJ0b2tlbiI6InRoZXdncGJjQGdtYWlsLmNvbSJ9",
         "isSubmenu": true,
-        "isExternal": false,
+        "isExternal": true,
         "submenu": [
             {
                 "text": "Give with Zelle (zero fees)",
