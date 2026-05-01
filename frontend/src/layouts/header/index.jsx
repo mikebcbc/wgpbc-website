@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { useEffect, useState, Fragment } from "react";
-import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/flaticon.css";
 import "../../assets/css/elegantIcons.css";
@@ -16,11 +15,11 @@ import {
     HeaderTop,
     HeaderMenuArea,
     HeaderActionArea,
-    MobileMenuArea,
-    OffCanvasInner,
+    MobileMenuDimmer,
+    MobileMenuSheet,
     MobileMenuBtn,
     ButtonBoxArea,
-    OffCanvasContent,
+    OffCanvasPanel,
     OffCanvasHeader,
     CloseAction,
     ButtonClose,
@@ -65,16 +64,17 @@ const Header = () => {
         setScroll(window.scrollY);
     };
 
-    // OfCanvas Menu
-    const [ofCanvasOpen, setOfCanvasOpen] = useState(false);
+    const [offCanvasOpen, setOffCanvasOpen] = useState(false);
 
-    // OfCanvas Menu Open & Remove
-    const ofCanvasHandler = () => {
-        setOfCanvasOpen((prev) => !prev);
+    const offCanvasHandler = () => {
+        setOffCanvasOpen((prev) => !prev);
     };
 
-    const searchHandler = () => {
-        setOfCanvasSearchOpen((prev) => !prev);
+    const backdropKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            offCanvasHandler();
+        }
     };
 
     return (
@@ -95,8 +95,10 @@ const Header = () => {
 
                                 <HeaderActionArea>
                                     <MobileMenuBtn
-                                        onClick={ofCanvasHandler}
-                                        onKeyDown={searchHandler}
+                                        onClick={offCanvasHandler}
+                                        type="button"
+                                        aria-expanded={offCanvasOpen}
+                                        aria-label="Open menu"
                                     >
                                         <span></span>
                                         <span></span>
@@ -119,39 +121,38 @@ const Header = () => {
                     </Row>
                 </Container>
             </HeaderTop>
-            <MobileMenuArea
-                className={`${ofCanvasOpen ? "mobile-menu-open" : ""}`}
+            <MobileMenuDimmer
+                className={offCanvasOpen ? "mobile-menu-open" : ""}
+                onClick={offCanvasHandler}
+                onKeyDown={backdropKeyDown}
+                role="button"
+                tabIndex={offCanvasOpen ? 0 : -1}
+                aria-hidden={!offCanvasOpen}
+                aria-label="Close menu"
+            />
+            <MobileMenuSheet
+                className={offCanvasOpen ? "mobile-menu-open" : ""}
+                aria-hidden={!offCanvasOpen}
             >
-                <OffCanvasInner>
-                    <div
-                        className="OffCanvasContent"
-                        onClick={ofCanvasHandler}
-                        onKeyDown={searchHandler}
-                        role="button"
-                        tabIndex={0}
-                    ></div>
-                    <OffCanvasContent>
-                        <OffCanvasHeader>
-                            <Logo />
-                            <CloseAction>
-                                <ButtonClose
-                                    onClick={ofCanvasHandler}
-                                    onKeyDown={searchHandler}
-                                >
-                                    <i className="icofont-close"></i>
-                                </ButtonClose>
-                            </CloseAction>
-                        </OffCanvasHeader>
+                <OffCanvasPanel $isOpen={offCanvasOpen}>
+                    <OffCanvasHeader>
+                        <Logo />
+                        <CloseAction>
+                            <ButtonClose
+                                type="button"
+                                onClick={offCanvasHandler}
+                                aria-label="Close menu"
+                            >
+                                <i className="icofont-close"></i>
+                            </ButtonClose>
+                        </CloseAction>
+                    </OffCanvasHeader>
 
-                        <MobileNavMenu MobilemenuData={menuData} />
-                    </OffCanvasContent>
-                </OffCanvasInner>
-            </MobileMenuArea>
+                    <MobileNavMenu MobilemenuData={menuData} />
+                </OffCanvasPanel>
+            </MobileMenuSheet>
         </Fragment>
     );
 };
 
-Header.propTypes = {
-    headerTop: PropTypes.object,
-};
 export default Header;

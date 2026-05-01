@@ -3,7 +3,7 @@ import { jsx } from "theme-ui";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import Button from "@components/ui/button";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { slugify } from "../../../utils/functions";
 import {
     PostItemWrap,
@@ -62,8 +62,8 @@ const BlogList = ({ thumbnail, title, date, tags, body, slug, route }) => {
                         Read More{" "}
                         <i
                             className="flaticon-right-arrow"
-                            sx={{ fontSize: "12px" }}
-                        ></i>
+                            style={{ fontSize: "12px" }}
+                        />
                     </Button>
                 </ListBlogContentInner>
             </ListBlogContent>
@@ -78,6 +78,7 @@ BlogList.propTypes = {
     tags: PropTypes.array,
     body: PropTypes.string,
     slug: PropTypes.string,
+    route: PropTypes.string.isRequired,
 };
 
 export default BlogList;

@@ -1,7 +1,7 @@
-import Button from "@components/ui/button";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import ModalVideo from "react-modal-video";
 import {
     ContentBox,
     Preacher,
@@ -9,11 +9,14 @@ import {
     Sermon,
     SermonFooter,
     SermonImage,
+    SermonViewMenu,
+    SermonViewMenuButton,
+    SermonViewMenuLi,
+    SermonViewMenuLink,
+    SermonViewMenuPanel,
     Title,
+    SermonViewToggle,
 } from "./style";
-import ModalVideo from "react-modal-video";
-import React, { useState } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
 
 const SermonItem = ({
     title,
@@ -23,20 +26,37 @@ const SermonItem = ({
     preacherImage,
     videoId,
     audioLink,
+    fillCard,
 }) => {
-    const [open, setOpen] = useState(false);
-    const [show, setShow] = useState(false);
+    const [videoOpen, setVideoOpen] = useState(false);
+
+    const hasMenuItems = Boolean(videoId || audioLink);
+    const toggleId = `sermon-view-${title?.replace(/\s+/g, "-").slice(0, 40)}`;
 
     return (
-        <Sermon>
-            <SermonImage>
+        <Sermon $fillCard={fillCard}>
+            <SermonImage $fillCard={fillCard}>
                 {image ? (
-                    <GatsbyImage image={getImage(image)} alt={title} />
+                    <GatsbyImage
+                        image={getImage(image)}
+                        alt={title}
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        style={{ width: "100%", height: "100%" }}
+                    />
                 ) : (
                     <StaticImage
                         src="../../data/images/sermons/audio-default.jpg"
                         alt="Audio Only Image"
+                        width={960}
+                        height={541}
                         placeholder="blurred"
+                        transformOptions={{ fit: "cover" }}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
                     />
                 )}
             </SermonImage>
@@ -45,55 +65,65 @@ const SermonItem = ({
                 <p>{dec}</p>
                 <SermonFooter>
                     <Preacher>
-                        <PreacherImage>
-                            <GatsbyImage
-                                image={getImage(preacherImage)}
-                                alt="Preacher Avatar"
-                            />
-                        </PreacherImage>
-                        {preacherName}
+                        {preacherImage ? (
+                            <PreacherImage>
+                                <GatsbyImage
+                                    image={getImage(preacherImage)}
+                                    alt="Preacher Avatar"
+                                />
+                            </PreacherImage>
+                        ) : null}
+                        <span>{preacherName || ""}</span>
                     </Preacher>
-                    <Dropdown
-                        show={show}
-                        onMouseEnter={(e) => setShow(true)}
-                        onMouseLeave={(e) => setShow(false)}
-                    >
-                        <Dropdown.Toggle
-                            as={Button}
-                            size="small"
-                            variant="outlined"
-                            color="light"
-                        >
-                            View
-                            <Dropdown.Menu align="end">
-                                {videoId && (
-                                    <Dropdown.Item
-                                        onClick={(e) => setOpen(true)}
-                                    >
-                                        Video
-                                    </Dropdown.Item>
-                                )}
-                                {audioLink && (
-                                    <Dropdown.Item
-                                        onClick={(e) => e.stopPropagation()}
-                                        href={audioLink}
-                                        target="_blank"
-                                    >
-                                        Audio Only
-                                    </Dropdown.Item>
-                                )}
-                            </Dropdown.Menu>
-                        </Dropdown.Toggle>
-                    </Dropdown>
+                    {hasMenuItems ? (
+                        <SermonViewMenu>
+                            <SermonViewToggle
+                                type="button"
+                                id={toggleId}
+                                aria-haspopup="true"
+                            >
+                                View
+                            </SermonViewToggle>
+                            <SermonViewMenuPanel
+                                className="sermon-view-menu-panel"
+                                role="menu"
+                                aria-labelledby={toggleId}
+                            >
+                                {videoId ? (
+                                    <SermonViewMenuLi role="none">
+                                        <SermonViewMenuButton
+                                            type="button"
+                                            role="menuitem"
+                                            onClick={() => setVideoOpen(true)}
+                                        >
+                                            Video
+                                        </SermonViewMenuButton>
+                                    </SermonViewMenuLi>
+                                ) : null}
+                                {audioLink ? (
+                                    <SermonViewMenuLi role="none">
+                                        <SermonViewMenuLink
+                                            role="menuitem"
+                                            href={audioLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Audio only
+                                        </SermonViewMenuLink>
+                                    </SermonViewMenuLi>
+                                ) : null}
+                            </SermonViewMenuPanel>
+                        </SermonViewMenu>
+                    ) : null}
                 </SermonFooter>
             </ContentBox>
             {videoId && (
                 <ModalVideo
                     channel="vimeo"
                     autoplay={true}
-                    isOpen={open}
+                    isOpen={videoOpen}
                     videoId={videoId}
-                    onClose={() => setOpen(false)}
+                    onClose={() => setVideoOpen(false)}
                 />
             )}
         </Sermon>
@@ -108,6 +138,7 @@ SermonItem.propTypes = {
     videoId: PropTypes.string,
     image: PropTypes.object,
     audioLink: PropTypes.string,
+    fillCard: PropTypes.bool,
 };
 
 export default SermonItem;

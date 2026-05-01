@@ -49,6 +49,12 @@
             }
         ],
         "jsx-a11y/click-events-have-key-events": "off",
-        "eslint-plugin/fixer-return:": "off"
+        "eslint-plugin/fixer-return:": "off",
+        "react/no-unknown-property": [
+            "error",
+            {
+                "ignore": ["sx", "css"]
+            }
+        ]
     }
 }

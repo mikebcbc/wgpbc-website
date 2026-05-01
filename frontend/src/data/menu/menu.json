@@ -2,18 +2,25 @@
     {
         "text": "Home",
         "link": "/",
-        "isSubmenu": false
+        "isSubmenu": false,
+        "isExternal": false
     },
     {
         "text": "About",
         "link": "/about-us/",
-        "isSubmenu": false
+        "isSubmenu": false,
+        "isExternal": false
     },
     {
         "text": "Sermons",
         "link": "/sermons/",
         "isSubmenu": true,
+        "isExternal": false,
         "submenu": [
+            {
+                "text": "All sermons",
+                "link": "/sermons/"
+            },
             {
                 "text": "Meetings",
                 "link": "/meeting/florida-fellowship-2024"
@@ -23,17 +30,29 @@
     {
         "text": "Blog",
         "link": "/blog/",
-        "isSubmenu": false
+        "isSubmenu": false,
+        "isExternal": false
     },
     {
         "text": "Pastor's Notes",
         "link": "/pastors-notes/",
-        "isSubmenu": false
+        "isSubmenu": false,
+        "isExternal": false
     },
     {
         "text": "Give",
-        "link": "https://tithe.ly/give?c=6732063",
-        "isSubmenu": false,
-        "isExternal": true
+        "link": "https://enroll.zellepay.com/qr-codes?data=eyJhY3Rpb24iOiJwYXltZW50IiwibmFtZSI6Ik5FVyBIT1BFIFBSSU1JVElWRSBCQVBUSVNUIENIVVJDSCwgSU5DLiIsInFyQ29kZU5hbWUiOiJORVcgSE9QRSBQUklNSVRJVkUgQkFQVElTVCBDSFVSQ0gsIElOQy4iLCJ0b2tlbiI6InRoZXdncGJjQGdtYWlsLmNvbSJ9",
+        "isSubmenu": true,
+        "isExternal": true,
+        "submenu": [
+            {
+                "text": "Give with Zelle (zero fees)",
+                "link": "https://enroll.zellepay.com/qr-codes?data=eyJhY3Rpb24iOiJwYXltZW50IiwibmFtZSI6Ik5FVyBIT1BFIFBSSU1JVElWRSBCQVBUSVNUIENIVVJDSCwgSU5DLiIsInFyQ29kZU5hbWUiOiJORVcgSE9QRSBQUklNSVRJVkUgQkFQVElTVCBDSFVSQ0gsIElOQy4iLCJ0b2tlbiI6InRoZXdncGJjQGdtYWlsLmNvbSJ9"
+            },
+            {
+                "text": "Give with Tithely (with fees)",
+                "link": "https://tithe.ly/give?c=6732063"
+            }
+        ]
     }
 ]

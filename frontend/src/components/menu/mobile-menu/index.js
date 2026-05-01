@@ -9,6 +9,9 @@ import {
     slideUp,
 } from "../../../utils/mobile-nav-utils";
 
+const isExternalHref = (href) =>
+    typeof href === "string" && /^https?:\/\//i.test(href);
+
 const MobileNavMenu = ({ MobilemenuData }) => {
     const MobileMenuArr = MobilemenuData;
 
@@ -48,6 +51,8 @@ const MobileNavMenu = ({ MobilemenuData }) => {
                     {MobileMenuArr.map((menu) => {
                         const hasSubmenu = menu.node.isSubmenu ? true : false;
                         const submenu = menu.node.submenu;
+                        const parentIsDropdownOnly =
+                            hasSubmenu && menu.node.link === "#";
                         return (
                             <MobileNavitem
                                 key={`menu-${menu.node.id}`}
@@ -55,7 +60,11 @@ const MobileNavMenu = ({ MobilemenuData }) => {
                                     hasSubmenu ? "has-submenu-dropdown" : ""
                                 }`}
                             >
-                                {menu.node.isExternal ? (
+                                {parentIsDropdownOnly ? (
+                                    <span className="menu-parent-label">
+                                        {menu.node.text}
+                                    </span>
+                                ) : menu.node.isExternal ? (
                                     <a
                                         href={menu.node.link}
                                         target="_blank"
@@ -86,9 +95,27 @@ const MobileNavMenu = ({ MobilemenuData }) => {
                                                     <MobileNavitem
                                                         key={`submenu${i}`}
                                                     >
-                                                        <Link to={submenu.link}>
-                                                            {submenu.text}
-                                                        </Link>
+                                                        {isExternalHref(
+                                                            submenu.link
+                                                        ) ? (
+                                                            <a
+                                                                href={
+                                                                    submenu.link
+                                                                }
+                                                                target="_blank"
+                                                                rel="noreferrer"
+                                                            >
+                                                                {submenu.text}
+                                                            </a>
+                                                        ) : (
+                                                            <Link
+                                                                to={
+                                                                    submenu.link
+                                                                }
+                                                            >
+                                                                {submenu.text}
+                                                            </Link>
+                                                        )}
                                                     </MobileNavitem>
                                                 );
                                             })}

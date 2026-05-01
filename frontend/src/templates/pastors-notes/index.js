@@ -19,7 +19,7 @@ const PastorsNotesPage = ({ data, pageContext }) => {
                 <Container>
                     <Row>
                         <Col>
-                            <HeaderTitle>All Pastor's Notes</HeaderTitle>
+                            <HeaderTitle>All Pastor&apos;s Notes</HeaderTitle>
                         </Col>
                     </Row>
                 </Container>

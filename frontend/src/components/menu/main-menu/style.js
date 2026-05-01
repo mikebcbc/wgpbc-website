@@ -38,10 +38,49 @@ export const Navitem = styled.li`
         }
     }
 
+    > .menu-parent-label {
+        padding: 7px 25px;
+        color: #001d23;
+        display: block;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 22px;
+        position: relative;
+        cursor: default;
+        &:hover {
+            color: ${themeGet("colors.orange")};
+        }
+    }
+
     &.has-submenu {
         padding-right: 10px;
         position: relative;
+
+        > a::after,
+        > .menu-parent-label::after {
+            content: "";
+            display: inline-block;
+            margin-left: 6px;
+            margin-bottom: 2px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid currentColor;
+            opacity: 0.65;
+            vertical-align: middle;
+        }
+
+        > .menu-parent-label {
+            cursor: pointer;
+        }
+
         > .submenu-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            list-style: none;
+            margin: 0;
             padding: 15px 0 15px;
             position: absolute;
             top: 100%;
@@ -49,16 +88,14 @@ export const Navitem = styled.li`
             transition: 0.4s;
             opacity: 0;
             visibility: hidden;
-            min-width: 250px;
-            margin-top: 42px;
+            min-width: min(320px, 85vw);
+            margin-top: 25px;
             z-index: 3;
             background-color: #fff;
             border: none;
             border-radius: 0 0 5px 5px;
             box-shadow: 0px 20px 80px 0px rgb(171 181 189 / 35%);
             left: -10px;
-            margin-top: 25px;
-            min-width: 195px;
 
             &:before {
                 content: "";
@@ -70,6 +107,8 @@ export const Navitem = styled.li`
                 height: 40px;
             }
             > li {
+                display: block;
+                width: 100%;
                 padding: 9px 25px;
                 > a {
                     color: #0e0e0e;

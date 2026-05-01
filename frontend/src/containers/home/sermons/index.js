@@ -22,9 +22,12 @@ const SermonArea = () => {
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
-                                    width: 590
+                                    width: 960
+                                    height: 541
+                                    layout: CONSTRAINED
                                     placeholder: BLURRED
-                                    quality: 100
+                                    quality: 90
+                                    transformOptions: { fit: COVER }
                                 )
                             }
                         }
@@ -39,8 +42,11 @@ const SermonArea = () => {
                             localFile {
                                 childImageSharp {
                                     gatsbyImageData(
+                                        width: 40
+                                        height: 40
+                                        transformOptions: { fit: COVER }
                                         placeholder: BLURRED
-                                        quality: 100
+                                        quality: 90
                                     )
                                 }
                             }
@@ -74,6 +80,7 @@ const SermonArea = () => {
                             return (
                                 <Col lg={4} md={6} sm={6} key={sermon.id}>
                                     <SermonItem
+                                        fillCard
                                         title={sermon.Title}
                                         image={
                                             sermon.Image?.localFile
@@ -81,10 +88,13 @@ const SermonArea = () => {
                                                 ?.gatsbyImageData || null
                                         }
                                         dec={sermon.Verses}
-                                        preacherName={sermon.Preacher.Name}
+                                        preacherName={
+                                            sermon.Preacher?.Name ?? ""
+                                        }
                                         preacherImage={
-                                            sermon.Preacher.Avatar.localFile
-                                                .childImageSharp.gatsbyImageData
+                                            sermon.Preacher?.Avatar?.localFile
+                                                ?.childImageSharp
+                                                ?.gatsbyImageData
                                         }
                                         videoId={sermon.VideoID}
                                         audioLink={sermon.AudioURL || null}

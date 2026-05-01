@@ -24,6 +24,16 @@ export const MobileNavitem = styled.li`
             color: ${themeGet("colors.primary")};
         }
     }
+    > .menu-parent-label {
+        padding: 12px 0px;
+        color: #001d23;
+        display: block;
+        width: calc(100% - 48px);
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 22px;
+        position: relative;
+    }
     &.has-submenu-dropdown {
         .menu-toggle {
             position: absolute;

@@ -6,6 +6,7 @@ require("dotenv").config({
 });
 
 const strapiConfig = {
+    version: 4,
     apiURL: process.env.STRAPI_API_URL,
     accessToken: process.env.STRAPI_TOKEN,
     collectionTypes: [
@@ -37,11 +38,28 @@ const strapiConfig = {
                 },
             },
         },
+        {
+            singularName: "preacher",
+            queryParams: {
+                populate: {
+                    Avatar: "*",
+                },
+            },
+        },
         "tag",
         "meeting",
     ],
     singleTypes: [],
 };
+
+if (
+    process.env.GATSBY_STRAPI_MEDIA_BEARER === "true" &&
+    process.env.STRAPI_TOKEN
+) {
+    strapiConfig.remoteFileHeaders = {
+        Authorization: `Bearer ${process.env.STRAPI_TOKEN}`,
+    };
+}
 
 module.exports = {
     pathPrefix: config.pathPrefix,
