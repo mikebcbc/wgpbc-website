@@ -10,28 +10,28 @@
   "scripts": {
     "build": "strapi build",
     "develop": "strapi develop",
-    "prepare": "npm run build",
     "start": "strapi start",
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.21.1",
-    "@strapi/plugin-users-permissions": "4.21.1",
-    "@strapi/provider-upload-aws-s3": "4.21.1",
-    "@strapi/strapi": "4.21.1",
-    "better-sqlite3": "^7.4.6",
-    "pg": "^8.8.0",
-    "pg-connection-string": "^2.5.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^5.2.0",
-    "strapi-plugin-import-export-entries": "^1.22.1",
-    "styled-components": "^5.2.1"
+    "@strapi/plugin-i18n": "4.26.1",
+    "@strapi/plugin-users-permissions": "4.26.1",
+    "@strapi/provider-upload-aws-s3": "4.26.1",
+    "@strapi/strapi": "4.26.1",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.7.0",
+    "form-data": "^4.0.1",
+    "pg": "^8.13.1",
+    "pg-connection-string": "^2.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^5.3.4",
+    "strapi-plugin-import-export-entries": "^1.23.1",
+    "styled-components": "^5.3.11"
   },
-  "devDependencies": {},
   "engines": {
-    "node": ">=12.x.x <=18.x.x",
-    "npm": ">=6.0.0"
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=8.0.0"
   },
   "strapi": {
     "uuid": "e380fb7c-8bb8-4cef-94fa-697df42a0bfe"

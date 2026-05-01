@@ -1,22 +1,29 @@
 const parse = require("pg-connection-string").parse;
 
-const { host, port, database, user, password } = parse(
-  process.env.DATABASE_URL
-);
+module.exports = ({ env }) => {
+  const databaseUrl = env("DATABASE_URL");
+  if (!databaseUrl) {
+    throw new Error(
+      "DATABASE_URL must be set when NODE_ENV=production (Postgres required)."
+    );
+  }
 
-module.exports = ({ env }) => ({
-  connection: {
-    client: "postgres",
+  const { host, port, database, user, password } = parse(databaseUrl);
+
+  return {
     connection: {
-      host,
-      port,
-      database,
-      user,
-      password,
-      ssl: {
-        rejectUnauthorized: false,
+      client: "postgres",
+      connection: {
+        host,
+        port,
+        database,
+        user,
+        password,
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
+      debug: false,
     },
-    debug: false,
-  },
-});
+  };
+};

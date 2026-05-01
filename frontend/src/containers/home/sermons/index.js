@@ -22,9 +22,9 @@ const SermonArea = () => {
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
-                                    width: 275
-                                    height: 155
-                                    layout: FIXED
+                                    width: 960
+                                    height: 541
+                                    layout: CONSTRAINED
                                     placeholder: BLURRED
                                     quality: 90
                                     transformOptions: { fit: COVER }
@@ -80,6 +80,7 @@ const SermonArea = () => {
                             return (
                                 <Col lg={4} md={6} sm={6} key={sermon.id}>
                                     <SermonItem
+                                        fillCard
                                         title={sermon.Title}
                                         image={
                                             sermon.Image?.localFile

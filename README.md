@@ -13,7 +13,7 @@ The repository is a small monorepo: a **Gatsby** static frontend that pulls cont
 | Part | Stack | Role |
 |------|--------|------|
 | `frontend/` | Gatsby 4, React 17, Theme UI, Emotion, Bootstrap 4, `gatsby-source-strapi` | Static site generation, images via `gatsby-plugin-image` / Sharp |
-| `backend/` | Strapi 4 | Content API for sermons, posts, preachers, meetings, tags |
+| `backend/` | Strapi **4.26.x** | Content API for sermons, posts, preachers, meetings, tags |
 
 At build time, Gatsby fetches Strapi collections, runs GraphQL page queries, and emits HTML and optimized assets. There is no runtime Node server for the public site beyond whatever hosts the static files.
 
@@ -38,7 +38,9 @@ npm install
 npm run develop   # admin + API, typical local URL http://localhost:1337
 ```
 
-See `backend/README.md` for Strapi CLI details (`build`, `start`, deployment).
+Without `DATABASE_URL`, the backend uses **SQLite** at `backend/.tmp/data.db` for local development. Production expects **Postgres** via `DATABASE_URL` (see `backend/README.md`).
+
+See `backend/README.md` for environment variables, plugins, and deployment notes.
 
 ### 2. Gatsby (`frontend/`)
 

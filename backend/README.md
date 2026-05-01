@@ -1,57 +1,59 @@
-# 🚀 Getting started with Strapi
+# WGPBC Strapi backend
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+Headless CMS for [Winter Garden Primitive Baptist Church](https://www.wintergardenpbc.com). Content is consumed by the Gatsby app in `../frontend` via `gatsby-source-strapi`.
 
-### `develop`
+## Requirements
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+- **Node.js** 18–22 (aligned with Strapi 4.26)
+- **npm** 8+
 
-```
-npm run develop
-# or
-yarn develop
-```
+## Scripts
 
-### `start`
+| Command | Description |
+|--------|-------------|
+| `npm run develop` | Admin + API with auto-reload (default [http://localhost:1337](http://localhost:1337)) |
+| `npm run build` | Build the admin panel |
+| `npm run start` | Run production build (no auto-reload) |
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
+## Environment variables
 
-```
-npm run start
-# or
-yarn start
-```
+Create a `.env` in this folder (never commit it). Typical keys:
 
-### `build`
+| Variable | Notes |
+|----------|--------|
+| `HOST`, `PORT` | Optional; defaults `0.0.0.0` / `1337` |
+| `APP_KEYS` | Comma-separated keys for signed cookies |
+| `ADMIN_JWT_SECRET` | Admin JWT signing |
+| `API_TOKEN_SALT` | API token salt |
+| `JWT_SECRET` | Users & permissions plugin (if used) |
+| `DATABASE_URL` | Postgres connection string in deployed environments |
+| `DATABASE_FILENAME` | SQLite path when **not** using `DATABASE_URL` (default `.tmp/data.db`) |
+| `APP_URL` | Public URL (used under `NODE_ENV=production` in `config/env/production/server.js`) |
+| **DigitalOcean Spaces / S3** | `DO_SPACE_ACCESS_KEY`, `DO_SPACE_SECRET_KEY`, `DO_SPACE_ENDPOINT`, `DO_SPACE_REGION`, `DO_SPACE_BUCKET` |
+| **Sermon Vimeo thumbnails** | `API_URL` — Strapi public URL (e.g. `https://api.example.com`) so lifecycles can call `/api/upload`; `STRAPI_TOKEN` — API token with upload permission |
 
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+Strapi’s built-in upload plugin is configured for an S3-compatible provider in `config/plugins.js`.
 
-```
-npm run build
-# or
-yarn build
-```
+## Plugins
 
-## ⚙️ Deployment
+- **Users & permissions** — API auth for the Gatsby build token.
+- **i18n** — Available if you localize content later.
+- **Upload** — AWS S3 provider (DigitalOcean Spaces).
+- **[strapi-plugin-import-export-entries](https://market.strapi.io/plugins/strapi-plugin-import-export-entries)** — CSV/JSON import/export for collection types.
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+## Content types
 
-## 📚 Learn more
+Defined under `src/api/` — e.g. **sermon**, **post**, **preacher**, **meeting**, **tag**. Sermon `lifecycles.js` can pull Vimeo thumbnails and populate `AudioURL` when media is attached.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+## Upgrading Strapi
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Stay on **Strapi 4.x** until the frontend is migrated for **Strapi 5** (different REST patterns and plugins). Within v4, keep these packages on the **same version**:
 
-## ✨ Community
+`@strapi/strapi`, `@strapi/plugin-i18n`, `@strapi/plugin-users-permissions`, `@strapi/provider-upload-aws-s3`.
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+See the official [Strapi v4 upgrade guide](https://docs-v4.strapi.io/dev-docs/update-version).
 
----
+## Learn more
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+- [Strapi documentation](https://docs.strapi.io/)
+- [Deployment](https://docs.strapi.io/dev-docs/deployment)

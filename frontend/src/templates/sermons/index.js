@@ -28,6 +28,7 @@ const SermonsPage = ({ data, pageContext }) => {
                     <Row>
                         <Col lg={8}>
                             <SermonListArea
+                                fillCard
                                 sermons={data.allStrapiSermon.nodes}
                                 totalCount={data.allStrapiSermon.totalCount}
                                 currentPage={pageContext.currentPage}
@@ -65,9 +66,9 @@ export const listSermonQuery = graphql`
                     localFile {
                         childImageSharp {
                             gatsbyImageData(
-                                width: 275
-                                height: 155
-                                layout: FIXED
+                                width: 960
+                                height: 541
+                                layout: CONSTRAINED
                                 placeholder: BLURRED
                                 quality: 90
                                 transformOptions: { fit: COVER }

@@ -16,6 +16,7 @@ const SermonListArea = ({
     currentPage,
     counts,
     route,
+    fillCard,
 }) => {
     const [hasMounted, setHasMounted] = React.useState(false);
     const [category, setCategory] = useQueryParam("category", StringParam);
@@ -44,6 +45,7 @@ const SermonListArea = ({
                         <Col lg={6} md={6} sm={12} key={sermon.id}>
                             <SermonItem
                                 key={i}
+                                fillCard={fillCard}
                                 title={sermon.Title}
                                 image={
                                     sermon.Image?.localFile?.childImageSharp
@@ -85,6 +87,7 @@ SermonListArea.propTypes = {
     currentPage: PropTypes.number,
     counts: PropTypes.object,
     route: PropTypes.string,
+    fillCard: PropTypes.bool,
 };
 
 export default SermonListArea;

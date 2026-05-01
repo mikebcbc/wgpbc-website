@@ -1,17 +1,19 @@
-import styled, { themeGet } from "@theme/utils";
+import styled, { css, themeGet } from "@theme/utils";
 
 export const Sermon = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    height: 450px;
+    height: ${(p) => (p.$fillCard ? "auto" : "450px")};
+    overflow: visible;
 `;
-/** Fixed 275×155 thumbnail; sources use sharp COVER so portrait sources crop to this frame. */
+/** Default: fixed 275×155. Homepage (fillCard): full card width, same 275∶155 aspect ratio. */
 export const SermonImage = styled.div`
-    align-self: center;
-    width: 275px;
-    max-width: 100%;
-    height: 155px;
+    align-self: ${(p) => (p.$fillCard ? "stretch" : "center")};
+    width: ${(p) => (p.$fillCard ? "100%" : "275px")};
+    max-width: ${(p) => (p.$fillCard ? "none" : "100%")};
+    height: ${(p) => (p.$fillCard ? "auto" : "155px")};
+    aspect-ratio: ${(p) => (p.$fillCard ? "275 / 155" : "auto")};
     flex-shrink: 0;
     overflow: hidden;
     position: relative;
@@ -37,11 +39,95 @@ export const ContentBox = styled.div`
     padding: 15px 20px 18px;
     flex: 1;
     min-height: 0;
+    overflow: visible;
 `;
 
 export const Title = styled.h5`
     line-height: 1.455;
     margin-bottom: 8px;
+`;
+
+export const SermonViewMenu = styled.div`
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: flex-end;
+    min-width: 9rem;
+    flex-shrink: 0;
+    z-index: 30;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 18px;
+        z-index: 1;
+    }
+
+    &:hover .sermon-view-menu-panel,
+    &:focus-within .sermon-view-menu-panel {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+`;
+
+export const SermonViewMenuPanel = styled.ul`
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    margin: 0;
+    min-width: 9rem;
+    padding: 6px 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    font-size: 14px;
+    transition: opacity 0.12s ease, visibility 0.12s ease;
+`;
+
+export const SermonViewMenuLi = styled.li`
+    margin: 0;
+`;
+
+const menuRow = css`
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #0e0e0e;
+    text-align: left;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    line-height: 1.35;
+
+    &:hover,
+    &:focus-visible {
+        background: rgba(0, 29, 35, 0.06);
+        color: ${themeGet("colors.primary")};
+        outline: none;
+    }
+`;
+
+export const SermonViewMenuButton = styled.button`
+    ${menuRow}
+`;
+
+export const SermonViewMenuLink = styled.a`
+    ${menuRow}
 `;
 
 export const SermonFooter = styled.div`
@@ -52,23 +138,7 @@ export const SermonFooter = styled.div`
     margin-top: auto;
     flex-wrap: nowrap;
     min-width: 0;
-
-    .dropdown {
-        flex-shrink: 0;
-    }
-
-    .dropdown-menu {
-        min-width: 9rem;
-        font-size: 14px;
-        border-radius: 8px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        padding: 6px 0;
-        margin-top: 6px !important;
-
-        .dropdown-item {
-            padding: 8px 16px;
-        }
-    }
+    overflow: visible;
 `;
 
 export const Preacher = styled.div`
@@ -99,7 +169,6 @@ export const PreacherImage = styled.div`
     flex-shrink: 0;
 `;
 
-/** Compact Bootstrap dropdown toggle (avoids theme Button min-heights). */
 export const SermonViewToggle = styled.button`
     appearance: none;
     font-size: 13px;
@@ -112,10 +181,6 @@ export const SermonViewToggle = styled.button`
     line-height: 1.2;
     cursor: pointer;
     transition: border-color 0.2s, color 0.2s, background 0.2s;
-
-    &.dropdown-toggle::after {
-        display: none !important;
-    }
 
     &::after {
         display: inline-block;
